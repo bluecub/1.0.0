@@ -13,13 +13,13 @@
         private $dbName;
 
         //protected connect function to connect to the databse
-        protected function connect(){
+        protected function connect($databaseName, $userName, $password, $host){
 
             //please moidify according to your database configuration
-            $this->host = "localhost";
-            $this->dbUserName = "root";
-            $this->dbPassword = "";
-            $this->dbName = "bloodBank";
+            $this->host = $host;
+            $this->dbUserName = $userName;
+            $this->dbPassword = $password;
+            $this->dbName = $databaseName;
 
             try{
                 $conn = new PDO("mysql:host=$this->host;dbname=$this->dbName", $this->dbUserName, 
@@ -40,8 +40,8 @@
         //initializing the connection
         protected $conn;
 
-        function __construct(){
-            $this->conn = $this->connect();
+        function __construct($databaseName, $userName = "root", $password="",$host = "localhost"){
+            $this->conn = $this->connect($databaseName, $userName, $password, $host);
         }
 
         //function to prepare and run the QUERY
@@ -52,6 +52,7 @@
                 $result = $query->fetchAll();
             }
             catch(PDOException $e){
+                
                 die($e->getMessage());
             }
             return $result;
