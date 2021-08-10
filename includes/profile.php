@@ -8,10 +8,12 @@
     $userAccountStatusTable = "userAccountStatus";
     $databaseName = "blueCub";
 
-    class userReadOnly{
+    class userObject{
 
         //protected userInfoArray (Holds all the user basic info)
         protected $userInfoArray;
+        protected $user_ID;
+        protected $condition;
 
         public function __construct($user_ID){
             
@@ -24,11 +26,13 @@
 
             //initialize the userInfo array
             $this->userInfoArray = array('user_ID'=>'', 'userName'=>'', 'firstName'=>'', 'lastName'=>'', 'DOB'=>'', 'email'=>'', 'number'=>'', 'profilePicture'=>'', 'about'=>'', 'joinedDate'=>'', 'lastActive'=>'', 'lastSeenVisible'=>'');
+            $this->user_ID = $user_ID;
+            $this->condition = array('user_ID'=>$this->user_ID);
 
             //intialize the query object from include/CRUD.php (database Name = blueCub)
             $query = new query($databaseName);
 
-            $allData = $query->getData($userInfoTable, "*", $condition);
+            $allData = $query->getData($userInfoTable, "*", $this->condition);
 
             //check is data is recieved
             if(isset($this->userInfoArray)){
@@ -58,46 +62,29 @@
         public function getUserInfoArray(){
             return $this->userInfoArray;
         }
-        
-    }
 
-    class userWriteOnly{
-
-        //protected userInfoArray (Holds all the user basic info)
-        protected $userInfoArray;
-
-        //conditions for mysql statements
-        protected $condition;
-
-        public function __construct(userReadOnly $user){
-            
-            $this->userInfoArray = $user->getUserInfoArray();
-
-        }
-
-        //set the component you want to change
+        //Get the component you want from userInfoArray
         public function set($component, $value){
             $this->userInfoArray[$component] = $value;
         }
 
-        public function update(){
+        public function updateProfile(){
 
             //take the global variables
             global $userInfoTable;
             global $databaseName;
 
-            //conditions array for mysql statements
-            $condition = array('user_ID'=>$this->userInfoArray['user_ID']);
-
             //update data in the data base using query and properties
             $query = new query($databaseName);
 
-            $query->updateData($userInfoTable, $this->userInfoArray, $condition);
+            $query->updateData($userInfoTable, $this->userInfoArray, $this->condition);
 
             unset($query);
 
         }
-
+        
     }
+
+
 
 ?>
