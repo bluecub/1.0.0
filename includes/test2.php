@@ -6,13 +6,17 @@
     $user = $_SESSION['user'];
     print_r($user);
 
-
     if(isset($_POST["hello"])){
-        $user->set('about', '');
-        $user->updateProfile();
-    }
+        $str = 'something nice about me';
 
-    
+        $user->set('about', htmlentities($str));
+        $user->updateProfile();
+
+        $friend = new profileObject(2);
+        $friend->followRequest($user->get('user_ID'));
+
+        print_r($friend->isFollowedByYou($user->get('user_ID')));
+    }
 
 ?>
 
