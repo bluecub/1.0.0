@@ -99,7 +99,6 @@
                 $query .= " LIMIT " . $limit;
             }
             $result = $this->prep_and_run($query);
-            echo $query;
             return $result;
         }
 

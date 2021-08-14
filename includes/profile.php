@@ -14,8 +14,9 @@
         protected static $stringPattern = "/^[\w!@#$%^&*()~]*$/";
         protected static $emailPattern = "/[\w\.]+@[\w]+\.[\w]/";
         protected static $passswordPattern = "/^[\w!@#$%^&*()\.]+$/";
+        protected static $numberpattern = "/^[0-9\+\-]+$/";
 
-        public static function sanitize($data){
+        public static function escape($data){
             return htmlentities($data);
         }
 
@@ -25,6 +26,9 @@
 
         public static function validateEmail($data){
             return preg_match(self::$emailPattern, $data);
+        }
+        public static function validateNumber($data){
+            return preg_match(self::$numberpattern, $data);
         }
 
     }
@@ -112,6 +116,17 @@
 
         public function getFollowingList(){
 
+            //take the global variables
+            global $userInfoTable;
+            global $databaseName;
+
+            //update data in the data base using query and properties
+            $query = new query($databaseName);
+            $condition = array('user_ID'=>$this->user_ID);
+            $query->updateData($userInfoTable, $this->userInfoArray, $condition);
+
+            unset($query);
+
         }
 
         public function getAllRequests(){
@@ -156,9 +171,16 @@
 
         }
 
-        public function unFollow(){
+        public function unFollow($sourceUserId){
 
-            
+            global $databaseName;
+            global $followInfoTable;
+
+            $condition = array('follower_ID'=>$sourceUserId, 'following_ID'=>$this->user_ID);
+
+            $query = new query($databaseName);
+            $query->deleteData($followInfoTable, $condition);
+            unset($query);
 
         }
 
@@ -175,7 +197,8 @@
             $status = $query->getData($followInfoTable, 'status', $condition);
             unset($query);
 
-            return $status;
+            if($status[0][0] == '1')return true;
+            return false;
 
         }
 
@@ -193,7 +216,8 @@
 
             unset($query);
             
-            return $status;
+            if($status[0][0] == '1')return true;
+            return false;
         }
 
     }

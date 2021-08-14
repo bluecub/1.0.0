@@ -7,7 +7,7 @@
     print_r($user);
 
     if(isset($_POST["hello"])){
-        $str = 'something nice about me';
+        $str = 'something nice about me"hello:';
 
         $user->set('about', htmlentities($str));
         $user->updateProfile();
@@ -16,6 +16,7 @@
         $friend->followRequest($user->get('user_ID'));
 
         print_r($friend->isFollowedByYou($user->get('user_ID')));
+        $friend->unFollow($user->get('user_ID'));
     }
 
 ?>
