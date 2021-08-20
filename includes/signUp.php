@@ -4,41 +4,56 @@
 
     class signUp{
 
-        protected $userInfoArray;
+        protected $infoToAdd;
         protected $errorArray;
 
         public function __construct(){
             $this->errorArray = array();
         }
 
-        public function setInfoArray($userInfoArray){
-            $this->userInfoArray = $userInfoArray;
+        public function setInfoArray($infoToAdd){
+            $this->infoToAdd = $infoToAdd;
         }
 
         public function getInfoArray(){
-            return $this->userInfoArray;
+            return $this->infoToAdd;
         }
 
         public function submitData(){
             
+            //intializing array for data to add
+            $userInfoArray = array();
+            $securityInfoArray = array();
+
             //take the database name and table names from global variables
             global $databaseName;
             global $userInfoTable;
             global $userSecurityInfoTable;
 
-            $password = $this->userInfoArray['password'];
-            $userName = $this->userInfoArray['userName'];
-            $firstname = $this->userInfoArray['firstName'];
-            $lastName = $this->userInfoArray['lastName'];
-            $DOB = $this->userInfoArray['DOB'];
-            $email = $this->userInfoArray['email'];
-            $number = $this->userInfoArray['number'];
-            $profilePic = $this->userInfoArray['profilePic'];
-            $about = $this->userInfoArray['about'];
-            $lastSeenVisible = $this->userInfoArray['lastSeenVisible'];
+            //initializing data for $userInfoArray
+            $userName = $this->infoToAdd['userName'];
+            $firstname = $this->infoToAdd['firstName'];
+            $lastName = $this->infoToAdd['lastName'];
+            $DOB = $this->infoToAdd['DOB'];
+            $email = $this->infoToAdd['email'];
+            $number = $this->infoToAdd['number'];
+            $profilePic = $this->infoToAdd['profilePic'];
+            $about = $this->infoToAdd['about'];
+            $lastSceneVisible = true;
+            $isPrivate = false;
+            $isEnabled = true;
+            $isVerified = false;
+
+            //initializing data for $securityInfoArray
+            //hashing the password
+            $password = $this->infoToAdd['password'];
+            $isVerified = false;
+
+            $password = basicFunctions::hashPassword($password);
+            $userSecurityInfo['password'] = $password;
 
             //perform validation here 
-            //if data is validated successfully enter the data back to $userInfoArray
+            //if data is validated successfully enter the data back to $infoToAdd
             //otherwise return false
 
             if(basicFunctions::validateString($userName)){
@@ -78,14 +93,26 @@
 
             $userInfoArray['DOB'] = $DOB;
             $userInfoArray['about'] = basicFunctions::escape($about);
+            $userInfoArray['isVerified'] = $isVerified;
+            $userInfoArray['isEnabled'] = $isEnabled;
+            $userInfoArray['isPrivate'] = $isPrivate;
+            $userInfoArray['lastSeenVisible'] = $lastSceneVisible;
 
             //after validating and sanatizing the data, let's enter it in the database
-
             $query = new query($databaseName);
-            $condition = array('user_ID'=>$this->user_ID);
-            $query->updateData($userInfoTable, $this->userInfoArray, $condition);
+            $query->addData($userInfoTable, $userInfoArray);
 
+            //getting userID to add Password
+            $condition = array('userName'=>$userInfoArray['userName']);
+            $user_ID = $query->getData($userInfoTable, "user_ID", $condition)[0][0];
+
+            //adding the password to $userSecurityInfo
+            $query->addData($userSecurityInfoTable, $securityInfoArray);
+
+            //deleting all the objects
             unset($query);
+            unset($user_ID);
+            unset($condition);
 
         }
 

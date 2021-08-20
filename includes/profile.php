@@ -15,20 +15,39 @@
         protected static $emailPattern = "/[\w\.]+@[\w]+\.[\w]/";
         protected static $passswordPattern = "/^[\w!@#$%^&*()\.]+$/";
         protected static $numberpattern = "/^[0-9\+\-]+$/";
+        protected static $passwordHashers = ['sha256', 'sha1', 'md5'];
 
         public static function escape($data){
             return htmlentities($data);
         }
 
         public static function validateString($data){
+            if($data == "")return true;
             return preg_match(self::$stringPattern, $data);
         }
 
         public static function validateEmail($data){
+            if($data == "")return true;
             return preg_match(self::$emailPattern, $data);
         }
         public static function validateNumber($data){
+            if($data == "")return true;
             return preg_match(self::$numberpattern, $data);
+        }
+        public static function hashPassword($data){
+           foreach(self::$passwordHashers as $algo){
+               $data = hash($algo, $data);
+           }
+           return $data;
+        }
+        public static function verifyPassword($hashedPassword, $password){
+            foreach(self::$passwordHashers as $algo){
+                $password = hash($algo, $password);
+            }
+            if($password === $hashedPassword){
+                return true;
+            };
+            return false;
         }
 
     }
@@ -46,7 +65,7 @@
             global $databaseName;
 
             //initialize the userInfo array
-            $this->userInfoArray = array('user_ID'=>'', 'userName'=>'', 'firstName'=>'', 'lastName'=>'', 'DOB'=>'', 'email'=>'', 'number'=>'', 'profilePicture'=>'', 'about'=>'', 'joinedDate'=>'', 'lastActive'=>'', 'lastSeenVisible'=>'');
+            $this->userInfoArray = array('user_ID'=>'', 'userName'=>'', 'firstName'=>'', 'lastName'=>'', 'DOB'=>'', 'email'=>'', 'number'=>'', 'profilePicture'=>'', 'about'=>'', 'lastActive'=>'', 'joinedDate'=>'', 'lastSeenVisible'=>'', 'isPrivate'=>'', 'isEnabled'=>'', 'isVerified'=>'');
             $this->user_ID = $user_ID;
             $condition = array('user_ID'=>$this->user_ID);
 
