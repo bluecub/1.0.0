@@ -39,18 +39,16 @@
             $number = $this->infoToAdd['number'];
             $profilePic = $this->infoToAdd['profilePic'];
             $about = $this->infoToAdd['about'];
-            $lastSceneVisible = true;
-            $isPrivate = false;
-            $isEnabled = true;
-            $isVerified = false;
+            $lastSceneVisible = 1;
+            $isPrivate = 0;
+            $isEnabled = 1;
+            $isVerified = 0;
 
             //initializing data for $securityInfoArray
             //hashing the password
             $password = $this->infoToAdd['password'];
-            $isVerified = false;
-
             $password = basicFunctions::hashPassword($password);
-            $userSecurityInfo['password'] = $password;
+            $securityInfoArray['password'] = $password;
 
             //perform validation here 
             //if data is validated successfully enter the data back to $infoToAdd
@@ -106,13 +104,18 @@
             $condition = array('userName'=>$userInfoArray['userName']);
             $user_ID = $query->getData($userInfoTable, "user_ID", $condition)[0][0];
 
-            //adding the password to $userSecurityInfo
+            $securityInfoArray['user_ID'] = $user_ID;
+            $securityInfoArray['isVerified'] = $isVerified;
+
+            //adding the password to $userSecurityInfoArray
             $query->addData($userSecurityInfoTable, $securityInfoArray);
 
             //deleting all the objects
             unset($query);
             unset($user_ID);
             unset($condition);
+
+            return true;
 
         }
 
