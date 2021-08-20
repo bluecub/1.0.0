@@ -1,6 +1,7 @@
 <?php
 
-    require_once("profile.php");
+    require_once('basicFunctions.php');
+    require_once('CRUD.php');
 
     class signUp{
 
@@ -58,35 +59,40 @@
                 $userInfoArray['userName'] = basicFunctions::escape($userName);
             }
             else{
-                return $this->errorArray['userNameError'] = 'User Name is Not valid';
+                $this->errorArray['userNameError'] = 'User Name is Not valid';
+                return $this->errorArray;
             }
 
             if(basicFunctions::validateString($firstname)){
-                $userInfoArray['firstname'] = basicFunctions::escape($firstname);
+                $userInfoArray['firstName'] = basicFunctions::escape($firstname);
             }
             else{
-                return $this->errorArray['firstnameError'] = 'First Name is Not valid';
+                $this->errorArray['firstnameError'] = 'First Name is Not valid';
+                return $this->errorArray;
             }
 
             if(basicFunctions::validateString($lastName)){
                 $userInfoArray['lastName'] = basicFunctions::escape($lastName);
             }
             else{
-                return $this->errorArray['lastNameError'] = 'Last Name is Not valid';
+                $this->errorArray['lastNameError'] = 'Last Name is Not valid';
+                return $this->errorArray;
             }
 
             if(basicFunctions::validateEmail($email)){
                 $userInfoArray['email'] = basicFunctions::escape($email);
             }
             else{
-                return $this->errorArray['emailError'] = 'Email is Not valid';
+                $this->errorArray['emailError'] = 'Email is Not valid';
+                return $this->errorArray;
             }
 
             if(basicFunctions::validateNumber($number)){
                 $userInfoArray['number'] = basicFunctions::escape($number);
             }
             else{
-                return $this->errorArray['numberError'] = 'Number Not valid';
+                $this->errorArray['numberError'] = 'Number Not valid';
+                return $this->errorArray;
             }
 
             $userInfoArray['DOB'] = $DOB;
@@ -100,7 +106,7 @@
             $query = new query($databaseName);
             $query->addData($userInfoTable, $userInfoArray);
 
-            //getting userID to add Password
+            //getting userID to add Password and for returning
             $condition = array('userName'=>$userInfoArray['userName']);
             $user_ID = $query->getData($userInfoTable, "user_ID", $condition)[0][0];
 
@@ -112,10 +118,9 @@
 
             //deleting all the objects
             unset($query);
-            unset($user_ID);
             unset($condition);
 
-            return true;
+            return $user_ID;
 
         }
 

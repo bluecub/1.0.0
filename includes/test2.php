@@ -1,23 +1,25 @@
 <?php 
 
-    include("profile.php");
+include('signUp.php');
+
+
+if($_POST['submit']){
+
     session_start();
-    echo "<pre>";
-    $user = $_SESSION['user'];
-    print_r($user);
+    $signUpObject = $_SESSION['signUpObject'];
+    $dataToAdd = $signUpObject->getInfoArray();
+    $dataToAdd['DOB'] = $_POST['DOB'];
+    $dataToAdd['email'] = $_POST['email'];
+    $dataToAdd['number'] = $_POST['number'];
+    $dataToAdd['about'] = $_POST['about'];
+    $signUpObject->setInfoArray($dataToAdd);
+    $signUpObject->submitData();
 
-    if(isset($_POST["hello"])){
-        $str = 'something nice about me"hello:';
+    session_unset();
+    session_destroy();
 
-        $user->set('about', htmlentities($str));
-        $user->updateProfile();
+}
 
-        $friend = new profileObject(2);
-        $friend->followRequest($user->get('user_ID'));
-
-        print_r($friend->isFollowedByYou($user->get('user_ID')));
-        $friend->unFollow($user->get('user_ID'));
-    }
 
 ?>
 
@@ -30,12 +32,18 @@
     <title>Document</title>
 </head>
 <body>
+    
+    <div>
+        <form action="" method="post">
 
-    <form action="" method="post">
-        <input type="submit" value="submit" name = "hello">
-    </form>
+        <input type="date" name="DOB" placeholder="DOB"><br>
+            <input type="text" name="email" placeholder="email"><br>
+            <input type="text" name="number" placeholder="number"><br>
+            <textarea name="about" placeholder="about"></textarea><br>
+            <input type="submit" value="submit" name = 'submit'><br>
+        </form>
+    </div>
 
 </body>
 </html>
-
 
