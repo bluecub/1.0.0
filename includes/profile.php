@@ -16,7 +16,7 @@
             global $databaseName;
 
             //initialize the userInfo array
-            $this->userInfoArray = array('user_ID'=>'', 'userName'=>'', 'firstName'=>'', 'lastName'=>'', 'DOB'=>'', 'email'=>'', 'number'=>'', 'profilePicture'=>'', 'about'=>'', 'lastActive'=>'', 'joinedDate'=>'', 'lastSeenVisible'=>'', 'isPrivate'=>'', 'isEnabled'=>'', 'isVerified'=>'');
+            $this->userInfoArray = array('user_ID'=>'', 'userName'=>'', 'firstName'=>'', 'lastName'=>'', 'DOB'=>'', 'email'=>'', 'number'=>'', 'profilePicture'=>'', 'about'=>'', 'lastActive'=>'', 'joinedDate'=>'', 'lastSeenVisible'=>'', 'isPrivate'=>'', 'isEnabled'=>'', 'isVerified'=>'', 'updatedAt'=>'');
             $this->user_ID = $user_ID;
             $condition = array('user_ID'=>$this->user_ID);
 
@@ -30,16 +30,15 @@
 
                 //taking the first element of the array because of query returns array(array(allData))
                 $allData = $allData[0];
-                $counter = 0;
 
                 foreach($this->userInfoArray as $k=>$v){
-                    $this->userInfoArray[$k] = $allData[$counter];
-                    $counter++;
+                    $this->userInfoArray[$k] = $allData[$k];
                 }
             }
 
             //delete the query object after use(Security purposes)
             unset($query);
+            unset($allData);
             
         }
 
@@ -55,7 +54,7 @@
 
     }
 
-    class userObject extends userBaseObject{
+    final class userObject extends userBaseObject{
 
         protected $user_ID;
 
@@ -116,7 +115,7 @@
         
     }
 
-    class profileObject extends userBaseObject{
+    final class profileObject extends userBaseObject{
 
         protected $user_ID;
         protected $values;

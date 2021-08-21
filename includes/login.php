@@ -1,7 +1,6 @@
 <?php 
 
-    require_once('basicFunctions.php');
-    require_once('CRUD.php');
+    require_once('profile.php');
 
     class login{
 
@@ -43,6 +42,7 @@
 
             $query = new query($databaseName);
 
+            //checking if the user exists
             $condition = array('userName'=>$userName);
             $user_ID = $query->getData($userInfoTable, 'user_ID', $condition);
 
@@ -51,13 +51,23 @@
             }
             $user_ID = $user_ID[0][0];
 
+            //taking the password from userSecurityInfo for corresponding user
             $condition = array("user_ID"=>$user_ID);
             $hashedPassword = $query->getData($userSecurityInfoTable, 'password', $condition)[0][0];
 
             if(basicFunctions::verifyPassword($hashedPassword, $password)){
-                echo "login successfull";
+                session_start();
+                $_SESSION['user'] = new userObject($user_ID);
+
+                //jump to the feed page
+                header('location: /');
             }
             $this->errorArray['error'] = 'Username or Password incorrect';
+
+            //deleting all the variables
+            unset($query);
+            unset($user_ID);
+
             return $this->errorArray;
         }
 
