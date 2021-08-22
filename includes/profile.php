@@ -52,6 +52,25 @@
             return $this->userInfoArray;
         }
 
+
+        public function getFollowingList(){
+
+            //take the global variables
+            global $userInfoTable;
+            global $followInfoTable;
+            global $databaseName;
+
+            //update data in the data base using query and properties
+            $query = new query($databaseName);
+            $condition = array('follower_ID'=>$this->user_ID, 'status'=>'1');
+            $result = $query->getData($followInfoTable, 'follower_ID', $condition);
+
+            unset($query);
+
+            return $result;
+
+        }
+
     }
 
     final class userObject extends userBaseObject{
@@ -69,21 +88,6 @@
         }
 
         public function updateProfile(){
-
-            //take the global variables
-            global $userInfoTable;
-            global $databaseName;
-
-            //update data in the data base using query and properties
-            $query = new query($databaseName);
-            $condition = array('user_ID'=>$this->user_ID);
-            $query->updateData($userInfoTable, $this->userInfoArray, $condition);
-
-            unset($query);
-
-        }
-
-        public function getFollowingList(){
 
             //take the global variables
             global $userInfoTable;

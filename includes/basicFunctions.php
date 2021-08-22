@@ -6,6 +6,7 @@ $userInfoTable = "userInfo";
 $userSecurityInfoTable = "userSecurityInfo";
 $userAccountStatusTable = "userAccountStatus";
 $followInfoTable = "followInfo";
+$postInfoTable = 'postInfo';
 
 class basicFunctions{
 
