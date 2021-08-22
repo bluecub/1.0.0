@@ -1,0 +1,107 @@
+/* ------- This is the login page css ------- */
+
+#mainframe{
+    background-image: linear-gradient(90deg, white 48.4%, #caf0f8 0%);
+    /*do calculation if need to be changed here width of col-6 is 46% relative to container
+     and container is 80% . rest 8% is margin*/
+}
+
+/* ------- login form row -------- */
+#loginRow{
+    margin-top:50px;
+}
+/* because of this margin there is a scroll bar idk y .. this needs to be sorted*/
+/*------- picture left ------- */
+#picture{
+    height:420px;
+    background-color:#caf0f8;
+   /* background-size:cover;*/
+    border:solid 2px #D3D3D3;
+    box-sizing:border-box;
+    border-right:none;
+    border-radius:20px 0px 0px 20px;
+    margin-right:0px;
+}
+/*-------- form right -------- */
+#form{
+    height:420px;
+    border:solid 2px #D3D3D3;
+    box-sizing:border-box;
+    border-left:none;
+    border-radius:0 20px 20px 0px;
+    margin-left:0px;
+    background-color:white;
+}
+
+/*----- top 3 bars ------- */
+.bar{
+    width:100%;
+    height:30px;
+    margin:0px;
+   /*border:solid 1px black;*/
+    box-sizing:border-box;
+}
+#loginBar{
+    background-color:#3fc1c9;
+    border-radius:0 20px 0 0;
+}
+#signUpbar{
+    background-color:#fce38a;
+}
+#forPassbar{
+    background-color:#fc5185;
+}
+
+/*------ title and slogan ---- */
+#textArea{
+    width:100%;
+    margin:0px;
+    /*border:solid 1px black;*/
+    text-align:center;
+}
+#title{
+    margin-bottom:0px;
+    /*border:solid 1px black;*/
+    font-size:20px;
+    font-weight:bold;
+}
+#slogan{
+    margin-top:0px;
+    /*border:solid 1px black;*/
+    font-size:12px;
+}
+
+/*---- usre login info form ------ */
+/* input type and submit button css is done in main,css */ 
+#rememberMe{
+    display:inline-block;
+    font-size:10px;
+    margin-left:120px;
+}
+#rememberMelabel{
+    font-size:13px;
+    margin-right:40px;
+}
+/* check the inline block problem here */
+
+/* ------ the buttons below ------ */
+/*.buttons{
+    display:inline;
+    border:none;
+    background-color:white;
+}
+#loginBut{
+    margin-left:90px;
+    color:#3fc1c9;
+}
+#signUpbut{
+    margin-left:50px;
+    color:#fce38a;
+}
+#forPassbut{
+    margin-left:30px;
+    color:#fc5185;
+    
+}*/
+
+
