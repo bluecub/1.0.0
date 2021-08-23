@@ -1,11 +1,10 @@
 /* ----- this is the common css file -------- */
 
+
+
 /* -------- every text like username, pasword etc input type ------ */
 .input{
-    display:block;
-    margin:20px auto 0px;
     height:40px;
-    width:50%;
     padding-left:10px;
     box-sizing:border-box;
     /*background-color:#d7f1f8;*//* choose colour */
@@ -20,8 +19,8 @@
 
 /* choose icon by putting icon name in the span t
 <button type="button" id="submit"><span class="material-icons" id="subbtn">expand_less</span></button>*/
-.submit{
-    display:inline-block;
+#submit{
+    
     width: 56px;
     height:56px;
     border-radius:28px;
@@ -37,7 +36,7 @@
 	from{transform:rotate(0deg);}
 	to{transform:rotate(90deg);}
 }
-.submit:hover{
+#submit:hover{
     /*width:58px;
     height:58px;
     border-radius:29px;*/

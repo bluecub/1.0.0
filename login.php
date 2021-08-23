@@ -1,3 +1,21 @@
+<?php
+
+    require_once 'includes/basicFunctions.php';
+    require_once 'includes/CRUD.php';
+    require_once 'includes/login.php';
+
+    if(isset($_POST['submit'])){
+        $credentials['userName'] = $_POST['userName'];
+        $credentials['password'] = $_POST['password'];
+
+        $loginObject = new login($credentials);
+        $loginObject->checkAuthentication();
+    }
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,11 +30,11 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body class="" id="mainframe">
+<body class="container" id="mainframe">
     
     <!-- This is the main login area-->
     <div class="row" id="loginRow">
-        <div class="col-6 col-1-sm" id="picture"></div><!-- check for how to mak e0 coloumns when sm or add own classes-->
+        <div class="col-6 col-1-sm" id="picture"></div><!-- check for how to make 0 coloumns when sm or add own classes-->
         <div class="col-6 col-11-sm" id="form">
             <!-- top 3 bars -->
             <div class="bar" id="loginBar"></div>
@@ -28,17 +46,24 @@
                 <p id="slogan">Flaunt Your Stocks</p>
             </div>
             <!-- main form-->
-            <input type="text" class="input" placeholder="Username" id="username">
-            <input type="password" class="input" placeholder="Password" id="password">
-
-            <div class="multiements">
-
-                <input type="checkbox" id="rememberMe" value="rememberMe"> 
-                <label for="rememberMe" id="rememberMelabel">Remember Me</label>
-                <button type="button" class="submit" id="submitli"><span class="material-icons" id="subbtn">expand_less</span></button>
-
-            </div>
-            
+            <form class="container" id="formLogIn" action="" method="post" name="logIn">
+                <div class="row">
+                    <div class="col-1 col-1-sm"></div>
+                    <input type="text" class="col-10 col-10-sm input" id="userNameLogIn" placeholder="Username" name="userName" required>
+                </div>
+                <div class="row">
+                    <div class="col-1 col-1-sm"></div>
+                    <input type="password" class="col-10 col-10-sm input" id="passwordLogIn" placeholder="Password" name="password" required>
+                </div>
+                <div class="row">
+                    <div class="col-1 col-1-sm"></div>
+                    <div class="col-7 col-7-sm">
+                    <input type="checkbox" class="rememberMe"  name="rememberMe">
+                    <label for="rememberMe" class="rememberMeBtn">Remember Me</label>
+                    </div>
+                    <button type="submit" class="col-4 col-4-sm" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
+                </div>
+            </form>
             <!-- buttons below -->
             <!--<button type="button" id="loginBut" class="buttons">Log In</button>
             <button type="button" id="signUpbut" class="buttons">Sign Up</button>

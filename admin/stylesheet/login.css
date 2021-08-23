@@ -1,7 +1,7 @@
 /* ------- This is the login page css ------- */
 
 #mainframe{
-    background-image: linear-gradient(90deg, white 48.4%, #caf0f8 0%);
+    background-image: linear-gradient(90deg, white 48.45%, #caf0f8 0%);
     /*do calculation if need to be changed here width of col-6 is 46% relative to container
      and container is 80% . rest 8% is margin*/
 }
@@ -32,7 +32,7 @@
     margin-left:0px;
     background-color:white;
 }
-
+/* if we change height of the above two feilds to % then change margin in 1 to percentage too */
 /*----- top 3 bars ------- */
 .bar{
     width:100%;
@@ -72,81 +72,35 @@
 }
 
 /*---- usre login info form ------ */
-/* input type and submit button css is done in main.css */ 
-#submitli{
-    margin:20px auto;/* positioning the submit button */
+/*-------------- 1 ----------- */
+#formLogIn{
+   margin-top:30px;/* if we define the height of the whole picture and form box in percentage change this to percentage*/
 }
-#rememberMe{
-    display:inline-block;
-    font-size:10px;
-    margin-left:120px;
-}
-#rememberMelabel{
+.rememberMeBtn{
     font-size:13px;
-    margin-right:40px;
 }
+/* input type and submit button css is done in main.css */ 
+
+
 /* check the inline block problem here */
 
 /* ------ the buttons below ------ */
 
+
+
 /* ------- This is the sign up page css -------- */
+
 /* here most of the classes and ids are as above only some have changed */
 /* this is the picture and form area css for sign up*/
 /* we have made a new class and increased height , this is a slower method. we need to find a new 
 better method*/
-#picturesu{
-    height:510px;
-    background-color:#caf0f8;
-   /* background-size:cover;*/
-    border:solid 2px #D3D3D3;
-    box-sizing:border-box;
-    border-right:none;
-    border-radius:20px 0px 0px 20px;
-    margin-right:0px;
-}
-#formsu{
-    height:510px;
-    border:solid 2px #D3D3D3;
-    box-sizing:border-box;
-    border-left:none;
-    border-radius:0 20px 20px 0px;
-    margin-left:0px;
-    background-color:white;
+
+#formSignUp{
+    margin-top:30px;
 }
 
-/* this is the form */
-#firstName{
-    display:inline-block;
-    width:40%;
-    margin-left:40px;
-}
-#lastName{
-    display:inline-block;
-    width:40%;
-}
-#usernamesignup{
-    width:80%;
-}
-#emailsignup{
-    width:80%;
-}
-#passwordsignup{
-    display:inline-block;
-    width:40%;
-    margin-left:40px;
-}
-#confirmpassword{
-    display:inline-block;
-    width:40%;
-}
-/* positioning the submit button */
-#submitsu{
-    display:block;
-    margin:20px auto;
-}
-.multiements{
-    border: solid 1px black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* --------------- This is the forgot Password page css ---------- */
+
+#formForPass{
+    margin-top:30px;
 }

@@ -60,7 +60,7 @@
                 $_SESSION['user'] = new userObject($user_ID);
 
                 //jump to the feed page
-                header('location: /');
+                header('location: feed.php');
             }
             $this->errorArray['error'] = 'Username or Password incorrect';
 
