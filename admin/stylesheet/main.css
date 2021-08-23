@@ -20,9 +20,8 @@
 
 /* choose icon by putting icon name in the span t
 <button type="button" id="submit"><span class="material-icons" id="subbtn">expand_less</span></button>*/
-#submit{
+.submit{
     display:inline-block;
-    margin:20px auto;
     width: 56px;
     height:56px;
     border-radius:28px;
@@ -38,7 +37,7 @@
 	from{transform:rotate(0deg);}
 	to{transform:rotate(90deg);}
 }
-#submit:hover{
+.submit:hover{
     /*width:58px;
     height:58px;
     border-radius:29px;*/
@@ -46,6 +45,8 @@
     animation:round 1s;
     animation-fill-mode: forwards;
 }
+/* to position the submit button give the submit button an id and poistion in the particular css 
+this is just the styling and animation of the submit button */
 /* -------- end of submit button -------- */
 
 /* ------- footer -------- */

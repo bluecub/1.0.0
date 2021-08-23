@@ -72,7 +72,10 @@
 }
 
 /*---- usre login info form ------ */
-/* input type and submit button css is done in main,css */ 
+/* input type and submit button css is done in main.css */ 
+#submitli{
+    margin:20px auto;/* positioning the submit button */
+}
 #rememberMe{
     display:inline-block;
     font-size:10px;
@@ -85,23 +88,60 @@
 /* check the inline block problem here */
 
 /* ------ the buttons below ------ */
-/*.buttons{
-    display:inline;
-    border:none;
+
+/* ------- This is the sign up page css -------- */
+/* here most of the classes and ids are as above only some have changed */
+/* this is the picture and form area css for sign up*/
+/* we have made a new class and increased height , this is a slower method. we need to find a new 
+better method*/
+#picturesu{
+    height:510px;
+    background-color:#caf0f8;
+   /* background-size:cover;*/
+    border:solid 2px #D3D3D3;
+    box-sizing:border-box;
+    border-right:none;
+    border-radius:20px 0px 0px 20px;
+    margin-right:0px;
+}
+#formsu{
+    height:510px;
+    border:solid 2px #D3D3D3;
+    box-sizing:border-box;
+    border-left:none;
+    border-radius:0 20px 20px 0px;
+    margin-left:0px;
     background-color:white;
 }
-#loginBut{
-    margin-left:90px;
-    color:#3fc1c9;
-}
-#signUpbut{
-    margin-left:50px;
-    color:#fce38a;
-}
-#forPassbut{
-    margin-left:30px;
-    color:#fc5185;
-    
-}*/
 
+/* this is the form */
+#firstName{
+    display:inline-block;
+    width:40%;
+    margin-left:40px;
+}
+#lastName{
+    display:inline-block;
+    width:40%;
+}
+#usernamesignup{
+    width:80%;
+}
+#email{
+    width:80%;
+}
+#passwordsignup{
+    display:inline-block;
+    width:40%;
+    margin-left:40px;
+}
+#confirmpassword{
+    display:inline-block;
+    width:40%;
+}
+/* positioning the submit button */
+#submitsu{
+    display:block;
+    margin:20px auto;
+}
 

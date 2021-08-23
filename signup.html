@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BlueCub-Login</title>
+    <title>BlueCub-SignUp</title>
 
     <link href="admin\stylesheet\login.css" rel="stylesheet" type="text/css">
     <link href="admin\stylesheet\main.css" rel="stylesheet" type="text/css">
@@ -16,8 +16,8 @@
     
     <!-- This is the main login area-->
     <div class="row" id="loginRow">
-        <div class="col-6 col-1-sm" id="picture"></div><!-- check for how to mak e0 coloumns when sm or add own classes-->
-        <div class="col-6 col-11-sm" id="form">
+        <div class="col-6 col-1-sm" id="picturesu"></div><!-- check for how to mak e0 coloumns when sm or add own classes-->
+        <div class="col-6 col-11-sm"  id="formsu">
             <!-- top 3 bars -->
             <div class="bar" id="loginBar"></div>
             <div class="bar" id="signUpbar"></div>
@@ -28,15 +28,16 @@
                 <p id="slogan">Flaunt Your Stocks</p>
             </div>
             <!-- main form-->
-            <input type="text" class="input" placeholder="Username" id="username">
-            <input type="password" class="input" placeholder="Password" id="password">
-            <input type="checkbox" id="rememberMe" value="rememberMe"> 
-            <label for="rememberMe" id="rememberMelabel">Remember Me</label>
-            <button type="button" class="submit" id="submitli"><span class="material-icons" id="subbtn">expand_less</span></button>
-            <!-- buttons below -->
-            <!--<button type="button" id="loginBut" class="buttons">Log In</button>
-            <button type="button" id="signUpbut" class="buttons">Sign Up</button>
-            <button type="button" id="forPassbut" class="buttons">Forgot Password</button>-->
+            <input type="text" class="input" id="firstName" placeholder="First Name">
+            <input type="text" class="input" id="lastName" placeholder="Last Name">
+            <input type="email" class="input" id="usernamesignup" placeholder="Username">
+            <input type="text" class="input" id="usernamesignup" placeholder="Email">
+            <input type="password" class="input" id="passwordsignup" placeholder="Password">
+            <input type="password" class="input" id="confirmpassword" placeholder="Confirm Password">
+            <button type="button" class="submit" id="submitsu"><span class="material-icons" id="subbtn">expand_less</span></button>
+           
+            <!-- buttons to toggle-->
+            
         </div>
     </div>
     <!-- footer-->
