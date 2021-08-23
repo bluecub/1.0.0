@@ -127,7 +127,7 @@ better method*/
 #usernamesignup{
     width:80%;
 }
-#email{
+#emailsignup{
     width:80%;
 }
 #passwordsignup{
@@ -144,4 +144,9 @@ better method*/
     display:block;
     margin:20px auto;
 }
-
+.multiements{
+    border: solid 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

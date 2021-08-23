@@ -37,9 +37,17 @@
             $lastName = $this->infoToAdd['lastName'];
             $DOB = $this->infoToAdd['DOB'];
             $email = $this->infoToAdd['email'];
-            $number = $this->infoToAdd['number'];
-            $profilePic = $this->infoToAdd['profilePic'];
-            $about = $this->infoToAdd['about'];
+
+            //checking the not-required fields. If exists pushing it into the infoToAdd array
+            if(isset($this->infoToAdd['number'])){
+                $number = $this->infoToAdd['number'];
+            }
+            if(isset($this->infoToAdd['about'])){
+                $about = $this->infoToAdd['about'];
+            }
+            if(isset($this->infoToAdd['profilePic'])){
+                $profilePic = $this->infoToAdd['profilePic'];
+            }
             $lastSceneVisible = 1;
             $isPrivate = 0;
             $isEnabled = 1;
@@ -48,8 +56,7 @@
             //initializing data for $securityInfoArray
             //hashing the password
             $password = $this->infoToAdd['password'];
-            $password = basicFunctions::hashPassword($password);
-            $securityInfoArray['password'] = $password;
+            $confirmPassword = $this->infoToAdd['confirmPassword'];
 
             //perform validation here 
             //if data is validated successfully enter the data back to $infoToAdd
@@ -87,20 +94,35 @@
                 return $this->errorArray;
             }
 
-            if(basicFunctions::validateNumber($number)){
-                $userInfoArray['number'] = basicFunctions::escape($number);
+            if(isset($number)){
+                if(basicFunctions::validateNumber($number)){
+                    $userInfoArray['number'] = basicFunctions::escape($number);
+                }
+                else{
+                    $this->errorArray['numberError'] = 'Number Not valid';
+                    return $this->errorArray;
+                }
             }
-            else{
-                $this->errorArray['numberError'] = 'Number Not valid';
-                return $this->errorArray;
+
+            if(isset($about)){
+                $userInfoArray['about'] = basicFunctions::escape($about);
             }
 
             $userInfoArray['DOB'] = $DOB;
-            $userInfoArray['about'] = basicFunctions::escape($about);
             $userInfoArray['isVerified'] = $isVerified;
             $userInfoArray['isEnabled'] = $isEnabled;
             $userInfoArray['isPrivate'] = $isPrivate;
             $userInfoArray['lastSeenVisible'] = $lastSceneVisible;
+
+            //validation for passwords
+            if($password == $confirmPassword){
+                $password = basicFunctions::hashPassword($password);
+                $securityInfoArray['password'] = $password;
+            }
+            else{
+                $this->errorArray['passwordError'] = "password didn't match";
+                return $this->errorArray;
+            }
 
             //after validating and sanatizing the data, let's enter it in the database
             $query = new query($databaseName);

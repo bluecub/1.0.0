@@ -33,9 +33,8 @@
             $i++;
 
         }
+        $prepQuery .= ' limit 20 offset' . $offset; 
         echo $prepQuery;
     }
-
-
 
 ?>
