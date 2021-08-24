@@ -4,14 +4,22 @@
     require_once 'includes/CRUD.php';
     require_once 'includes/login.php';
 
+    $errorArray = array();
     if(isset($_POST['submit'])){
+
         $credentials['userName'] = $_POST['userName'];
         $credentials['password'] = $_POST['password'];
 
         $loginObject = new login($credentials);
-        $loginObject->checkAuthentication();
-    }
+        $status = $loginObject->checkAuthentication();
 
+        if(is_array($status)){
+            $errorArray = $status;
+        }
+        else{
+            echo "success";
+        }
+    }
 
 ?>
 
@@ -44,6 +52,15 @@
             <div id="textArea">
                 <p id="title">BlueCub</p>
                 <p id="slogan">Flaunt Your Stocks</p>
+            </div>
+            <div class="error">
+                <?php
+                 
+                    if($errorArray){
+                        echo "&#9888; ".$errorArray['error'];
+                    }
+                    
+                ?>
             </div>
             <!-- main form-->
             <form class="container" id="formLogIn" action="" method="post" name="logIn">

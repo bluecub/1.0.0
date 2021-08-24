@@ -56,11 +56,7 @@
             $hashedPassword = $query->getData($userSecurityInfoTable, 'password', $condition)[0][0];
 
             if(basicFunctions::verifyPassword($hashedPassword, $password)){
-                session_start();
-                $_SESSION['user'] = new userObject($user_ID);
-
-                //jump to the feed page
-                header('location: feed.php');
+                return $user_ID;
             }
             $this->errorArray['error'] = 'Username or Password incorrect';
 
