@@ -17,7 +17,7 @@
             $errorArray = $status;
         }
         else{
-            echo "success";
+            echo $status;
         }
     }
 
