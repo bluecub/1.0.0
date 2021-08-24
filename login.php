@@ -7,9 +7,11 @@
     $errorArray = array();
     if(isset($_POST['submit'])){
 
+        //taking the credentials
         $credentials['userName'] = $_POST['userName'];
         $credentials['password'] = $_POST['password'];
 
+        //creating the login object using credentials and checking for authentication it
         $loginObject = new login($credentials);
         $status = $loginObject->checkAuthentication();
 
@@ -22,7 +24,6 @@
     }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,7 +43,7 @@
     
     <!-- This is the main login area-->
     <div class="row" id="loginRow">
-        <div class="col-6 col-1-sm" id="picture"></div><!-- check for how to make 0 coloumns when sm or add own classes-->
+        <div class="col-6 hidden-sm" id="picture"></div><!-- check for how to make 0 coloumns when sm or add own classes-->
         <div class="col-6 col-11-sm" id="form">
             <!-- top 3 bars -->
             <div class="bar" id="loginBar"></div>
@@ -53,17 +54,25 @@
                 <p id="title">BlueCub</p>
                 <p id="slogan">Flaunt Your Stocks</p>
             </div>
-            <div class="error">
-                <?php
-                 
-                    if($errorArray){
-                        echo "&#9888; ".$errorArray['error'];
-                    }
-                    
-                ?>
-            </div>
             <!-- main form-->
+            
             <form class="container" id="formLogIn" action="" method="post" name="logIn">
+
+                <!-- this is the error message feild-->
+                <div class="row">
+                    <div class="col-1 col-1-sm"></div>
+                    <div class="col-10 col-10-sm error">
+                        <?php 
+                            //displaying error if exists any
+                            if($errorArray){
+                                echo '&#9888 You have entered the wrong details';
+                            }
+                        
+                        ?>
+                    </div>
+                </div>
+                <!-- error message feild ends here-->
+
                 <div class="row">
                     <div class="col-1 col-1-sm"></div>
                     <input type="text" class="col-10 col-10-sm input" id="userNameLogIn" placeholder="Username" name="userName" required>
@@ -72,6 +81,7 @@
                     <div class="col-1 col-1-sm"></div>
                     <input type="password" class="col-10 col-10-sm input" id="passwordLogIn" placeholder="Password" name="password" required>
                 </div>
+
                 <div class="row">
                     <div class="col-1 col-1-sm"></div>
                     <div class="col-7 col-7-sm">
@@ -87,21 +97,10 @@
             <button type="button" id="forPassbut" class="buttons">Forgot Password</button>-->
         </div>
     </div>
-    <!-- footer-->
-    <footer>
-        <div class="row" id="footer">
-            <div class="col-1"></div>
-            <div class="col-10" id="footContent">
-                <a href="a.html" class="footLinks">About</a>
-                <a href="a.html" class="footLinks">Creators</a>
-                <a href="a.html" class="footLinks">Help</a>
-                <a href="a.html" class="footLinks">Privacy Policy</a>
-                <a href="a.html" class="footLinks">Terms</a>
-                <a href="a.html" class="footLinks">Top Accounts</a><br>
-                <p id="copyright"> &copy; 2021 BlueCub</p>
-            </div>
-            <div class="col-1"></div>
-        </div>
-    </footer>
-</body>
-</html>
+
+
+<?php
+    //including footer
+    include_once 'includes/footer.php'
+
+?>
