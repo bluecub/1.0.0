@@ -1,7 +1,5 @@
 /* ----- this is the common css file -------- */
 
-/* ----- error row css ---- */
-
 
 /* -------- every text like username, pasword etc input type ------ */
 .input{
@@ -18,9 +16,9 @@
 /* --------------- css for select labels --------- */
 .labels{
     font-size:14px;
-    color:rgba(0, 0, 0, 0.5);
+    color:rgb(0,0,0,0.5);
 }
-.selectField{
+.options{
     height:40px;
     box-sizing:border-box;
     border-radius:9px;
@@ -90,3 +88,25 @@ this is just the styling and animation of the submit button */
     margin-top:0px;
 }
 /*---- footer ends here ---- */
+
+/* ----- error row css ---- */
+
+/*error column and row*/
+
+.error{
+    height:10px;
+    margin-top:0px !important;
+    margin-bottom:4px !important;
+    background: white;
+    padding:0px !important;
+}
+
+.colerror{
+    height:10px; 
+    margin-top:0px !important;
+    background:rgb(255, 255, 255);
+    color: red;
+    margin-bottom:0px !important;
+    font-size:13px;
+    box-sizing:border-box;
+}

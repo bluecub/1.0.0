@@ -9,7 +9,7 @@
                 <a href="a.html" class="footLinks">Privacy Policy</a>
                 <a href="a.html" class="footLinks">Terms</a>
                 <a href="a.html" class="footLinks">Top Accounts</a><br>
-                <p id="copyright"> &copy; 2021 BlueCub</p>
+                <p id="copyright"> &copy; <?php echo date("Y") ?> BlueCub</p>
             </div>
             <div class="col-1"></div>
         </div>

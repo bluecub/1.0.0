@@ -16,7 +16,7 @@
             global $databaseName;
 
             //initialize the userInfo array
-            $this->userInfoArray = array('user_ID'=>'', 'userName'=>'', 'firstName'=>'', 'lastName'=>'', 'DOB'=>'', 'email'=>'', 'number'=>'', 'profilePicture'=>'', 'about'=>'', 'lastActive'=>'', 'joinedDate'=>'', 'lastSeenVisible'=>'', 'isPrivate'=>'', 'isEnabled'=>'', 'isVerified'=>'', 'updatedAt'=>'');
+            $this->userInfoArray = array('user_ID'=>'', 'userName'=>'', 'firstName'=>'', 'lastName'=>'', 'DOB'=>'', 'gender'=>'', 'email'=>'', 'number'=>'', 'profilePicture'=>'', 'about'=>'', 'lastActive'=>'', 'joinedDate'=>'', 'lastSeenVisible'=>'', 'isPrivate'=>'', 'isEnabled'=>'', 'isVerified'=>'', 'updatedAt'=>'');
             $this->user_ID = $user_ID;
             $condition = array('user_ID'=>$this->user_ID);
 
