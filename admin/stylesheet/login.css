@@ -79,6 +79,7 @@
    margin-top:30px;/* if we define the height of the whole picture and form box in percentage change this to percentage*/
 }
 /*---------*****remove this css when using php******-----------*/
+/* remove if not user (comment created by vipul) */
 #errorLogIn{
     font-size:13px;
     text-align:center;
@@ -104,6 +105,9 @@
 /* this is the picture and form area css for sign up*/
 /* we have made a new class and increased height , this is a slower method. we need to find a new 
 better method*/
+
+/* height is increased by vipul in below 2 classes */
+
 /*------- picture left ------- */
 #picturesu{
     height:520px;
@@ -142,6 +146,7 @@ better method*/
     margin-top:30px;
 }
 
+/* error class created by (vipul) for styling the error(used in login page) */
 .errorStyle{
     text-align: center;
     color: red;
