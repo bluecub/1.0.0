@@ -54,7 +54,6 @@
 
         if(is_array($status)){
             $errorArray = $status;
-            print_r($errorArray);
         }
         else{
             $user_ID = $signUpObject->submitData();
