@@ -31,3 +31,36 @@ function update(element){
     }
 
 }
+
+//making event on key up on userName field
+userNameErrorField = document.getElementById('userNameSignUpError');
+
+function isUserNameAvailable(e){
+
+    if(e.value.length != 0){
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                res = this.responseText;
+                if(res == 1){
+                    e.classList.remove('errorShadow');
+                    e.classList.remove('shadowhover');
+                    e.classList.add('successShadow');
+                    userNameErrorField.innerHTML = "Username not available";
+                }
+                else{
+                    e.classList.remove('successShadow');
+                    e.classList.remove('shadowhover');
+                    e.classList.add('errorShadow');
+                    userNameErrorField.innerHTML = "";
+                }
+            }
+        };
+
+    }
+    xmlhttp.open("GET", "API/userName.php?userName=" + e.value, true);
+    xmlhttp.send();
+
+
+}

@@ -51,7 +51,7 @@
                     $this->userInfoArray['firstName'] = basicFunctions::escape($firstname);
                 }
                 else{
-                    $this->errorArray['firstNameError'] = 'First Name is Not valid';
+                    $this->errorArray['firstNameError'] = 'Name is Not valid';
                 }
             }
 
@@ -61,7 +61,7 @@
                     $this->userInfoArray['lastName'] = basicFunctions::escape($lastName);
                 }
                 else{
-                    $this->errorArray['lastNameError'] = 'Last Name is Not valid';
+                    $this->errorArray['lastNameError'] = 'Name is Not valid';
                 }
             }
 

@@ -15,8 +15,20 @@
 .shadow{
     box-shadow:0px 0px 10px #caf0f8;
 }
+.successShadow{
+    box-shadow:0px 0px 10px rgb(0, 199, 0);
+}
+.errorShadow{
+    box-shadow:0px 0px 10px #ff5151;
+}
+.errorShadow:focus{
+    box-shadow:0px 0px 15px #ff0000;
+}
 .shadowhover:hover{
-    box-shadow:0px 0px 10px #caf0f8;
+    box-shadow:0px 0px 15px #caf0f8;
+}
+.shadowhover:focus{
+    box-shadow:0px 0px 10px #3fc1c9;
 }
 /* -------- every text like username, pasword etc input type ------ */
 .input{
@@ -71,8 +83,8 @@
     /*width:58px;
     height:58px;
     border-radius:29px;*/
-    border:solid 1px #D3D3D3;
-    animation:round 1s;
+    box-shadow:0px 0px 10px #caf0f8;
+    animation:round 0.5s;
     animation-fill-mode: forwards;
 }
 /* to position the submit button give the submit button an id and poistion in the particular css 
@@ -122,7 +134,7 @@ this is just the styling and animation of the submit button */
     height:10px; 
     margin-top:0px !important;
     background:rgb(255, 255, 255);
-    color: red;
+    color: rgb(255, 0, 0);
     margin-bottom:0px !important;
     font-size:13px;
     box-sizing:border-box;

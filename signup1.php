@@ -1,6 +1,10 @@
 <?php 
 
     require_once 'includes/signUp.php';
+
+    //this variable decides the shadow/border color for each field i.e, error/normal
+    $shadow = 'shadowhover';
+
     $monthsArray = array(
         'Jan' => '1',
         'Feb' => '2',
@@ -105,13 +109,17 @@
                             echo '<div class="col-12 col-12-sm colerror errorStyle">&#9888;'.$errorArray['firstNameError'].'</div>';
                         }
                         echo '</div>';
+                        $shadow = 'errorShadow';
+                    }
+                    else{
+                        $shadow = 'shadowhover';
                     }
                 
                 ?>
 
                 <div class="row">
-                    <input type="text" class="col-6 col-6-sm input shadowhover" id="firstName" name="firstName" value= "<?php echo "$firstName" ?>" placeholder="First Name" required>
-                    <input type="text" class="col-6 col-6-sm input shadowhover" id="lastName" name="lastName" value= '<?php echo "$lastName" ?>' placeholder="Last Name" required>
+                    <input type="text" class="col-6 col-6-sm input <?php echo $shadow ?>" id="firstName" name="firstName" value= "<?php echo "$firstName" ?>" placeholder="First Name" required>
+                    <input type="text" class="col-6 col-6-sm input <?php echo $shadow ?>" id="lastName" name="lastName" value= '<?php echo "$lastName" ?>' placeholder="Last Name" required>
                 </div>
                 
                 <?php 
@@ -120,12 +128,16 @@
                         echo '<div class="row error">
                                 <div class="col-12 col-12-sm colerror">&#9888;'.$errorArray['emailError'].'</div>
                             </div>';
+                        $shadow = 'errorShadow';
+                    }
+                    else{
+                        $shadow = 'shadowhover';
                     }
 
                 ?>
     
                 <div class="row">
-                    <input type="email" class="col-12 col-12-sm input shadowhover" id="email" name="email" value= '<?php echo "$email" ?>' placeholder="Email" required>
+                    <input type="email" class="col-12 col-12-sm input <?php echo $shadow ?>" id="email" name="email" value= '<?php echo "$email" ?>' placeholder="Email" required>
                 </div>
 
                 <div class="row">
@@ -140,12 +152,16 @@
                         echo '<div class="row error">
                                 <div class="col-12 col-12-sm colerror">&#9888;'.$errorArray['DOB_Error'].'</div>
                             </div>';
+                            $shadow = 'errorShadow';
+                    }
+                    else{
+                        $shadow = 'shadowhover';
                     }
 
                 ?>
 
                 <div class="row">
-                    <select name="DOB_D" class="col-4 col-4-sm options shadowhover" id="datesu">
+                    <select name="DOB_D" class="col-4 col-4-sm options <?php echo $shadow ?>" id="datesu">
                         <option value="-1">DD</option>
 
                         <?php 
@@ -161,7 +177,7 @@
 
                         ?>
                     </select>
-                    <select name="DOB_M" class="col-4 col-4-sm options shadowhover" id="monthsu">
+                    <select name="DOB_M" class="col-4 col-4-sm options <?php echo $shadow ?>" id="monthsu">
                         <option value="-1">MM</option>
 
                         <?php
@@ -178,7 +194,7 @@
                         ?>
 
                     </select>
-                    <select name="DOB_Y" class="col-4 col-4-sm options shadowhover" id="yearsu">
+                    <select name="DOB_Y" class="col-4 col-4-sm options <?php echo $shadow ?>" id="yearsu">
 
                         <option value="-1">YYYY</option>
 

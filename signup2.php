@@ -2,6 +2,9 @@
 
     require_once 'includes/signUp.php';
 
+    //this variable decides the shadow/border color for each field i.e, error/normal
+    $shadow = 'shadowhover';
+
     //initializing the singup object 
     $signUpObject = "";
 
@@ -94,18 +97,26 @@
             <!-- main form-->
             <form class="container" id="formSignUp" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" name="signUp2">
 
+            <div class="row error">
+                <div class="col-12 col-12-sm colerror error" id="userNameSignUpError">
+
                 <?php 
-                
+                    
                     if(isset($errorArray['userNameError'])){
-                        echo '<div class="row error">
-                                <div class="col-12 col-12-sm colerror error">&#9888;'.$errorArray['userNameError'].'</div>
-                            </div>';
+                        echo '&#9888; '.$errorArray['userNameError'];
+                        $shadow = 'errorShadow';
+                    }
+                    else{
+                        $shadow = 'shadowhover';
                     }
 
                 ?>
 
+                    </div>
+                </div>
+
                 <div class="row">
-                    <input type="text" class="col-12 col-12-sm input shadowhover" id="userNameSignUp" name="userName" placeholder="Username" value= '<?php echo "$userName" ?>' required>
+                    <input onkeyup = "isUserNameAvailable(this)" type="text" class="col-12 col-12-sm input <?php echo $shadow ?>" id="userNameSignUp" name="userName" placeholder="Username" value= '<?php echo "$userName" ?>' required>
                     <!-- name username is used twice check with vipul-->
                 </div>
 
@@ -114,21 +125,37 @@
                 if(isset($errorArray['passwordError'])){
                     echo '<div class="row error">
                             <div class="col-12 col-12-sm colerror error">&#9888;'.$errorArray['passwordError'].'</div>
-                        </div>';
+                    </div>';
+                    $shadow = 'errorShadow';
+                }
+                else{
+                    $shadow = 'shadowhover';
                 }
 
                 ?>
 
                 <div class="row">
-                    <input type="password" class="col-6 col-6-sm input shadowhover" id="passwordSignUp" name="password" placeholder="Password" required>
+                    <input type="password" class="col-6 col-6-sm input <?php echo $shadow ?>" id="passwordSignUp" name="password" placeholder="Password" required>
                     <!-- name password is used twice check with vipul-->
-                    <input type="password" class="col-6 col-6-sm input shadowhover"  id="confirmPasswordSignUp" name="confirmPassword" placeholder="Confirm Password" required>
+                    <input type="password" class="col-6 col-6-sm input <?php echo $shadow ?>"  id="confirmPasswordSignUp" name="confirmPassword" placeholder="Confirm Password" required>
                 </div>
 
                 <div class="row">
                     <label class="col-6 col-6-sm labels" id="gendersulabel" for="gender">Gender</label>
                     <label class="col-6 col-6-sm labels" id="gendersulabel" for="number">Number(Optional)</label>
                 </div>
+                
+                <?php 
+                
+                    if(isset($errorArray['numberError'])){
+                        $shadow = 'errorShadow';
+                    }
+                    else{
+                        $shadow = 'shadowhover';
+                    }
+                
+                ?>
+
                 <div class="row">
                     <select name="gender" id="gender" class="col-6 col-6-sm options shadowhover">
 
@@ -147,7 +174,7 @@
                         ?>
                         
                     </select> 
-                    <input name="number" class="col-6 col-6-sm input shadowhover" type="tel" value= '<?php echo "$number" ?>' placeholder="Number">
+                    <input name="number" class="col-6 col-6-sm input <?php echo $shadow ?>" type="tel" value= '<?php echo "$number" ?>' placeholder="Number">
                 </div>
                 <div class="row">
                     <div class="col-5 col-5-sm"></div>
@@ -159,6 +186,8 @@
             
         </div>
     </div>
+    <!-- includin the javascript file for singup -->
+    <script src="admin/javascript/signup.js"></script>
 <?php
     //including footer
     include_once 'includes/footer.php'
