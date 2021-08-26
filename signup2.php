@@ -80,8 +80,8 @@
     
     <!-- This is the main login area-->
     <div class="row" id="loginRow">
-        <div class="col-6 hidden-sm" id="picturesu"></div><!-- check for how to mak e0 coloumns when sm or add own classes-->
-        <div class="col-6 col-12-sm"  id="formsu">
+        <div class="col-6 hidden-sm border backgroundb" id="picturesu"></div><!-- check for how to mak e0 coloumns when sm or add own classes-->
+        <div class="col-6 col-12-sm border backgroundw"  id="formsu">
             <!-- top 3 bars -->
             <div class="bar" id="loginBar"></div>
             <div class="bar" id="signUpbar"></div>
@@ -105,7 +105,7 @@
                 ?>
 
                 <div class="row">
-                    <input type="text" class="col-12 col-12-sm input" id="userNameSignUp" name="userName" placeholder="Username" value= '<?php echo "$userName" ?>' required>
+                    <input type="text" class="col-12 col-12-sm input shadowhover" id="userNameSignUp" name="userName" placeholder="Username" value= '<?php echo "$userName" ?>' required>
                     <!-- name username is used twice check with vipul-->
                 </div>
 
@@ -120,9 +120,9 @@
                 ?>
 
                 <div class="row">
-                    <input type="password" class="col-6 col-6-sm input" id="passwordSignUp" name="password" placeholder="Password" required>
+                    <input type="password" class="col-6 col-6-sm input shadowhover" id="passwordSignUp" name="password" placeholder="Password" required>
                     <!-- name password is used twice check with vipul-->
-                    <input type="password" class="col-6 col-6-sm input"  id="confirmPasswordSignUp" name="confirmPassword" placeholder="Confirm Password" required>
+                    <input type="password" class="col-6 col-6-sm input shadowhover"  id="confirmPasswordSignUp" name="confirmPassword" placeholder="Confirm Password" required>
                 </div>
 
                 <div class="row">
@@ -130,7 +130,7 @@
                     <label class="col-6 col-6-sm labels" id="gendersulabel" for="number">Number(Optional)</label>
                 </div>
                 <div class="row">
-                    <select name="gender" id="gender" class="col-6 col-6-sm options">
+                    <select name="gender" id="gender" class="col-6 col-6-sm options shadowhover">
 
                         <?php 
                         
@@ -147,11 +147,11 @@
                         ?>
                         
                     </select> 
-                    <input name="number" class="col-6 col-6-sm input" type="tel" value= '<?php echo "$number" ?>' placeholder="Number">
+                    <input name="number" class="col-6 col-6-sm input shadowhover" type="tel" value= '<?php echo "$number" ?>' placeholder="Number">
                 </div>
                 <div class="row">
                     <div class="col-5 col-5-sm"></div>
-                    <button type="submit" class="col-4 col-4-sm" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
+                    <button type="submit" class="col-4 col-4-sm backgroundb" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
                 </div>
             </form>
            

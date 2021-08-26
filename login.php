@@ -40,8 +40,8 @@
     
     <!-- This is the main login area-->
     <div class="row" id="loginRow">
-        <div class="col-6 hidden-sm" id="picture"></div><!-- check for how to make 0 coloumns when sm or add own classes-->
-        <div class="col-6 col-12-sm" id="form">
+        <div class="col-6 hidden-sm border backgroundb" id="picture"></div><!-- check for how to make 0 coloumns when sm or add own classes-->
+        <div class="col-6 col-12-sm border backgroundw" id="form">
             <!-- top 3 bars -->
             <div class="bar" id="loginBar"></div>
             <div class="bar" id="signUpbar"></div>
@@ -72,11 +72,11 @@
 
                 <div class="row">
                     <div class="col-1 col-1-sm"></div>
-                    <input type="text" class="col-10 col-10-sm input" id="userNameLogIn" placeholder="Username" name="userName" required>
+                    <input type="text" class="col-10 col-10-sm input shadowhover" id="userNameLogIn" placeholder="Username" name="userName" required>
                 </div>
                 <div class="row">
                     <div class="col-1 col-1-sm"></div>
-                    <input type="password" class="col-10 col-10-sm input" id="passwordLogIn" placeholder="Password" name="password" required>
+                    <input type="password" class="col-10 col-10-sm input shadowhover" id="passwordLogIn" placeholder="Password" name="password" required>
                 </div>
 
                 <div class="row">
@@ -85,7 +85,7 @@
                     <input type="checkbox" class="rememberMe"  name="rememberMe">
                     <label for="rememberMe" class="rememberMeBtn">Remember Me</label>
                     </div>
-                    <button type="submit" class="col-4 col-4-sm" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
+                    <button type="submit" class="col-4 col-4-sm backgroundb" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
                 </div>
             </form>
             <!-- buttons below -->

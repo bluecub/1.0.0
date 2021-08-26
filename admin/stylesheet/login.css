@@ -14,26 +14,17 @@
 /*------- picture left ------- */
 #picture{
     height:440px;
-    background-color:#caf0f8;
-   /* background-size:cover;*/
-    border:solid 2px #D3D3D3;
-    box-sizing:border-box;
     border-right:none;
     border-radius:20px 0px 0px 20px;
     margin-right:0px;
     margin-left:4%;
-    overflow:hidden;
 }
 /*-------- form right -------- */
 #form{
     height:440px;
-    border:solid 2px #D3D3D3;
-    box-sizing:border-box;
     border-radius:0 20px 20px 0px;
     margin-left:0px;
-    background-color:white;
     margin-right:4%;
-    overflow:hidden;
 }
 /* if we change height of the above two feilds to % then change margin in 1 to percentage too */
 /*----- top 3 bars ------- */
@@ -111,25 +102,16 @@ better method*/
 /*------- picture left ------- */
 #picturesu{
     height:520px;
-    background-color:#caf0f8;
-   /* background-size:cover;*/
-    border:solid 2px #D3D3D3;
-    box-sizing:border-box;
     border-right:none;
     border-radius:20px 0px 0px 20px;
     margin-right:0px;
     margin-left:4%;
-    overflow:hidden;
 }
 /*-------- form right -------- */
 #formsu{
     height:520px;
-    border:solid 2px #D3D3D3;
-    box-sizing:border-box;
-    overflow:hidden;
     border-radius:0 20px 20px 0px;
     margin-left:0px;
-    background-color:white;
     margin-right:4%;
 }
 /* this is done to chnage size of row in in the sign p page because it needs more space*/

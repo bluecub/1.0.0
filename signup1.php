@@ -80,8 +80,8 @@
     
     <!-- This is the main login area-->
     <div class="row" id="loginRow">
-        <div class="col-6 hidden-sm" id="picturesu"></div><!-- check for how to mak e0 coloumns when sm or add own classes-->
-        <div class="col-6 col-12-sm"  id="formsu">
+        <div class="col-6 hidden-sm border backgroundb" id="picturesu"></div><!-- check for how to mak e0 coloumns when sm or add own classes-->
+        <div class="col-6 col-12-sm border backgroundw"  id="formsu">
             <!-- top 3 bars -->
             <div class="bar" id="loginBar"></div>
             <div class="bar" id="signUpbar"></div>
@@ -110,8 +110,8 @@
                 ?>
 
                 <div class="row">
-                    <input type="text" class="col-6 col-6-sm input" id="firstName" name="firstName" value= "<?php echo "$firstName" ?>" placeholder="First Name" required>
-                    <input type="text" class="col-6 col-6-sm input" id="lastName" name="lastName" value= '<?php echo "$lastName" ?>' placeholder="Last Name" required>
+                    <input type="text" class="col-6 col-6-sm input shadowhover" id="firstName" name="firstName" value= "<?php echo "$firstName" ?>" placeholder="First Name" required>
+                    <input type="text" class="col-6 col-6-sm input shadowhover" id="lastName" name="lastName" value= '<?php echo "$lastName" ?>' placeholder="Last Name" required>
                 </div>
                 
                 <?php 
@@ -125,7 +125,7 @@
                 ?>
     
                 <div class="row">
-                    <input type="email" class="col-12 col-12-sm input" id="email" name="email" value= '<?php echo "$email" ?>' placeholder="Email" required>
+                    <input type="email" class="col-12 col-12-sm input shadowhover" id="email" name="email" value= '<?php echo "$email" ?>' placeholder="Email" required>
                 </div>
 
                 <div class="row">
@@ -145,7 +145,7 @@
                 ?>
 
                 <div class="row">
-                    <select name="DOB_D" class="col-4 col-4-sm options" id="datesu">
+                    <select name="DOB_D" class="col-4 col-4-sm options shadowhover" id="datesu">
                         <option value="-1">DD</option>
 
                         <?php 
@@ -161,7 +161,7 @@
 
                         ?>
                     </select>
-                    <select name="DOB_M" class="col-4 col-4-sm options" id="monthsu">
+                    <select name="DOB_M" class="col-4 col-4-sm options shadowhover" id="monthsu">
                         <option value="-1">MM</option>
 
                         <?php
@@ -178,7 +178,7 @@
                         ?>
 
                     </select>
-                    <select name="DOB_Y" class="col-4 col-4-sm options" id="yearsu">
+                    <select name="DOB_Y" class="col-4 col-4-sm options shadowhover" id="yearsu">
 
                         <option value="-1">YYYY</option>
 
@@ -198,7 +198,7 @@
                 </div>
                 <div class="row">
                     <div class="col-5 col-5-sm"></div>
-                    <button type="submit" class="col-4 col-4-sm" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
+                    <button type="submit" class="col-4 col-4-sm backgroundb" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
                 </div>
             </form>
            
