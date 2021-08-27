@@ -47,20 +47,26 @@ function isUserNameAvailable(e){
                     e.classList.remove('errorShadow');
                     e.classList.remove('shadowhover');
                     e.classList.add('successShadow');
-                    userNameErrorField.innerHTML = "Username not available";
+                    userNameErrorField.innerHTML = "";
                 }
                 else{
                     e.classList.remove('successShadow');
                     e.classList.remove('shadowhover');
                     e.classList.add('errorShadow');
-                    userNameErrorField.innerHTML = "";
+                    userNameErrorField.innerHTML = "Username not available";
                 }
+                console.log(res)
             }
         };
+        xmlhttp.open("GET", "API/userName.php?userName=" + e.value, true);
+        xmlhttp.send();
 
     }
-    xmlhttp.open("GET", "API/userName.php?userName=" + e.value, true);
-    xmlhttp.send();
-
+    else{
+        e.classList.remove('errorShadow');
+        e.classList.remove('successShadow');
+        e.classList.add('shadowhover');
+        userNameErrorField.innerHTML = "";
+    }
 
 }

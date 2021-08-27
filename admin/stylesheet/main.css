@@ -84,7 +84,7 @@
     height:58px;
     border-radius:29px;*/
     box-shadow:0px 0px 10px #caf0f8;
-    animation:round 0.5s;
+    animation:round 1s;
     animation-fill-mode: forwards;
 }
 /* to position the submit button give the submit button an id and poistion in the particular css 
