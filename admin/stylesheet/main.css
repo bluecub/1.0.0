@@ -16,7 +16,7 @@
     box-shadow:0px 0px 10px #caf0f8;
 }
 .successShadow{
-    box-shadow:0px 0px 10px rgb(0, 199, 0);
+    box-shadow:0px 0px 10px rgb(0, 200, 0);
 }
 .errorShadow{
     box-shadow:0px 0px 10px #ff5151;
@@ -135,6 +135,16 @@ this is just the styling and animation of the submit button */
     margin-top:0px !important;
     background:rgb(255, 255, 255);
     color: rgb(255, 0, 0);
+    margin-bottom:0px !important;
+    font-size:13px;
+    box-sizing:border-box;
+}
+
+.colSuccessMsg{
+    height:10px; 
+    margin-top:0px !important;
+    background:rgb(255, 255, 255);
+    color: rgb(0, 200, 0);
     margin-bottom:0px !important;
     font-size:13px;
     box-sizing:border-box;

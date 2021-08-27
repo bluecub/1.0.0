@@ -34,6 +34,7 @@ function update(element){
 
 //making event on key up on userName field
 userNameErrorField = document.getElementById('userNameSignUpError');
+submitButton = document.getElementById('submit');
 
 function isUserNameAvailable(e){
 
@@ -47,15 +48,20 @@ function isUserNameAvailable(e){
                     e.classList.remove('errorShadow');
                     e.classList.remove('shadowhover');
                     e.classList.add('successShadow');
-                    userNameErrorField.innerHTML = "";
+                    userNameErrorField.innerHTML = "Username is available";
+                    userNameErrorField.classList.remove('colerror');
+                    userNameErrorField.classList.add('colSuccessMsg');
+                    submitButton.disabled = false;
                 }
                 else{
                     e.classList.remove('successShadow');
                     e.classList.remove('shadowhover');
                     e.classList.add('errorShadow');
-                    userNameErrorField.innerHTML = "Username not available";
+                    userNameErrorField.innerHTML = "Username is not available";
+                    userNameErrorField.classList.add('colerror');
+                    userNameErrorField.classList.remove('colSuccessMsg');
+                    submitButton.disabled = true;
                 }
-                console.log(res)
             }
         };
         xmlhttp.open("GET", "API/userName.php?userName=" + e.value, true);

@@ -115,7 +115,7 @@
                 </div>
 
                 <div class="row">
-                    <input onkeyup = "isUserNameAvailable(this)" type="text" class="col-12 col-12-sm input <?php echo $shadow ?>" id="userNameSignUp" name="userName" placeholder="Username" value= '<?php echo "$userName" ?>' required>
+                    <input onfocusout = "isUserNameAvailable(this)" type="text" class="col-12 col-12-sm input <?php echo $shadow ?>" id="userNameSignUp" name="userName" placeholder="Username" value= '<?php echo "$userName" ?>' required>
                     <!-- name username is used twice check with vipul-->
                 </div>
 
@@ -177,7 +177,7 @@
                 </div>
                 <div class="row">
                     <div class="col-5 col-5-sm"></div>
-                    <button type="submit" class="col-4 col-4-sm backgroundb" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
+                    <button type="submit" class="col-4 col-4-sm backgroundb" id="submit" name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
                 </div>
             </form>
            
