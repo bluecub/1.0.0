@@ -139,12 +139,18 @@
                     <!-- name password is used twice check with vipul-->
                     <input type="password" class="col-6 col-6-sm input <?php echo $shadow ?>"  id="confirmPasswordSignUp" name="confirmPassword" placeholder="Confirm Password" required>
                 </div>
-                <!-- error column for number feild -->
-                <div class="row error">
-                    <div class="col-6 col-6-sm colerror"></div>
-                    <div class="col-6 col-6-sm colerror"></div>
-                </div>
-                <!-- feild ends here -->
+
+                <?php 
+                
+                    if(isset($errorArray['numberError'])){
+                        $shadow = 'errorShadow';
+                    }
+                    else{
+                        $shadow = 'shadowhover';
+                    }
+
+                ?>
+
                 <div class="row">
                     <label class="col-6 col-6-sm labels" id="gendersulabel" for="gender">Gender</label>
                     <label class="col-6 col-6-sm labels" id="gendersulabel" for="number">Number(Optional)</label>
