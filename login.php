@@ -48,7 +48,8 @@
             <div class="bar" id="forPassbar"></div>
             <!-- title and slogan -->
             <div id="textArea">
-                <p id="title"><?php include('includes/logo.php') ?>BlueCub</p>
+                <span class="inlineBlock logoLisufp"><?php include('includes/logo.php') ?></span>
+                <p id="title">BlueCub</p>
                 <p id="slogan">Flaunt Your Stocks</p>
             </div>
             <!-- main form-->
@@ -85,7 +86,7 @@
                     <input type="checkbox" class="rememberMe"  name="rememberMe">
                     <label for="rememberMe" class="rememberMeBtn">Remember Me</label>
                     </div>
-                    <button type="submit" class="col-4 col-4-sm backgroundb" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
+                    <button type="submit" class="col-4 col-4-sm backgroundb shadowhover" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
                 </div>
             </form>
             <!-- buttons below -->

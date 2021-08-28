@@ -20,6 +20,7 @@
             <div class="bar" id="forPassbar"></div>
             <!-- title and slogan -->
             <div id="textArea">
+                <span class="inlineBlock logoLisufp"><?php include('includes/logo.php') ?></span>
                 <p id="title">BlueCub</p>
                 <p id="slogan">Flaunt Your Stocks</p>
             </div>

@@ -90,7 +90,8 @@
             <div class="bar" id="forPassbar"></div>
             <!-- title and slogan -->
             <div id="textArea">
-                <p id="title">BlueCub<?php include('includes/logo.php') ?></p>
+                <span class="inlineBlock logoLisufp"><?php include('includes/logo.php') ?></span>
+                <p id="title">BlueCub</p>
                 <p id="slogan">Flaunt Your Stocks</p>
             </div>
             <!-- main form-->
@@ -138,7 +139,12 @@
                     <!-- name password is used twice check with vipul-->
                     <input type="password" class="col-6 col-6-sm input <?php echo $shadow ?>"  id="confirmPasswordSignUp" name="confirmPassword" placeholder="Confirm Password" required>
                 </div>
-
+                <!-- error column for number feild -->
+                <div class="row error">
+                    <div class="col-6 col-6-sm colerror"></div>
+                    <div class="col-6 col-6-sm colerror"></div>
+                </div>
+                <!-- feild ends here -->
                 <div class="row">
                     <label class="col-6 col-6-sm labels" id="gendersulabel" for="gender">Gender</label>
                     <label class="col-6 col-6-sm labels" id="gendersulabel" for="number">Number(Optional)</label>
@@ -154,7 +160,6 @@
                     }
                 
                 ?>
-
                 <div class="row">
                     <select name="gender" id="gender" class="col-6 col-6-sm options shadowhover">
 

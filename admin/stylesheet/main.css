@@ -30,6 +30,10 @@
 .shadowhover:focus{
     box-shadow:0px 0px 10px #3fc1c9;
 }
+.inlineBlock{
+    display:inline-block;
+}
+/* this the form elements styling like input box, checkbox,submit button*/
 /* -------- every text like username, pasword etc input type ------ */
 .input{
     height:40px;
@@ -60,7 +64,7 @@
 }
 /* ---- the submit button ----- */
 
-/* choose icon by putting icon name in the span t
+/* choose icon by putting icon name in the span tag
 <button type="button" id="submit"><span class="material-icons" id="subbtn">expand_less</span></button>*/
 #submit{
     
@@ -83,10 +87,11 @@
     /*width:58px;
     height:58px;
     border-radius:29px;*/
-    box-shadow:0px 0px 10px #caf0f8;
     animation:round 1s;
     animation-fill-mode: forwards;
 }
+
+
 /* to position the submit button give the submit button an id and poistion in the particular css 
 this is just the styling and animation of the submit button */
 /* -------- end of submit button -------- */
