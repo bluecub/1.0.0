@@ -75,9 +75,12 @@
                     <div class="col-1 col-1-sm"></div>
                     <input type="text" class="col-10 col-10-sm input shadowhover" id="userNameLogIn" placeholder="Username" name="userName" required>
                 </div>
-                <div class="row">
+                <div class="row" id="wrapper">
                     <div class="col-1 col-1-sm"></div>
+
                     <input type="password" class="col-10 col-10-sm input shadowhover" id="passwordLogIn" placeholder="Password" name="password" required>
+                    <!-- ------------ password visible button ------------ -->
+                    <spna class="material-icons backgroundw" id="visibilityLogin" onclick="showPassword(this)">visibility</span>
                 </div>
 
                 <div class="row">
@@ -94,6 +97,10 @@
             <button type="button" id="signUpbut" class="buttons">Sign Up</button>
             <button type="button" id="forPassbut" class="buttons">Forgot Password</button>-->
         </div>
+
+        <!-- includin the javascript file for singup -->
+        <script src="admin/javascript/login.js"></script>
+
     </div>
 
 

@@ -142,3 +142,20 @@ better method*/
     color: red;
     font-size: 13px;
 }
+
+/* password visibility */
+
+#wrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+#visibilityLogin{
+    position: absolute;
+    right: 13%;
+    color: #9d9d9d;
+    z-index: 1000;
+    border: none;
+    cursor: pointer;
+}
