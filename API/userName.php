@@ -1,7 +1,7 @@
 <?php 
 
-    require_once('/home/bipoool/Desktop/PHP_Projects/1.0.0/includes/CRUD.php');
-    require_once('/home/bipoool/Desktop/PHP_Projects/1.0.0/includes/basicFunctions.php');
+    require_once('../includes/CRUD.php');
+    require_once('../includes/basicFunctions.php');
 
     global $databaseName;
     global $userInfoTable;
