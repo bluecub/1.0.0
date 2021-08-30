@@ -33,6 +33,9 @@
 .inlineBlock{
     display:inline-block;
 }
+.font-13{
+    font-size:13px;
+}
 /* this the form elements styling like input box, checkbox,submit button*/
 /* -------- every text like username, pasword etc input type ------ */
 .input{
@@ -48,7 +51,6 @@
 }
 /* --------------- css for select labels --------- */
 .labels{
-    font-size:14px;
     color:rgb(0,0,0,0.5);
 }
 .options{
@@ -56,7 +58,6 @@
     box-sizing:border-box;
     border-radius:9px;
     border:solid 1px #D3D3D3;
-    font-size:14px;
     color:rgb(0,0,0,0.5);
 }
 .options:focus{
@@ -131,26 +132,18 @@ this is just the styling and animation of the submit button */
     height:10px;
     margin-top:0px !important;
     margin-bottom:4px !important;
-    background: white;
     padding:0px !important;
 }
-
-.colerror{
+.message{
     height:10px; 
     margin-top:0px !important;
-    background:rgb(255, 255, 255);
-    color: rgb(255, 0, 0);
     margin-bottom:0px !important;
-    font-size:13px;
     box-sizing:border-box;
+}
+.errormsg{
+    color: rgb(255, 0, 0);
 }
 
 .colSuccessMsg{
-    height:10px; 
-    margin-top:0px !important;
-    background:rgb(255, 255, 255);
     color: rgb(0, 200, 0);
-    margin-bottom:0px !important;
-    font-size:13px;
-    box-sizing:border-box;
 }

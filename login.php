@@ -50,7 +50,7 @@
             <div id="textArea">
                 <span class="inlineBlock logoLisufp"><?php include('includes/logo.php') ?></span>
                 <p id="title">BlueCub</p>
-                <p id="slogan">Flaunt Your Stocks</p>
+                <p id="slogan" class="font-13">Flaunt Your Stocks</p>
             </div>
             <!-- main form-->
             
@@ -62,7 +62,7 @@
                     if($errorArray){
                         echo '<div class="row">
                                 <div class="col-1 col-1-sm"></div>
-                                <div class="col-10 col-10-sm errorStyle">
+                                <div class="col-10 col-10-sm errorStyle font-13">
                                     &#9888; You have entered the wrong details
                                 </div>
                             </div>';
@@ -87,7 +87,7 @@
                     <div class="col-1 col-1-sm"></div>
                     <div class="col-7 col-7-sm">
                     <input type="checkbox" class="rememberMe"  name="rememberMe">
-                    <label for="rememberMe" class="rememberMeBtn">Remember Me</label>
+                    <label for="rememberMe" class="rememberMeBtn font-13">Remember Me</label>
                     </div>
                     <button type="submit" class="col-4 col-4-sm backgroundb shadowhover" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
                 </div>

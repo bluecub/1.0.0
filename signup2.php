@@ -97,8 +97,8 @@
             <!-- main form-->
             <form class="container" id="formSignUp" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" name="signUp2">
 
-            <div class="row error">
-                <div class="col-12 col-12-sm colerror error" id="userNameSignUpError">
+            <div class="row backgroundw error">
+                <div class="col-12 col-12-sm font-13 backgroundw message errormsg error" id="userNameSignUpError">
 
                 <?php 
                     
@@ -123,8 +123,8 @@
                 <?php 
                 
                 if(isset($errorArray['passwordError'])){
-                    echo '<div class="row error">
-                            <div class="col-12 col-12-sm colerror error">&#9888;'.$errorArray['passwordError'].'</div>
+                    echo '<div class="row backgroundw error">
+                            <div class="col-12 col-12-sm font-13 backgroundw message errormsg error">&#9888;'.$errorArray['passwordError'].'</div>
                     </div>';
                     $shadow = 'errorShadow';
                 }
@@ -152,8 +152,8 @@
                 ?>
 
                 <div class="row">
-                    <label class="col-6 col-6-sm labels" id="gendersulabel" for="gender">Gender</label>
-                    <label class="col-6 col-6-sm labels" id="gendersulabel" for="number">Number(Optional)</label>
+                    <label class="col-6 col-6-sm font-13 labels" id="gendersulabel" for="gender">Gender</label>
+                    <label class="col-6 col-6-sm font-13 labels" id="gendersulabel" for="number">Number(Optional)</label>
                 </div>
                 
                 <?php 
@@ -167,7 +167,7 @@
                 
                 ?>
                 <div class="row">
-                    <select name="gender" id="gender" class="col-6 col-6-sm options shadowhover">
+                    <select name="gender" id="gender" class="col-6 col-6-sm font-13 options shadowhover">
 
                         <?php 
                         

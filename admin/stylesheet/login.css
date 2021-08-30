@@ -68,7 +68,6 @@
 #slogan{
     margin-top:0px;
     /*border:solid 1px black;*/
-    font-size:12px;
 }
 
 /*---- usre login info form ------ */
@@ -79,16 +78,8 @@
 
 /*---------*****remove this css when using php******-----------*/
 /* remove if not user (comment created by vipul) */
-#errorLogIn{
-    font-size:13px;
-    text-align:center;
-    color:black;
-    background:rgb(255,0,0,0.2);
-}
+
 /* ------------- remove css ends here **** --------*/
-.rememberMeBtn{
-    font-size:13px;
-}
 /* input type and submit button css is done in main.css */ 
 
 
@@ -140,7 +131,6 @@ better method*/
 .errorStyle{
     text-align: center;
     color: red;
-    font-size: 13px;
 }
 
 /* password visibility */

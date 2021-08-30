@@ -102,12 +102,12 @@
                 <?php 
 
                     if(isset($errorArray['firstNameError']) or isset($errorArray['lastNameError'])){
-                        echo '<div class="row error">';
+                        echo '<div class="row backgroundw error">';
                         if(isset($errorArray['lastNameError'])){
-                            echo '<div class="col-12 col-12-sm colerror errorStyle">&#9888;'.$errorArray['lastNameError'].'</div>';
+                            echo '<div class="col-12 col-12-sm font-13 backgroundw message errormsg errorStyle">&#9888;'.$errorArray['lastNameError'].'</div>';
                         }
                         else{
-                            echo '<div class="col-12 col-12-sm colerror errorStyle">&#9888;'.$errorArray['firstNameError'].'</div>';
+                            echo '<div class="col-12 col-12-sm font-13 backgroundw message errormsg errorStyle">&#9888;'.$errorArray['firstNameError'].'</div>';
                         }
                         echo '</div>';
                         $shadow = 'errorShadow';
@@ -126,8 +126,8 @@
                 <?php 
                 
                     if(isset($errorArray['emailError'])){
-                        echo '<div class="row error">
-                                <div class="col-12 col-12-sm colerror">&#9888;'.$errorArray['emailError'].'</div>
+                        echo '<div class="row backgroundw  error">
+                                <div class="col-12 col-12-sm font-13 backgroundw message errormsg">&#9888;'.$errorArray['emailError'].'</div>
                             </div>';
                         $shadow = 'errorShadow';
                     }
@@ -142,7 +142,7 @@
                 </div>
 
                 <div class="row">
-                    <label class="col-12 col-12-sm  labels" id="dobsulabel" for="dobsu">When were you born</label>
+                    <label class="col-12 col-12-sm  font-13 labels" id="dobsulabel" for="dobsu">When were you born</label>
                 </div>
 
 
@@ -150,8 +150,8 @@
                 
                     if(isset($errorArray['DOB_Error'])){
                         
-                        echo '<div class="row error">
-                                <div class="col-12 col-12-sm colerror">&#9888;'.$errorArray['DOB_Error'].'</div>
+                        echo '<div class="row backgroundw error">
+                                <div class="col-12 col-12-sm font-13 backgroundw message errormsg">&#9888;'.$errorArray['DOB_Error'].'</div>
                             </div>';
                             $shadow = 'errorShadow';
                     }
@@ -162,7 +162,7 @@
                 ?>
 
                 <div class="row">
-                    <select name="DOB_D" class="col-4 col-4-sm options <?php echo $shadow ?>" id="datesu">
+                    <select name="DOB_D" class="col-4 col-4-sm font-13 options <?php echo $shadow ?>" id="datesu">
                         <option value="-1">DD</option>
 
                         <?php 
@@ -178,7 +178,7 @@
 
                         ?>
                     </select>
-                    <select name="DOB_M" class="col-4 col-4-sm options <?php echo $shadow ?>" id="monthsu">
+                    <select name="DOB_M" class="col-4 col-4-sm font-13 options <?php echo $shadow ?>" id="monthsu">
                         <option value="-1">MM</option>
 
                         <?php
@@ -195,7 +195,7 @@
                         ?>
 
                     </select>
-                    <select name="DOB_Y" class="col-4 col-4-sm options <?php echo $shadow ?>" id="yearsu">
+                    <select name="DOB_Y" class="col-4 col-4-sm font-13 options <?php echo $shadow ?>" id="yearsu">
 
                         <option value="-1">YYYY</option>
 

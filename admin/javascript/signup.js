@@ -49,8 +49,8 @@ function isUserNameAvailable(e){
                     e.classList.remove('shadowhover');
                     e.classList.add('successShadow');
                     userNameErrorField.innerHTML = "Username is available";
-                    userNameErrorField.classList.remove('colerror');
-                    userNameErrorField.classList.add('colSuccessMsg');
+                    userNameErrorField.classList.remove('errormsg');
+                    userNameErrorField.classList.add('successmsg');
                     submitButton.disabled = false;
                 }
                 else{
@@ -58,8 +58,8 @@ function isUserNameAvailable(e){
                     e.classList.remove('shadowhover');
                     e.classList.add('errorShadow');
                     userNameErrorField.innerHTML = "Username is not available";
-                    userNameErrorField.classList.add('colerror');
-                    userNameErrorField.classList.remove('colSuccessMsg');
+                    userNameErrorField.classList.add('errormsg');
+                    userNameErrorField.classList.remove('successmsg');
                     submitButton.disabled = true;
                 }
             }
