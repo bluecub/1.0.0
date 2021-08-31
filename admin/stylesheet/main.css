@@ -2,7 +2,7 @@
 
 /*---general styling --------------*/
 .backgroundw{
-    background-color:white;
+    background-color:rgb(255, 255, 255);
 }
 .backgroundb{
     background-color:#caf0f8;
@@ -146,4 +146,9 @@ this is just the styling and animation of the submit button */
 
 .colSuccessMsg{
     color: rgb(0, 200, 0);
+}
+
+.post{
+    width: 100%;
+    height: 100%;
 }

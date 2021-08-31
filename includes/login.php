@@ -20,7 +20,7 @@
             $this->credentials = $credentials;
         }
 
-        public function checkAuthentication(){
+        public function checkAuthentication($remembered = false){
 
             //take the database name and table names from global variables
             global $databaseName;
@@ -55,7 +55,7 @@
             $condition = array("user_ID"=>$user_ID);
             $hashedPassword = $query->getData($userSecurityInfoTable, 'password', $condition)[0][0];
 
-            if(basicFunctions::verifyPassword($hashedPassword, $password)){
+            if(basicFunctions::verifyPassword($hashedPassword, $password, $remembered)){
                 return $user_ID;
             }
             $this->errorArray['error'] = 'Username or Password incorrect';

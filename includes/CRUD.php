@@ -102,6 +102,49 @@
             return $result;
         }
 
+        //Function to get data with or conditions(all parametrized)
+        //SELECT $field FROM $table where $condition $order_by_field $order_by_type $limit 
+        public function getDataWithOr($table, $field = "*", $conditions = array(), $order_by_field = "", $order_by_type = "DESC", $limit = "", $offset=0){
+
+            $query = "SELECT $field FROM $table";
+
+            if($conditions != []){
+
+                $query .= " WHERE ";
+                $i = 0;
+                foreach($conditions as $k=>$value){
+                    $count = count($value);
+                    foreach($value as $v){
+                        if($count-1 != $i){
+                            $query .= "$k='$v' or ";
+                        }
+                        else{
+                            $query .= "$k='$v' ";
+                        }
+                        $i++;   
+                    } 
+                }  
+            }
+
+            if($order_by_field != ""){
+                $query .= "ORDER BY " . $order_by_field . " " . $order_by_type;
+            }
+            
+            if($limit != ""){
+                $query .= " LIMIT " . $limit;
+            }
+
+            if($offset != ""){
+                $query .= " OFFSET " . $offset;
+            }
+            //////////////////////////////////////////////////////////////////////////////////
+            echo $query;                                                                //////
+            die();                                                                      //////
+            //////////////////////////////////////////////////////////////////////////////////
+            $result = $this->prep_and_run($query);
+            return $result;
+        }
+
         //function to delete data
         //DELETE FROM $table WHERE $condition
         public function deleteData($table, $conditions = array()){

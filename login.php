@@ -3,24 +3,58 @@
     require_once 'includes/basicFunctions.php';
     require_once 'includes/CRUD.php';
     require_once 'includes/login.php';
+    require_once 'includes/profile.php';
+
+    // checking if user is already logged in or not(if yes throw them to index.php)
+    session_start();
+    if(basicFunctions::isLoggedIn()){
+        header('location: index.php');
+    }
 
     $errorArray = array();
-    if(isset($_POST['submit'])){
+    $remembered = basicFunctions::isRemembered();
 
-        //taking the credentials
-        $credentials['userName'] = $_POST['userName'];
-        $credentials['password'] = $_POST['password'];
+    if(isset($_POST['submit']) or $remembered){
 
+        //initializing the userName and password variables
+        $userName = "";
+        $password = "";
+
+        //taking the credentials either from coockies or from fields (depends on which one is set)
+        if($remembered){
+            $userName = $_COOKIE['userName'];
+            $password = $_COOKIE['password'];
+        }
+
+        else{
+            $userName = $_POST['userName'];
+            $password = $_POST['password'];
+        }
+
+        $credentials['userName'] = $userName;
+        $credentials['password'] = $password;
+        
         //creating the login object using credentials and checking for authentication it
         $loginObject = new login($credentials);
-        $status = $loginObject->checkAuthentication();
+        $status = $loginObject->checkAuthentication($remembered);
 
         if(is_array($status)){
             $errorArray = $status;
         }
         else{
+
+            //checking for remeber me is checked or not
+            if(isset($_POST['rememberMe'])){
+                $daysToRemeber = 4;
+                setcookie("userName", $userName, time() + (86400 * $daysToRemeber));
+                setcookie("password", basicFunctions::hashPassword($password), time() + (86400 * $daysToRemeber));
+            }
+
             //jump to feed page(user_ID is returned)
-            echo $status;
+            session_start();
+            $_SESSION['userObject'] = new profileObject($status);
+            header("location: index.php");
+
         }
     }
 
@@ -86,8 +120,8 @@
                 <div class="row">
                     <div class="col-1 col-1-sm"></div>
                     <div class="col-7 col-7-sm">
-                    <input type="checkbox" class="rememberMe"  name="rememberMe">
-                    <label for="rememberMe" class="rememberMeBtn font-13">Remember Me</label>
+                    <input type="checkbox" class="rememberMe"  name="rememberMe" id="loginRemeberMe">
+                    <label for="loginRemeberMe" class="rememberMeBtn font-13">Remember Me</label>
                     </div>
                     <button type="submit" class="col-4 col-4-sm backgroundb shadowhover" id="submit"  name="submit" ><span class="material-icons" id="subbtn">expand_less</span></button>
                 </div>

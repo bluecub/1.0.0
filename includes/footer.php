@@ -14,5 +14,7 @@
             <div class="col-1"></div>
         </div>
     </footer>
+    <!-- logout link (if u want to move it just copy and paste it) -->
+    <a href="logout.php">logout</a>
 </body>
 </html>

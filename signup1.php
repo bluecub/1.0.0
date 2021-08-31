@@ -94,7 +94,7 @@
             <div id="textArea">
                 <span class="inlineBlock logoLisufp"><?php include('includes/logo.php') ?></span>
                 <p id="title">BlueCub</p>
-                <p id="slogan">Flaunt Your Stocks</p>
+                <p id="slogan" class="font-13">Flaunt Your Stocks</p>
             </div>
             <!-- main form-->
             <form class="container" id="formSignUp" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="post" name="signUp1">

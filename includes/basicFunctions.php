@@ -39,8 +39,12 @@ class basicFunctions{
        }
        return $data;
     }
-    public static function verifyPassword($hashedPassword, $password){
-        $password = self::hashPassword($password);
+    public static function verifyPassword($hashedPassword, $password, $remembered = false){
+
+        if(!$remembered){
+            $password = self::hashPassword($password);
+        }
+        
         if($password === $hashedPassword){
             return true;
         };
@@ -49,7 +53,23 @@ class basicFunctions{
 
     //function to check if the user is logged in or not
     public static function isLoggedIn(){
-        return true;
+
+        $status = session_status() === PHP_SESSION_ACTIVE ? true : false;
+        
+        if($status and isset($_SESSION['userObject'])){
+            if(is_object($_SESSION['userObject'])){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public static function isRemembered(){
+        if(isset($_COOKIE['userName']) && isset($_COOKIE['password'])){
+            return true;
+        }
+        return false;
     }
 
 }
