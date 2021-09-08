@@ -75,7 +75,7 @@
     
     <!-- This is the main login area-->
     <div class="row" id="loginRow">
-        <div class="col-6 hidden-sm border backgroundb" id="picture"><div style="width:100%;height:0;padding-bottom:100%;position:relative;"><iframe src="https://giphy.com/embed/JtBZm3Getg3dqxK0zP" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/JtBZm3Getg3dqxK0zP">via GIPHY</a></p></div><!-- check for how to make 0 coloumns when sm or add own classes-->
+        <div class="col-6 hidden-sm border backgroundb" id="picture"></div><!-- check for how to make 0 coloumns when sm or add own classes-->
         <div class="col-6 col-12-sm border backgroundw" id="form">
             <!-- top 3 bars -->
             <div class="bar" id="loginBar"></div>
