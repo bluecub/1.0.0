@@ -1,0 +1,150 @@
+.bara{
+    height:300px;
+    width:100%;
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+    flex-direction: column;
+}
+.pageName{
+    font-size:40px;
+    color:white;
+    margin-left:2.3%;/*check  this*/
+    margin-top:50px;
+}
+#lineFont{
+    font-size:15px;
+    margin-top:0px;
+}
+
+#displayArea{
+    height:max-content;
+    border-radius:10px;
+    margin-top:-100px;
+    background-color: white;
+}
+
+/* css for tag heading */
+#tagHeading{
+    font-size:30px;
+}
+/* css for taggedpost section */
+#tagRow{
+    margin-bottom:25px;
+}
+
+/* testing designs */
+
+#TagCol{
+    display: flex;
+    overflow-x:auto;
+}
+.box{
+    height:150px;
+    min-width:200px;
+    margin-right:20px;
+    border-radius:8px;
+    background-color:#D8DDFE;
+}
+
+
+/* testing ends here */
+/* this is the css for the tag post box */
+/* css for image post section */
+.imgPost{
+    height:max-content;/* do max content */
+    border-radius:10px;
+    
+}
+/* css for stock price section */
+.stockPrice{
+    height:500px;/* do max content */
+    border-radius:10px;
+    background-color:  #F9F0C1;
+}
+
+
+.headings{
+    font-size:17px;
+}
+/* dont know where this is used */
+.a{
+    height:30px;
+}
+/*dont know why this is happening */
+#search{
+    background-color: white;
+    border:none;
+}
+#searchBar{
+    border:none;
+}
+/* ends here */
+
+/* ******************************************** post css starts from here******************************** */
+
+.postContainer{
+    border-top:Solid 1px rgb(220, 220, 220);
+    border-bottom:Solid 1px rgb(220, 220, 220);
+    box-sizing: border-box;
+    width:100%;
+    margin:20px 0px;
+    padding: 20px 20px;
+}
+
+.DP{
+    height:50px;
+    width:50px;
+    border-radius: 25px;
+    background-color: cadetblue;
+}
+.bookmarkBtnBox{
+    height:50px;
+}
+
+
+.postBoxHeight{
+    height:300px;
+}
+.post{
+    background:coral;
+    border-radius:5px;
+}
+.postButtonsBox{
+    flex-direction: column;
+}
+
+.postButtons{
+    height:50px;
+    margin-right:-32%!important;
+    width:100%;
+}
+.material-icons.likeBtn{
+    color:#3fc1c9;
+}
+.material-icons.commentBtn{
+    color:#fce38a;
+}
+.material-icons.shareBtn{
+    color:#fc5185;
+}
+.material-icons.tagBtn{
+    color:purple;
+}
+.caption{
+    font-size:15px;
+}
+.material-icons.md-lights { color:grey;}
+.material-icons.md-light { color:white;}
+
+
+/* testtttttttttttttttttttttt */
+
+@media only screen and (min-width:0px){
+    .container{
+      width:100%;
+    }
+    #navbar{
+      left:0%;
+    }
+}

@@ -1,16 +1,90 @@
-/* ----- this is the common css file -------- */
+/* remember that classes are read one by one so if we give some value to a class on top of the page 
+and it contradicts something at the bottom of the page the bottom one will be followed */
 
+/* ----- this is the common css file -------- */
+/*display styling for greater than 960px*/
+.inlineBlock{
+    display:inline-block;
+}
+.flex{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.flexAlign{
+    display:flex;
+    align-items: center;
+}
+.none{
+    display:none;
+}
+.block{
+    display:block;
+}
+/* margins */
+.margin2{
+    margin-left:2%;
+}
+.margins10{
+    margin-right:10%;
+}
+/* ends here */
 /*---general styling --------------*/
+
+/* background */
 .backgroundw{
-    background-color:rgb(255, 255, 255);
+    background-color:white;
+}
+.backgroundNav{
+    background-color:#83cee1;
 }
 .backgroundb{
     background-color:#caf0f8;
 }
+.backgroundNone{
+    background:none;
+}
+/* ends here*/
+/* border styling */
 .border{
     border:solid 2px #D3D3D3;
     overflow:hidden;
     box-sizing:border-box;
+}
+.borderNone{
+    border:none;
+}
+.borderBox{
+    box-sizing: border-box;
+}
+/* ends here  */
+/* buttons */
+.button{
+    background: none;
+}
+.button:hover{
+    border-bottom:solid 2px white;
+    box-sizing: border-box;
+}
+/* ends here */
+/* links */
+.links:link{
+    color:white;
+    text-decoration:none;
+}
+.links:hover{
+    color:white;
+    text-decoration: underline;
+}
+/* ends here */
+/* text align */
+.Center{
+    text-align: center;
+}
+/* ends here */
+/* shadows */
+.everyPageShadow{
+    box-shadow:0 0 20px grey;
 }
 .shadow{
     box-shadow:0px 0px 10px #caf0f8;
@@ -30,9 +104,9 @@
 .shadowhover:focus{
     box-shadow:0px 0px 10px #3fc1c9;
 }
-.inlineBlock{
-    display:inline-block;
-}
+/* ends here */
+
+
 .font-13{
     font-size:13px;
 }
@@ -97,6 +171,84 @@
 this is just the styling and animation of the submit button */
 /* -------- end of submit button -------- */
 
+
+
+/* ----- error row css ---- */
+
+/*error column and row*/
+/* margin increased by vipul */
+.error{
+    height:10px;
+    margin-top:0px !important;
+    margin-bottom:4px !important;
+    padding:0px !important;
+}
+.message{
+    height:10px; 
+    margin-top:0px !important;
+    margin-bottom:0px !important;
+    box-sizing:border-box;
+}
+.errormsg{
+    color: rgb(255, 0, 0);
+}
+
+.colSuccessMsg{
+    color: rgb(0, 200, 0);
+}
+/*icon styling */
+.material-icons.md-lights { color:grey;}
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-18{font-size:18px; }
+.material-icons.md-light { color: rgba(255, 255, 255, 1); }
+/* ends here */
+
+/* navbar elements positioning */
+.navbar{
+    width:100%;
+    height:45px;
+    display:flex;
+    align-items: center;
+}
+#navbarBox{
+    position:fixed;
+    top:0px;
+    right:0px;
+    z-index:10;
+}
+/* ends here */
+/* what needs to be shown above 960px */
+#searchBar{
+    width:300px;
+    height:25px;
+    border-radius:4px 0 0 4px;
+}
+#search{
+    height:25px;
+    width:25px;
+    border-radius:0 4px 4px 0;
+}
+
+.rightb{
+    flex-direction:row;
+    position:absolute;
+    right:2%;
+}
+.centerb{
+    position:absolute;
+    right:15%;
+    width:28.485%;
+}
+.links{
+    width:25.33%;
+    display:inline-block;
+    font-size:15px;
+    text-align: center;
+    margin-left:2%;
+}
+/* ends here */
+
 /* ------- footer -------- */
 #footer{
    
@@ -124,31 +276,85 @@ this is just the styling and animation of the submit button */
 }
 /*---- footer ends here ---- */
 
-/* ----- error row css ---- */
+/* media queries made by us */
+@media only screen and (max-width:960px)
+{
+    /* we need serach bar, replace and rightb over here we have to discard centerb and every element in it*/
 
-/*error column and row*/
-/* margin increased by vipul */
-.error{
-    height:10px;
-    margin-top:0px !important;
-    margin-bottom:4px !important;
-    padding:0px !important;
+    /* we have to remember that here disdplay none of chota is continued  */
+    .replace{
+        width:max-content;
+        position:absolute;
+        right:15%;
+    }
+    /* these are display class for less than 960px*/
+    .flex960{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .none960{
+        display:none;
+    }
+    .inlineBlock960{
+        display:inline-block;
+    }
+    .flexAlign960{
+        display:flex;
+        align-items: center;
+    }
+    /* ends here */
 }
-.message{
-    height:10px; 
-    margin-top:0px !important;
-    margin-bottom:0px !important;
-    box-sizing:border-box;
+@media only screen and (max-width:800px)
+{
+    #searchBar{
+        width:150px;
+    }
 }
-.errormsg{
-    color: rgb(255, 0, 0);
-}
+/* here all properties of the above media query are continued only change is sarch bar size */
+@media only screen and (max-width:540px)
+{
 
-.colSuccessMsg{
-    color: rgb(0, 200, 0);
+    .smallScreen{
+        width:100%;
+        display:flex;
+        align-items: center;
+        justify-content: space-around;
+    }
+    /* these are display class for less than 540px*/
+    .flex540{
+        display:flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .none540{
+        display:none;
+    }
+    .inlineBlock540{
+        display:inline-block;
+    }
+    .flexAlign540{
+        display:flex;
+        align-items: center;
+    }
 }
+/* ends here */
 
-.post{
-    width: 100%;
-    height: 100%;
+/* scroll bar */
+::-webkit-scrollbar{
+    width:7px;
+    height:7px;
+    border-radius: 7px;
 }
+::-webkit-scrollbar-track{
+    border-radius: 7px;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 7px;
+    background-color:rgb(41, 40, 40);
+    
+}
+::-webkit-scrollbar-track-piece {
+    height: 30px;
+}
+/*ends here*/
