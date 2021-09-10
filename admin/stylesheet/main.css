@@ -33,7 +33,7 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 
 /* background */
 .backgroundw{
-    background-color:white;
+    background-color:rgb(255, 255, 255);
 }
 .backgroundNav{
     background-color:#83cee1;
@@ -56,6 +56,11 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 }
 .borderBox{
     box-sizing: border-box;
+}
+.borderRight{
+    border-right:solid 0.5px #D3D3D3;
+    overflow:hidden;
+    box-sizing:border-box;
 }
 /* ends here  */
 /* buttons */
@@ -80,6 +85,9 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 /* text align */
 .Center{
     text-align: center;
+}
+.textRight{
+    text-align: right;
 }
 /* ends here */
 /* shadows */
@@ -106,6 +114,10 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 }
 /* ends here */
 
+/* overflow */
+.overFlowHidden{
+    overflow: hidden;
+}
 
 .font-13{
     font-size:13px;

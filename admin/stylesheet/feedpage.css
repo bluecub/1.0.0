@@ -106,8 +106,9 @@
     height:400px;
 }
 .post{
-    background:coral;
+    background:rgb(100, 100, 100);
     border-radius:5px;
+    border: solid 0.5px rgb(221, 221, 221);
 }
 .postButtonsBox{
     flex-direction: column;
@@ -158,3 +159,9 @@
 }
 .material-icons.md-lights { color:grey;}
 .material-icons.md-light { color:white;}
+
+/* test */
+.postContentBox{
+    width: 100%;
+    height: 100%;
+}
