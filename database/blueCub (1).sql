@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 07, 2021 at 02:53 PM
+-- Generation Time: Sep 12, 2021 at 12:51 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -38,14 +38,28 @@ CREATE TABLE `followInfo` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `postActivity`
+--
+
+CREATE TABLE `postActivity` (
+  `activity_ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `post_ID` int(11) NOT NULL,
+  `activityType` smallint(3) NOT NULL,
+  `commentText` varchar(255) DEFAULT NULL,
+  `createdAt` datetime DEFAULT current_timestamp(),
+  `updatedAt` datetime DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `postInfo`
 --
 
 CREATE TABLE `postInfo` (
   `post_ID` int(11) NOT NULL,
   `user_ID` int(11) NOT NULL,
-  `totalLikes` int(11) NOT NULL,
-  `totalComments` int(11) NOT NULL,
   `text` varchar(500) DEFAULT NULL,
   `images` varchar(255) DEFAULT NULL,
   `videos` varchar(255) DEFAULT NULL,
@@ -53,6 +67,25 @@ CREATE TABLE `postInfo` (
   `visibility` tinyint(4) NOT NULL,
   `createdAt` datetime DEFAULT current_timestamp(),
   `updatedAt` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `postInfo`
+--
+
+INSERT INTO `postInfo` (`post_ID`, `user_ID`, `text`, `images`, `videos`, `type`, `visibility`, `createdAt`, `updatedAt`) VALUES
+(5, 12, 'hellooo', 'download.jpeg', NULL, 1, 1, '2021-09-11 16:46:27', '2021-09-11 11:16:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `postTotalActivity`
+--
+
+CREATE TABLE `postTotalActivity` (
+  `parent_ID` int(11) NOT NULL,
+  `totalLikes` int(11) NOT NULL,
+  `totalComments` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -86,14 +119,14 @@ CREATE TABLE `userInfo` (
 --
 
 INSERT INTO `userInfo` (`user_ID`, `userName`, `firstName`, `lastName`, `DOB`, `gender`, `email`, `number`, `profilePicture`, `about`, `joinedDate`, `lastActive`, `lastSeenVisible`, `isPrivate`, `isEnabled`, `isVerified`, `updatedAt`) VALUES
-(9, 'vip3022', 'vipul', 'gupta', '2021-08-02', 2, 'itsmevipulgupta.2011@gmail.com', '', '', 'hello', '2021-08-20', '2021-09-06 06:34:57', 1, 0, 1, 0, '2021-09-06 09:25:56'),
-(10, 'anajal', 'anjali', 'gupta', '2021-08-11', 2, 'itsanjali@gmail.com', '', NULL, 'hello', '2021-08-20', '2021-08-20 13:31:31', 1, 0, 1, 0, '2021-09-06 09:26:14'),
-(11, 'kajalll', 'kajal', 'gupta', '2021-08-24', 2, 'kajal@gmail.com', '9818223311', NULL, 'hello', '2021-08-20', '2021-08-20 14:11:58', 1, 0, 1, 0, '2021-08-21 14:58:32'),
-(12, 'raman', 'raman', 'bansal', '2021-08-16', 2, 'raman1@gmail.com', '98811', NULL, 'hello', '2021-08-20', '2021-08-20 16:10:41', 1, 0, 1, 0, '2021-08-21 14:58:32'),
-(13, 'vipul', 'vipul', 'gupta', '2021-09-01', 2, 'bluecubinc@gmail.com', '9818633496', NULL, 'hello', '2021-08-20', '2021-08-20 18:47:27', 1, 0, 1, 0, '2021-08-21 14:58:32'),
-(21, 'mokshhhhh', 'moksh', 'babbar', '2001-03-02', 2, 'maksh@gmail.com', '', NULL, NULL, '2021-08-25', '2021-08-25 19:13:04', 1, 0, 1, 0, '2021-08-25 19:13:04'),
-(22, 'kusummmm', 'kusum', 'ramola', '2008-03-02', 2, 'kusum@gmail.com', '77122231', NULL, NULL, '2021-08-25', '2021-08-25 19:18:36', 1, 0, 1, 0, '2021-08-25 19:18:36'),
-(26, 'helo', 'hello', 'world', '2016-06-09', 2, 'hello@gmail.com', '', NULL, NULL, '2021-08-27', '2021-08-27 14:38:20', 1, 0, 1, 0, '2021-09-06 09:26:05');
+(9, 'vip3022', 'vipul', 'gupta', '2021-08-02', 2, 'itsmevipulgupta.2011@gmail.com', '', '', 'hello', '2021-08-20 00:00:00', '2021-09-12 12:51:54', 1, 0, 1, 0, '2021-09-06 09:25:56'),
+(10, 'anajal', 'anjali', 'gupta', '2021-08-11', 2, 'itsanjali@gmail.com', '', NULL, 'hello', '2021-08-20 00:00:00', '2021-08-20 13:31:31', 1, 0, 1, 0, '2021-09-06 09:26:14'),
+(11, 'kajalll', 'kajal', 'gupta', '2021-08-24', 2, 'kajal@gmail.com', '9818223311', NULL, 'hello', '2021-08-20 00:00:00', '2021-08-20 14:11:58', 1, 0, 1, 0, '2021-08-21 14:58:32'),
+(12, 'raman', 'raman', 'bansal', '2021-08-16', 2, 'raman1@gmail.com', '98811', '', 'hello', '2021-08-20 00:00:00', '2021-09-11 15:01:06', 1, 0, 1, 0, '2021-08-21 14:58:32'),
+(13, 'vipul', 'vipul', 'gupta', '2021-09-01', 2, 'bluecubinc@gmail.com', '9818633496', NULL, 'hello', '2021-08-20 00:00:00', '2021-08-20 18:47:27', 1, 0, 1, 0, '2021-08-21 14:58:32'),
+(21, 'mokshhhhh', 'moksh', 'babbar', '2001-03-02', 2, 'maksh@gmail.com', '', NULL, NULL, '2021-08-25 00:00:00', '2021-08-25 19:13:04', 1, 0, 1, 0, '2021-08-25 19:13:04'),
+(22, 'kusummmm', 'kusum', 'ramola', '2008-03-02', 2, 'kusum@gmail.com', '77122231', NULL, NULL, '2021-08-25 00:00:00', '2021-08-25 19:18:36', 1, 0, 1, 0, '2021-08-25 19:18:36'),
+(26, 'helo', 'hello', 'world', '2016-06-09', 2, 'hello@gmail.com', '', NULL, NULL, '2021-08-27 00:00:00', '2021-08-27 14:38:20', 1, 0, 1, 0, '2021-09-06 09:26:05');
 
 -- --------------------------------------------------------
 
@@ -161,7 +194,7 @@ ALTER TABLE `userSecurityInfo`
 -- AUTO_INCREMENT for table `postInfo`
 --
 ALTER TABLE `postInfo`
-  MODIFY `post_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `post_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `userInfo`
