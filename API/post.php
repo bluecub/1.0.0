@@ -19,7 +19,14 @@
         $condition = array('user_ID'=>[12, 26, 12, 22]);
         $orderBy = 'updatedAt';
         $result = $query->getDataWithOr($postInfoTable, '*', $condition, $orderBy, "DESC", $limit, $offset);
-        echo $result;
+
+        if($result){
+            print_r(json_encode($result));
+        }
+        else{
+            echo "0";
+        }
+        
     }
 
 ?>

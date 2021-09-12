@@ -23,6 +23,17 @@
 ?>
     <!-- main display area -->
     
+    <!-- post create modal (created by vipul) write code for post creation here -->
+    <div class="modalWrapper flex" id="postCreateWrapper">
+        <div id="postCreateModal" class="container">    
+            <div class="row">
+                <div class="col-8 col-sm-12">
+                    <button onclick="closeModal(this)"><span class="material-icons">close</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container everyPageShadow borderBox" id="displayArea">
 
         <!--tagged row-->
@@ -58,8 +69,9 @@
 
         <!-- ends here-->
         <!-- post and stock price row -->
+        <!-- place the add button where ever you want (created by vipul)-->
         <div class="row" id="headingRow">
-            <div class="col-12 col-12-sm headings Center borderBox" id="postHeading">Posts</div>
+            <div class="col-12 col-12-sm headings Center borderBox flex" id="postHeading">Posts <button id="postCreateModalButton" onclick="openPostCreateModal(this)"><span class="material-icons">add</span></button></div>
         </div>
         
 
@@ -147,14 +159,11 @@
                 <!-- ends here -->
             </div>
 
-            <!--------------------------- I dont't like it -------------------------------->
-            <!-- <div class="col-4 hidden-sm stockPrice"></div> -->
-
         </div>
         <!-- ends here-->
     </div>
 
-    <!-- <script src="admin/javascript/feedPage.js"></script> -->
+    <script src="admin/javascript/feedPage.js"></script>
 
 <?php
     //including footer

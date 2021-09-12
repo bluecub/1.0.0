@@ -4,9 +4,11 @@
 $databaseName = "blueCub";
 $userInfoTable = "userInfo";
 $userSecurityInfoTable = "userSecurityInfo";
-$userAccountStatusTable = "userAccountStatus";
 $followInfoTable = "followInfo";
 $postInfoTable = 'postInfo';
+$postActivityTable = "postActivity";
+$postTotalActivityTable = "postActivityTable";
+
 
 //path to upload files
 $postImage = "../assets/";
@@ -53,60 +55,41 @@ class basicFunctions{
         };
         return false;
     }
-    public static function validatePhoto($fileName){
+    //function to validate an image file
+    public static function validateImage($fileName){
 
-        $target_dir = "../assets/postImages/";
-        $target_file = $target_dir . basename($_FILES[$fileName]["name"]);
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $totalFiles = count($_FILES[$fileName]['tmp_name']);
+        //initialize the error array
+        $errorArray = array();
 
-        // Check if image file is a actual image or fake image
-        if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES[$fileName]["tmp_name"]);
-            if($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
-                $uploadOk = 1;
-            } else {
-                echo "File is not an image.";
-                $uploadOk = 0;
-            }
-        }
+        for($i=0; $i<$totalFiles; $i++){
 
-        // Check if file already exists
-        if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
-            $uploadOk = 0;
-        }
-
-        // Check file size
-        if ($_FILES[$fileName]["size"] > 50000000) {
-            echo "Sorry, your file is too large.";
-            $uploadOk = 0;
-        }
-
-        // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-        && $imageFileType != "gif" && $imageFileType != "heic" ) {
-            echo "Sorry, only JPG, JPEG, PNG, heic & GIF files are allowed.";
-            $uploadOk = 0;
-        }
-
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
-            // if everything is ok, try to upload file
-        } 
-        else {
-            if (move_uploaded_file($_FILES[$fileName]["tmp_name"], $target_file)) {
-                echo "The file ". htmlspecialchars( basename( $_FILES[$fileName]["name"])). " has been uploaded.";
-            }else {
-                echo "Sorry, there was an error uploading your file.";
-            }
-        }
+            $target_file =  basename($_FILES[$fileName]["name"][$i]);
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         
+            // Check if image file is a actual image or fake image
+
+            $check = getimagesize($_FILES[$fileName]["tmp_name"][$i]);
+            if($check == false) {
+                $errorArray['error'] = "Not an Image";
+                return $errorArray;
+            } 
+            // Check file size
+            if ($_FILES[$fileName]["size"][$i] > 50000000) {
+                $errorArray['error'] = "Max size of file is 50MB";
+                return $errorArray;
+            }
+            
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+                $errorArray['error'] = 'Wrong extension';
+                return $errorArray;
+            }
+            
+        }
+
+        return true;
 
     }
-
     //function to check if the user is logged in or not
     public static function isLoggedIn(){
 
