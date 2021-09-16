@@ -124,6 +124,9 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 .overFlowHidden{
     overflow: hidden;
 }
+.overFlowScroll{
+    overflow: scroll;
+}
 
 .font-13{
     font-size:13px;
