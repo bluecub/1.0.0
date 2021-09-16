@@ -38,6 +38,9 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 .backgroundNav{
     background-color:#83cee1;
 }
+.backgroundDarkBlue{
+    background-color:/*#83cee1;*/#6990f2 !important;
+}
 .backgroundb{
     background-color:#caf0f8;
 }
@@ -70,6 +73,9 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 .button:hover{
     border-bottom:solid 2px white;
     box-sizing: border-box;
+}
+.hoverPointer:hover{
+    cursor: pointer;
 }
 /* ends here */
 /* links */

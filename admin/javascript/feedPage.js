@@ -137,7 +137,7 @@ function previewImages(input, height, width) {
             const img = document.createElement("img");
             img.src = URL.createObjectURL(input.files[i]);
             img.height = height;
-            img.width = width;
+            img.width = width; 
             img.onload = function() {
                 URL.revokeObjectURL(input.src);
             }
@@ -152,7 +152,15 @@ function previewImages(input, height, width) {
 function openPostCreateModal(e){
     document.getElementById('postCreateWrapper').style.display = "flex";
 }
+// to close the modal
+
+closeButton = document.getElementById('postCreateModalClose')
+closeButton.addEventListener('click', closeModal);
 
 function closeModal(e){
-    e.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+    e.preventDefault();
+    closeButton.parentElement.parentElement.parentElement.style.display = "none";
 }
+
+//initally closing it
+closeButton.parentElement.parentElement.parentElement.style.display = "none";
