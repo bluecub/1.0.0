@@ -159,8 +159,8 @@ closeButton.addEventListener('click', closeModal);
 
 function closeModal(e){
     e.preventDefault();
-    closeButton.parentElement.parentElement.parentElement.style.display = "none";
+    closeButton.parentElement.parentElement.parentElement.parentElement.style.display = "none";
 }
 
 //initally closing it
-closeButton.parentElement.parentElement.parentElement.style.display = "none";
+closeButton.parentElement.parentElement.parentElement.parentElement.style.display = "none";

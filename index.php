@@ -24,9 +24,10 @@
     <!-- main display area -->
     
     <!-- post create modal (created by vipul) write code for post creation here -->
-    <div class="modalWrapper flex overFlowScroll" id="postCreateWrapper">
+<div class="modalWrapper flex " id="postCreateWrapper">
+    <div class="container wrapper overFlowScroll border5  backgroundw " >
 
-        <form class="container  border5  backgroundw" action="" method="" id="createPostForm">
+        <form  action="" method="" id="createPostForm">
 
             <div class="col-8 col-sm-12 closeButton">
                 <button type="button" class=" backgroundw borderNone hoverPointer" id="postCreateModalClose"><span class="material-icons md-red">close</span></button>
@@ -43,10 +44,11 @@
                 <div class="col-1 col-1-sm"></div>
                 <input type="file" name='images[]' multiple accept="video/*|image/*" id="postImageInput">
                 <label for="postImageInput">
-                    <div class="col-10 col-10-sm borderdashed hoverPointer" id="imgPreview">
-                        <div class="addImg imgBox flex hoverPointer">
+                    <div class="col-10 col-10-sm borderdashed hoverPointer border5" id="imgPreview">
+                        <div class="imgBox "></div>
+                        <div class="addImg ismgBox flex  hoverPointer">
                             <div><span class="material-icons md-25 md-blue">cloud_upload </span></div>
-                            <p class="p">Browse Files</p>
+                            <p class="color font15 p">Browse Files</p>
                         </div>
                     </div>
                 </label>
@@ -94,6 +96,7 @@
             </div>
         </form>
     </div>
+</div>
 
     <div class="container everyPageShadow borderBox" id="displayArea">
 
@@ -102,7 +105,7 @@
             <div class="col-3 col-3-sm" id="tagHeadingCol">
                 <div class="container">
                     <div class="row">
-                        <div class="Col-12 col-12-sm Center" id="tagHeading">Tagged Posts</div>
+                        <div class="col-12 col-12-sm Center" id="tagHeading">Tagged Posts</div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-12-sm font-13 Center" id="tagInfo">See all posts that you have tagged</div>
@@ -157,7 +160,7 @@
                             <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
                             <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
                             <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>
-                            <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">filter_list</span></button>
+                            <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>
                         </div>
                     </div>
                     <div class="row captionRow">

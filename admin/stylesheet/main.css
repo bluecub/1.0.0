@@ -65,6 +65,15 @@ and it contradicts something at the bottom of the page the bottom one will be fo
     overflow:hidden;
     box-sizing:border-box;
 }
+.borderdashed{
+    border:2px dashed #6990f2;
+}
+.border10{
+    border-radius: 10px;
+}
+.border5{
+    border-radius: 5px;
+}
 /* ends here  */
 /* buttons */
 .button{
@@ -130,6 +139,16 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 
 .font-13{
     font-size:13px;
+}
+.font30{
+    font-size:30px;
+}
+.font15{
+    font-size:15px;
+}
+/* font color */
+.color{
+    color:#6990f2;
 }
 /* this the form elements styling like input box, checkbox,submit button*/
 /* -------- every text like username, pasword etc input type ------ */
@@ -223,6 +242,12 @@ this is just the styling and animation of the submit button */
 .material-icons.md-24 { font-size: 24px; }
 .material-icons.md-18{font-size:18px; }
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
+.material-icons.md-30 { font-size: 30px; }
+.material-icons.md-44 { font-size: 44px; }
+.material-icons.md-blue {color:#6990f2;}
+.material-icons.md-25 {font-size:50px;}
+.material-icons.md-30 {font-size:30px;}
+.material-icons.md-17 {font-size:17px;}
 /* ends here */
 
 /* navbar elements positioning */
@@ -372,7 +397,7 @@ this is just the styling and animation of the submit button */
 }
 ::-webkit-scrollbar-thumb{
     border-radius: 7px;
-    background-color:rgb(41, 40, 40);
+    background-color:#d3d3d3;
     
 }
 ::-webkit-scrollbar-track-piece {
