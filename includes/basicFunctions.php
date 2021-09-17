@@ -64,7 +64,7 @@ class basicFunctions{
 
         for($i=0; $i<$totalFiles; $i++){
 
-            $target_file =  basename($_FILES[$fileName]["name"][$i]);
+            $target_file = basename($_FILES[$fileName]["name"][$i]);
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         
             // Check if image file is a actual image or fake image
@@ -87,9 +87,15 @@ class basicFunctions{
             
         }
 
-        return true;
+        return $imageFileType;
 
     }
+
+    //function to check if a file exists or not
+    public static function exists($path){
+        return file_exists($path);
+    }
+
     //function to check if the user is logged in or not
     public static function isLoggedIn(){
 

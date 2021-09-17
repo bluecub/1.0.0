@@ -23,80 +23,78 @@
 ?>
     <!-- main display area -->
     
-    <!-- post create modal (created by vipul) write code for post creation here -->
-<div class="modalWrapper flex " id="postCreateWrapper">
-    <div class="container wrapper overFlowScroll border5  backgroundw " >
+    <!-- post create modal (created by vipul) write code for post creation here  action="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST" -->
+    <div class="modalWrapper flex" id="postCreateWrapper">
+        <div class="container wrapper overFlowScroll backgroundw border10" >
 
-        <form  action="" method="" id="createPostForm">
+            <form  id="createPostForm">
 
-            <div class="col-8 col-sm-12 closeButton">
-                <button type="button" class=" backgroundw borderNone hoverPointer" id="postCreateModalClose"><span class="material-icons md-red">close</span></button>
-            </div> 
+                <div class="col-8 col-sm-12 closeButton">
+                    <button type="button" class=" backgroundw borderNone hoverPointer" id="postCreateModalClose"><span class="material-icons md-red">close</span></button>
+                </div> 
 
-            <div class="row">
-
-                <div class="col-12 col-12-sm stylebar5"></div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-12-sm center font30" id="createPostHeading">Create Post</div>
-            </div>
-            <div class="row">
-                <div class="col-1 col-1-sm"></div>
-                <input type="file" name='images[]' multiple accept="video/*|image/*" id="postImageInput">
-                <label for="postImageInput">
-                    <div class="col-10 col-10-sm borderdashed hoverPointer border5" id="imgPreview">
-                        <div class="imgBox "></div>
-                        <div class="addImg ismgBox flex  hoverPointer">
-                            <div><span class="material-icons md-25 md-blue">cloud_upload </span></div>
-                            <p class="color font15 p">Browse Files</p>
-                        </div>
+                <div class="row">
+                    <div class="col-12 col-12-sm stylebar5"></div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-12-sm center font30" id="createPostHeading">Create Post</div>
+                </div>
+                <div class="row">
+                    <div class="col-1 col-1-sm"></div>
+                    <input type="file" name='images[]' multiple accept="video/*|image/*" id="postImgVidInput" onchange="previewImages(this);"> 
+                    <div class="col-10 col-10-sm borderdashed border5" id="imgPreview">
+                        <label for="postImgVidInput" class="hoverPointer">
+                            <div class="addImg imgBox flex  hoverPointer">
+                                <div><span class="material-icons md-25 md-blue">cloud_upload </span></div>
+                                <p class="color font15 p">Browse Files</p>
+                            </div>
+                        </label>
                     </div>
-                </label>
-            </div>
-            <div class="row">
-                <div class="col-12 col-12-sm stylebar5"></div>
-            </div>
-            <div class="row">
-                <div class="col-1 col-1-sm"></div>
-                <div class="col-6 col-6-sm color  font15">Caption</div>
-                <div class="col-4 col-4-sm  formatBtn">
-                    <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">format_bold</span></button>
-                    <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">format_italic</span></button>
-                    <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">format_underlined</span></button>
-                    <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">emoji_emotions</span></button>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-1 col-1-sm"></div>
-                <div class="col-10 col-10-sm">
-                    <textarea class="caption borderBox" rows="4" cols="37" maxlength="250"></textarea>
+                <div class="row">
+                    <div class="col-12 col-12-sm stylebar5"></div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-1 col-1-sm"></div>
-                <label class="col-10 col-10-sm color font15">Visibility</label>
-            </div>
-            <div class="row">
-                <div class="col-1 col-1-sm"></div>
-                <div class="col-5 col-5-sm">
-                    <input type="radio" name="visibility" class="hoverPointer" id="postCreatePublic"><label for="postCreatePublic" class="hoverPointer">Public</label> <br>
-                    <input type="radio" name="visibility" class="hoverPointer" id="postCreateFollowers"><label for="postCreateFollowers" class="hoverPointer">Followers</label> <br>
-                    <input type="radio" name="visibility" class="hoverPointer" id="postCreatePrivate"><label for="postCreatePrivate" class="hoverPointer">Private</label>
+                <div class="row">
+                    <div class="col-1 col-1-sm"></div>
+                    <div class="col-6 col-6-sm color  font15">Caption</div>
+                    <div class="col-4 col-4-sm  formatBtn">
+                        <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">format_bold</span></button>
+                        <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">format_italic</span></button>
+                        <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">format_underlined</span></button>
+                        <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">emoji_emotions</span></button>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-4 col-4-sm"></div>
-                <div class="col-4 col-4-sm center">
-                <button type="submit" name="" class="backgroundDarkBlue shadowhover hoverPointer" id="submit"  name="submit"><span class="material-icons" id="subbtn">expand_less</span></button>
+                <div class="row">
+                    <div class="col-1 col-1-sm"></div>
+                    <div class="col-10 col-10-sm">
+                        <textarea class="caption borderBox" id="CreatePostCaption" rows="4" cols="37" maxlength="250" placeholder="What is your post about &#128526;"></textarea>
+                    </div>
                 </div>
-                <div class="col-4 col-4-sm"></div>
-            </div>
-            <div class="row">
-                <div class="col-12 col-12-sm stylebar5"></div>
-            </div>
-        </form>
+                <div class="row">
+                    <div class="col-1 col-1-sm"></div>
+                    <label class="col-10 col-10-sm color font15">Visibility</label>
+                </div>
+                <div class="row">
+                    <div class="col-1 col-1-sm"></div>
+                    <div class="col-5 col-5-sm">
+                        <input value="0" type="radio" name="visibility" class="hoverPointer" id="postCreatePublic" checked><label for="postCreatePublic" class="hoverPointer">Public</label> <br>
+                        <input value="1" type="radio" name="visibility" class="hoverPointer" id="postCreateFollowers"><label for="postCreateFollowers" class="hoverPointer">Followers</label> <br>
+                        <input value="2" type="radio" name="visibility" class="hoverPointer" id="postCreatePrivate"><label for="postCreatePrivate" class="hoverPointer">Private</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-4 col-4-sm"></div>
+                    <div class="col-4 col-4-sm center" id="createPostButton">
+                        <button type="submit" class="backgroundDarkBlue shadowhover hoverPointer" id="submit"  name="submit"><span class="material-icons" id="subbtn">expand_less</span></button>
+                    </div>
+                    <div class="col-4 col-4-sm"></div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-12-sm stylebar5"></div>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
     <div class="container everyPageShadow borderBox" id="displayArea">
 

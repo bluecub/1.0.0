@@ -185,20 +185,20 @@
     z-index: 10000 ;
     padding: 10px;
 }
-#postImageInput{
+#postImgVidInput{
     display: none;
 }
 
 /* ************************************************************************************** */
 
 #createPostForm{
-    margin-top:15px;
+    margin-top:15px; 
     position: relative;
     
 }
 .wrapper{
     width:650px;
-    height:90%;
+    height:fit-content;
     margin:10px auto;
     
 }
@@ -214,11 +214,13 @@
 .imgBox{
     height:90%;
     min-width:500px;
+    position: relative;
 }
 .imgBox{
     height:200px;
     min-width:500px;
     margin-right:20px;
+    position: relative;
 }
 .p{
     margin-top:15px;

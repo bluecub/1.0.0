@@ -86,7 +86,7 @@ function fetchAndFeed(){
         }
 
     }
-    xhr.open('GET', 'API/post.php?user_ID='+user_ID+'&offset='+offset+'&limit='+limit, true);
+    xhr.open('GET', 'API/post.php?fn=get&user_ID='+user_ID+'&offset='+offset+'&limit='+limit, true);
     xhr.send();
     offset+=1;
 
@@ -129,23 +129,46 @@ setInterval(updateLastActive, 30000);
 
 
 /////////////////// this is the function to preview the uploaded images without submiting the form ///////////////
-
-function previewImages(input, height, width) {
+// this array will be used to exclude the deletes images as they can't be deleted from the files object
+var removedImages = {};
+var uploadCount = 0;
+function previewImages(input) {
+    var imagePreview = document.getElementById("imgPreview");
+    for(var i = 0; i<uploadCount; i++){
+        deleteImage(i);
+    }
+    removedImages = {};
+    uploadCount=0;
     if (input.files.length) {
         for(var i =0; i<input.files.length; i++){
-            
             const img = document.createElement("img");
             img.src = URL.createObjectURL(input.files[i]);
-            img.height = height;
-            img.width = width; 
+            img.classList.add("fullSize");
+            imagePreview.innerHTML+= '<div class="imgBox overflowHidden" id='+uploadCount+'><div class="imageDelete closeButton">\
+            <button type="button" class="borderNone hoverPointer border10" onclick="deleteImage('+uploadCount+');"><span class="material-icons md-red">close</span></button>\
+            </div></div>';
             img.onload = function() {
                 URL.revokeObjectURL(input.src);
             }
-            document.getElementById('test').appendChild(img);
+            document.getElementById(uploadCount).appendChild(img);
+            uploadCount++;
         }
     }
+
 }
 
+////////////////// function to delete image from create post modal /////////////////////
+
+function deleteImage(id){
+
+    removedImages[id] = 1;
+    var element = document.getElementById(id);
+    if(element){
+        element.remove();
+    }
+    console.log(removedImages);
+
+}
 
 
 ////////////////////////////////// post create modal js ////////////////////////////
@@ -163,4 +186,54 @@ function closeModal(e){
 }
 
 //initally closing it
-closeButton.parentElement.parentElement.parentElement.parentElement.style.display = "none";
+closeButton.click();
+
+//submiting the form 
+createPostEle = document.getElementById('createPostForm');
+createPostEle.addEventListener('submit',createPost);
+
+
+function createPost(e){
+    e.preventDefault();
+
+    //creating a form data element to send with ajax request
+    var fd = new FormData();
+
+    //lets start by taking the data from each field.
+    var visibilityEle = document.getElementsByName("visibility");
+    var visibility = 0;
+
+    for(var i =0; i<visibilityEle.length; i++){
+        if(visibilityEle[i].type == "radio"){
+            if(visibilityEle[i].checked){
+                visibility = visibilityEle[i].value;
+            }
+        }
+    }
+    fd.append("visibility", visibility);
+    
+    var caption = document.getElementById("CreatePostCaption").value;
+
+    fd.append("caption", caption);
+    
+    var imgVid = document.getElementById("postImgVidInput");
+
+    for(var i =0; i<imgVid.files.length; i++){
+        if(!removedImages[i]){
+            fd.append("imgVid[]", imgVid.files[i]);
+        }
+    }
+    fileName = "";
+    if(fd.getAll("imgVid[]")){
+        fileName = "imgVid";
+    }
+    console.log(fileName)
+    var xhr = new XMLHttpRequest();
+    xhr.onload = ()=>{
+           console.log(xhr.responseText)
+    }
+    xhr.open("POST", "API/post.php?fileName="+fileName+"&fn=set&user_ID="+user_ID, true);
+    xhr.send(fd);
+    closeButton.click();
+
+}
