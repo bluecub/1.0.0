@@ -155,31 +155,57 @@ var uploadCount = 0;
 function previewImages(input) {
     var imagePreview = document.getElementById("imgPreview");
     for(var i = 0; i<uploadCount; i++){
-        deleteImage(i);
+        deleteFile(i);
     }
     removedImages = {};
     uploadCount=0;
     if (input.files.length) {
         for(var i =0; i<input.files.length; i++){
-            const img = document.createElement("img");
-            img.src = URL.createObjectURL(input.files[i]);
-            img.classList.add("fullSize");
-            imagePreview.innerHTML+= '<div class="imgBox overflowHidden" id='+uploadCount+'><div class="imageDelete closeButton">\
-            <button type="button" class="borderNone hoverPointer border10" onclick="deleteImage('+uploadCount+');"><span class="material-icons md-red">close</span></button>\
-            </div></div>';
-            img.onload = function() {
-                URL.revokeObjectURL(input.src);
+            
+            var fileExtension = input.files[i]['name'].split(".")[1];
+            
+            if(fileExtension != "mp4"){
+                const img = document.createElement("img");
+                img.src = URL.createObjectURL(input.files[i]);
+                img.classList.add("fullSize");
+                imagePreview.innerHTML+= '\
+                    <div class="imgBox overflowHidden backgroundDark border5" id='+uploadCount+'>\
+                        <div class="imageDelete closeButton">\
+                            <button type="button" class="borderNone hoverPointer border10" onclick="deleteFile('+uploadCount+');"><span class="material-icons md-red">close</span></button>\
+                        </div>\
+                    </div>';
+                img.onload = function() {
+                    URL.revokeObjectURL(input.src);
+                }
+                document.getElementById(uploadCount).appendChild(img);
             }
-            document.getElementById(uploadCount).appendChild(img);
+            else{
+                const source = document.createElement("source");
+                source.src = URL.createObjectURL(input.files[i]);
+                source.type = "video/mp4";
+                imagePreview.innerHTML+= '\
+                    <div class="imgBox overflowHidden backgroundDark border5" id='+uploadCount+'>\
+                        <div class="imageDelete closeButton">\
+                            <button type="button" class="borderNone hoverPointer border10" onclick="deleteFile('+uploadCount+');"><span class="material-icons md-red">close</span></button>\
+                        </div>\
+                        <video class="fullSize" id = "vid'+uploadCount+'" autoplay muted>\
+                            Your browser does not support the video tag.\
+                        </video> \
+                    </div>';
+                source.onload = function() {
+                    URL.revokeObjectURL(input.src);
+                }
+                document.getElementById('vid'+uploadCount).appendChild(source); 
+            }
             uploadCount++;
         }
     }
 
 }
 
-////////////////// function to delete image from create post modal /////////////////////
+////////////////// function to delete files from create post modal /////////////////////
 
-function deleteImage(id){
+function deleteFile(id){
 
     removedImages[id] = 1;
     var element = document.getElementById(id);
