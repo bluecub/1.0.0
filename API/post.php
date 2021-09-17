@@ -16,7 +16,7 @@
             $offset = $_GET['offset'];
             $limit = $_GET['limit'];
     
-            $condition = array('user_ID'=>[12, 26, 12, 22]);
+            $condition = array('user_ID'=>[12, 26, 12, 22, 9]);
             $orderBy = 'updatedAt';
             $result = $query->getDataWithOr($postInfoTable, '*', $condition, $orderBy, "DESC", $limit, $offset);
     
@@ -32,41 +32,53 @@
                         
             $errorArray = array();
 
-            $targetFile = $user_ID ."_". time();
-            $path = "assets/postImg";
+            $path = "../assets/postImg/";
+            $targetFile = $path;
 
-            $postData = array();
-            $postData['user_ID'] = $user_ID;
+            $visibility = $_POST['visibility'];
 
+            $imagesPath = array();
             $fileName = "";
             $caption = "";
 
-            $fileExtension = "";
-
             if($_GET['fileName'] != ""){
                 $fileName = $_GET['fileName'];
-                $fileExtension = basicFunctions::validateImage($fileName, $path);
-                if(is_array($fileExtension)){
+                $fileExtension = basicFunctions::validateImage($fileName);
+
+                // If there was any error $fileExtension is error
+                if(isset($fileExtension['error'])){
                     echo $fileExtension['error'];
                     die();
                 }
                 else{
-                    // If there is no error $fileExtension is file extension
-                    $targetFile .= $fileExtension;
-                    if(basicFunctions::exists($targetFile)){
-                        $errorArray["error"] = "Please Wait...";
-                        echo $errorArray['error'];
-                        die();
-                    }
-                    else{
-                        if(move_uploaded_file($_FILES[$fileName]["tmp_name"], $target_file)){
-                            
+                    $len = count($fileExtension);
+
+                    for($i=0; $i<$len; $i++){
+                        $imageName = $user_ID . "_". time()."_" . $i.".".$fileExtension[$i];
+                        $targetFile .=  $imageName;
+                        if(move_uploaded_file($_FILES[$fileName]["tmp_name"][$i], $targetFile)){
+                            $imagesPath[] = $imageName;
                         }
+                        else{
+                            $errorArray["error"] = "Somwthing Went Wrong...";
+                            echo $errorArray['error'];
+                            die();
+                        }
+                        $targetFile = $path;  
                     }
+
                 }
             }
+            $imagesPath = implode(",",$imagesPath);
+            $postData = array();
+            $postData['user_ID'] = $user_ID;
+            $postData['type'] = 0;
+            $postData['visibility'] = $visibility;
+            $postData["images"] = $imagesPath;
+
             if($_POST['caption'] != ""){
                 $caption = basicFunctions::escape($_POST['caption']);
+                $postData['text'] = $caption;
             }
             
             if($caption == "" and $fileName == ""){
@@ -74,9 +86,12 @@
                 echo $errorArray['error'];
                 die();
             }
-            
-        
-            //$query->addData($postInfoTable, );
+            $result = $query->addData($postInfoTable, $postData);
+            if($result){
+                echo "Some Thing Went wrong From Server Side!!";
+                die();
+            }
+            echo true;
 
         }
     }

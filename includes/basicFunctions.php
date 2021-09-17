@@ -59,13 +59,18 @@ class basicFunctions{
     public static function validateImage($fileName){
 
         $totalFiles = count($_FILES[$fileName]['tmp_name']);
+        
         //initialize the error array
         $errorArray = array();
-
+        $imageFileType = array();
+        if($totalFiles>10){
+            $errorArray['error'] = "Max 10 Files are allowed!!";
+            return $errorArray;
+        }
         for($i=0; $i<$totalFiles; $i++){
 
             $target_file = basename($_FILES[$fileName]["name"][$i]);
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            $imageFileType[$i] = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         
             // Check if image file is a actual image or fake image
 
@@ -80,7 +85,7 @@ class basicFunctions{
                 return $errorArray;
             }
             
-            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "gif") {
+            if($imageFileType[$i] != "jpg" && $imageFileType[$i] != "png" && $imageFileType[$i] != "jpeg" && $imageFileType[$i] != "gif") {
                 $errorArray['error'] = 'Wrong extension';
                 return $errorArray;
             }
