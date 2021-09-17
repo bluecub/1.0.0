@@ -166,58 +166,6 @@
                     </div>
                 </div>
 
-                <div class=" postContainer">
-                    <div class="row usernameRow">
-                        <div class="col-6 col-6-sm DPBox flexAlign">
-                            <div class="DP overFlowHidden"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
-                            <div class="userNamePost">UserName</div>
-                        </div>
-                        <div class="col-5 col-5-sm"></div>
-                        <div class="col-1 col-1-sm bookmarkBtnBox flex">
-                            <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons md-lights textShadowGray md-24">bookmark_border</span></button>
-                        </div>
-                    </div>
-                    <div class="row postRow">
-                        <div class="col-11 col-11-sm postBoxHeight post overFlowHidden borderBox"><img class="postContentBox" src="./assets/profilePictures/images (2).jpeg" alt=""></div>
-                        <div class="col-1 col-1-sm postBoxHeight postButtonsBox flex">
-                            <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
-                            <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
-                            <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>
-                            <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">filter_list</span></button>
-                        </div>
-                    </div>
-                    <div class="row captionRow">
-                        <div class="col-10 col-10-sm caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi nulla deserunt numquam asperiores excepturi facilis, molestiae recusandae enim exercitationem perferendis debitis tempore excepturi facilis, molestiae recusandae enim exercitationem perferendis debitis tempore <a href="">read more...</a></div>
-                    </div>
-                </div>
-
-                <div class=" postContainer">
-                    <div class="row usernameRow">
-                        <div class="col-6 col-6-sm DPBox flexAlign">
-                            <div class="DP overFlowHidden"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
-                            <div class="userNamePost">UserName</div>
-                        </div>
-                        <div class="col-5 col-5-sm"></div>
-                        <div class="col-1 col-1-sm bookmarkBtnBox flex">
-                            <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons md-lights textShadowGray md-24">bookmark_border</span></button>
-                        </div>
-                    </div>
-                    <div class="row postRow">
-                        <div class="col-11 col-11-sm postBoxHeight post overFlowHidden borderBox"><img class="postContentBox" src="./assets/profilePictures/images.jpeg" alt=""></div>
-                        <div class="col-1 col-1-sm postBoxHeight postButtonsBox flex">
-                            <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
-                            <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
-                            <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>
-                            <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">filter_list</span></button>
-                        </div>
-                    </div>
-                    <div class="row captionRow">
-                        <div class="col-10 col-10-sm caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi nulla deserunt numquam asperiores excepturi facilis, molestiae recusandae enim exercitationem perferendis debitis tempore excepturi facilis, molestiae recusandae enim exercitationem perferendis debitis tempore <a href="">read more...</a></div>
-                    </div>
-                </div>
-
-
-                
                 <!-- ends here -->
             </div>
 

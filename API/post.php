@@ -32,18 +32,20 @@
                         
             $errorArray = array();
 
-            $path = "../assets/postImg/";
-            $targetFile = $path;
+            $imgPath = "../assets/postImg/";
+            $vidPath = "../assets/postVid/";
+            $targetFile = $imgPath;
 
             $visibility = $_POST['visibility'];
 
-            $imagesPath = array();
+            $imagesFilePath = array();
+            $videosFilePath = array();
             $fileName = "";
             $caption = "";
 
             if($_GET['fileName'] != ""){
                 $fileName = $_GET['fileName'];
-                $fileExtension = basicFunctions::validateImage($fileName);
+                $fileExtension = basicFunctions::validateFile($fileName);
 
                 // If there was any error $fileExtension is error
                 if(isset($fileExtension['error'])){
@@ -54,27 +56,43 @@
                     $len = count($fileExtension);
 
                     for($i=0; $i<$len; $i++){
-                        $imageName = $user_ID . "_". time()."_" . $i.".".$fileExtension[$i];
-                        $targetFile .=  $imageName;
-                        if(move_uploaded_file($_FILES[$fileName]["tmp_name"][$i], $targetFile)){
-                            $imagesPath[] = $imageName;
+                        $tmpName = $user_ID . "_". time()."_" . $i.".".$fileExtension[$i];
+                        if($fileExtension[$i] == "mp4"){
+                            $targetFile = $vidPath . $tmpName;
+                            if(move_uploaded_file($_FILES[$fileName]["tmp_name"][$i], $targetFile)){
+                                $videosFilePath[] = $tmpName;
+                            }
+                            else{
+                                $errorArray["error"] = "Somwthing Went Wrong...";
+                                echo $errorArray['error'];
+                                die();
+                            }
                         }
                         else{
-                            $errorArray["error"] = "Somwthing Went Wrong...";
-                            echo $errorArray['error'];
-                            die();
+                            $targetFile = $imgPath . $tmpName;
+                            if(move_uploaded_file($_FILES[$fileName]["tmp_name"][$i], $targetFile)){
+                                $imagesFilePath[] = $tmpName;
+                            }
+                            else{
+                                $errorArray["error"] = "Somwthing Went Wrong...";
+                                echo $errorArray['error'];
+                                die();
+                            }
                         }
-                        $targetFile = $path;  
+                        $targetFile .=  $tmpName;
+                        
                     }
 
                 }
             }
-            $imagesPath = implode(",",$imagesPath);
+            $imagesFilePath = implode(",",$imagesFilePath);
+            $videosFilePath = implode(",",$videosFilePath);
             $postData = array();
             $postData['user_ID'] = $user_ID;
             $postData['type'] = 0;
             $postData['visibility'] = $visibility;
-            $postData["images"] = $imagesPath;
+            $postData["images"] = $imagesFilePath;
+            $postData["videos"] = $videosFilePath;
 
             if($_POST['caption'] != ""){
                 $caption = basicFunctions::escape($_POST['caption']);

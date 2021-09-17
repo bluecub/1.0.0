@@ -41,7 +41,6 @@ function fetchAndFeed(){
         if(result != "0"){
             result = JSON.parse(result)[0];
             feedPageAllPosts = document.getElementById('feedPageAllPosts');
-            var userName = "";
             var ID = result['user_ID'];
             console.log(result);
 
@@ -50,33 +49,9 @@ function fetchAndFeed(){
             xhr2.onload = () => {
                 res = xhr2.response;
                 res = JSON.parse(res);
-                userName = res['userName'];
-
-                feedPageAllPosts.innerHTML += '<div class=" postContainer">\
-                \
-                <div class="row usernameRow">\
-                    <div class="col-6 col-6-sm DPBox flexAlign">\
-                        <div class="DP overFlowHidden"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>\
-                        <div class="userNamePost">'+userName+'</div>\
-                    </div>\
-                    <div class="col-5 col-5-sm"></div>\
-                    <div class="col-1 col-1-sm bookmarkBtnBox flex">\
-                        <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons md-lights textShadowGray md-24">bookmark_border</span></button>\
-                    </div>\
-                </div>\
-                <div class="row postRow">\
-                    <div class="col-11 col-11-sm postBoxHeight post overFlowHidden borderBox"><img class="postContentBox" src="./assets/postImg/'+result['images']+'" alt=""></div>\
-                    <div class="col-1 col-1-sm postBoxHeight postButtonsBox flex">\
-                        <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>\
-                        <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>\
-                        <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>\
-                        <button type="button" name="bookmarkBtn" class="postButtons borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">filter_list</span></button>\
-                    </div>\
-                </div>\
-                <div class="row captionRow">\
-                    <div class="col-10 col-10-sm caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi nulla deserunt numquam asperiores excepturi facilis, molestiae recusandae enim exercitationem perferendis debitis tempore excepturi facilis, molestiae recusandae enim exercitationem perferendis debitis tempore <a href="">read more...</a></div>\
-                </div>\
-            </div>'
+                result['userName'] = res['userName'];
+                //finally printing the post
+                feedPageAllPosts.innerHTML += postStructure(result);
             }
             xhr2.open('GET', 'API/userData.php?fn=userData&user_ID='+ID+'&dataNeeded=userName', true);
             xhr2.send();
@@ -89,9 +64,59 @@ function fetchAndFeed(){
     xhr.open('GET', 'API/post.php?fn=get&user_ID='+user_ID+'&offset='+offset+'&limit='+limit, true);
     xhr.send();
     offset+=1;
+    return 1;
 
 }
 
+//this function returns the skeleton of the post 
+function postStructure(data){
+    var postStruct = "";
+
+    postStruct += '\
+    <div class=" postContainer">\
+        <div class="row usernameRow">\
+            <div class="col-6 col-6-sm DPBox flexAlign">\
+                <div class="DP overFlowHidden hoverPointer"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>\
+                <div class="userNamePost hoverPointer">'+data['userName']+'</div>\
+            </div>\
+            <div class="col-5 col-5-sm"></div>\
+            <div class="col-1 col-1-sm bookmarkBtnBox flex">\
+                <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons md-lights textShadowGray md-24">bookmark_border</span></button>\
+            </div>\
+        </div>\
+        <div class="row postRow">';
+            
+        if(data['videos']){
+            postStruct += '\
+            <div class="col-11 col-11-sm postBoxHeight post overFlowHidden borderBox">\
+                <video class="postContentBox" controls>\
+                    <source src="./assets/postVid/'+data['videos']+'" type="video/mp4">\
+                Your browser does not support the video tag.\
+                </video> \
+            </div>'
+        }else if(data['images']){
+            postStruct += '\
+            <div class="col-11 col-11-sm postBoxHeight post overFlowHidden borderBox">\
+                <img class="postContentBox" src="./assets/postImg/'+data['images']+'" alt="">\
+            </div>';
+        }
+
+    postStruct +=  '\
+            <div class="col-1 col-1-sm postBoxHeight postButtonsBox flex">\
+                <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>\
+                <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>\
+                <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>\
+                <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>\
+            </div>\
+        </div>\
+        <div class="row captionRow">\
+            <div class="col-10 col-10-sm caption"> '+data['text']+'</div>\
+        </div>\
+    </div>'
+
+    return postStruct;
+
+}
 
 /*
     this function checks if user has reached the end or not
@@ -103,11 +128,6 @@ window.addEventListener('scroll', ()=> {
         fetchAndFeed();
     }
 })
-
-//initially printing n posts
-for(var i =0; i<5; i++){
-    //fetchAndFeed();
-}
 
 ///////////////////////////////////// Last Scene Check and update code below //////////////////////////////////
 
@@ -224,10 +244,9 @@ function createPost(e){
         }
     }
     fileName = "";
-    if(fd.getAll("imgVid[]")){
+    if(imgVid.value){
         fileName = "imgVid";
     }
-    console.log(fileName)
     var xhr = new XMLHttpRequest();
     xhr.onload = ()=>{
            console.log(xhr.responseText)
@@ -236,4 +255,10 @@ function createPost(e){
     xhr.send(fd);
     closeButton.click();
 
+}
+
+//initially printing n posts
+for(var i =0; i<2; i++){
+    fetchAndFeed();
+    console.log("hello")
 }

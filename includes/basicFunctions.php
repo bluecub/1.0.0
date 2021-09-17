@@ -10,9 +10,6 @@ $postActivityTable = "postActivity";
 $postTotalActivityTable = "postActivityTable";
 
 
-//path to upload files
-$postImage = "../assets/";
-
 class basicFunctions{
 
     protected static $stringPattern = "/^[\w!@#$%^&*()~]*$/";
@@ -56,13 +53,13 @@ class basicFunctions{
         return false;
     }
     //function to validate an image file
-    public static function validateImage($fileName){
+    public static function validateFile($fileName){
 
         $totalFiles = count($_FILES[$fileName]['tmp_name']);
         
         //initialize the error array
         $errorArray = array();
-        $imageFileType = array();
+        $fileType = array();
         if($totalFiles>10){
             $errorArray['error'] = "Max 10 Files are allowed!!";
             return $errorArray;
@@ -70,29 +67,32 @@ class basicFunctions{
         for($i=0; $i<$totalFiles; $i++){
 
             $target_file = basename($_FILES[$fileName]["name"][$i]);
-            $imageFileType[$i] = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            $fileType[$i] = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
         
             // Check if image file is a actual image or fake image
 
-            $check = getimagesize($_FILES[$fileName]["tmp_name"][$i]);
-            if($check == false) {
-                $errorArray['error'] = "Not an Image";
-                return $errorArray;
-            } 
+            if($fileType[$i] != "mp4"){
+                $check = getimagesize($_FILES[$fileName]["tmp_name"][$i]);
+                if($check == false) {
+                    $errorArray['error'] = "Not an Image";
+                    return $errorArray;
+                } 
+            }
+            
             // Check file size
-            if ($_FILES[$fileName]["size"][$i] > 50000000) {
-                $errorArray['error'] = "Max size of file is 50MB";
+            if ($_FILES[$fileName]["size"][$i] > 100000000) {
+                $errorArray['error'] = "Max size of file is 100MB";
                 return $errorArray;
             }
             
-            if($imageFileType[$i] != "jpg" && $imageFileType[$i] != "png" && $imageFileType[$i] != "jpeg" && $imageFileType[$i] != "gif") {
+            if($fileType[$i] != "jpg" && $fileType[$i] != "png" && $fileType[$i] != "jpeg" && $fileType[$i] != "gif" && $fileType[$i] != "mp4") {
                 $errorArray['error'] = 'Wrong extension';
                 return $errorArray;
             }
             
         }
 
-        return $imageFileType;
+        return $fileType;
 
     }
 
