@@ -41,7 +41,7 @@
                 </div>
                 <div class="row">
                     <div class="col-1 col-1-sm"></div>
-                    <input type="file" name='images[]' multiple accept="video/*|image/*" id="postImgVidInput" onchange="previewImages(this);"> 
+                    <input type="file" name='images[]' multiple accept="video/*|image/*" id="postImgVidInput" onchange="previewImages(this);" onclick="deleteAllFiles(this)"> 
                     <div class="col-10 col-10-sm borderdashed border5" id="imgPreview">
                         <label for="postImgVidInput" class="hoverPointer">
                             <div class="addImg imgBox flex  hoverPointer">

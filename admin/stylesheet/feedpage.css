@@ -198,7 +198,8 @@
 }
 .wrapper{
     width:650px;
-    height:fit-content;
+    max-height:90%;
+    height: fit-content;
     margin:10px auto;
     
 }
