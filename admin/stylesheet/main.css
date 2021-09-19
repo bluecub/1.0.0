@@ -143,6 +143,11 @@ and it contradicts something at the bottom of the page the bottom one will be fo
     width: 100%;
     height: 100%;
 }
+.widthMinWidth100{
+    width: 100%;
+    min-width: 100%;
+}
+/* font editing */
 .font-13{
     font-size:13px;
 }

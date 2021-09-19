@@ -43,7 +43,7 @@
                     <div class="col-1 col-1-sm"></div>
                     <input type="file" name='images[]' multiple accept="video/*|image/*" id="postImgVidInput" onchange="previewImages(this);" onclick="deleteAllFiles(this)"> 
                     <div class="col-10 col-10-sm borderdashed border5" id="imgPreview">
-                        <label for="postImgVidInput" class="hoverPointer">
+                        <label for="postImgVidInput" class="hoverPointer widthMinWidth100">
                             <div class="addImg imgBox flex  hoverPointer">
                                 <div><span class="material-icons md-25 md-blue">cloud_upload </span></div>
                                 <p class="color font15 p">Browse Files</p>
@@ -153,7 +153,7 @@
                         </div>
                     </div>
                     <div class="row postRow">
-                        <div class="col-11 col-11-sm postBoxHeight post overFlowHidden borderBox"><img class="postContentBox" src="./assets/profilePictures/Messenger.png" alt=""></div>
+                        <div class="col-11 col-11-sm postBoxHeight post borderBox"><img class="postContentBox widthMinWidth100" src="./assets/profilePictures/Messenger.png" alt=""><img class="postContentBox widthMinWidth100" src="./assets/profilePictures/Messenger.png" alt=""></div>
                         <div class="col-1 col-1-sm postBoxHeight postButtonsBox flex">
                             <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
                             <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
