@@ -153,7 +153,10 @@
                         </div>
                     </div>
                     <div class="row postRow">
-                        <div class="col-11 col-11-sm postBoxHeight post borderBox"><img class="postContentBox widthMinWidth100" src="./assets/profilePictures/Messenger.png" alt=""><img class="postContentBox widthMinWidth100" src="./assets/profilePictures/Messenger.png" alt=""></div>
+                        <div class="col-11 col-11-sm post borderBox">
+                            <img class="postContentBox widthMinWidth100 borderThin" src="./assets/profilePictures/Messenger.png" alt="">
+                            <img class="postContentBox widthMinWidth100 borderThin" src="./assets/profilePictures/Messenger.png" alt="">
+                        </div>
                         <div class="col-1 col-1-sm postBoxHeight postButtonsBox flex">
                             <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
                             <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>

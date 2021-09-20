@@ -73,7 +73,7 @@ function postStructure(data){
     var postStruct = "";
 
     postStruct += '\
-    <div class=" postContainer">\
+    <div class="postContainer" id = '+data['post_ID']+'>\
         <div class="row usernameRow">\
             <div class="col-6 col-6-sm DPBox flexAlign">\
                 <div class="DP overFlowHidden hoverPointer"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>\
@@ -85,20 +85,36 @@ function postStructure(data){
             </div>\
         </div>\
         <div class="row postRow">';
-            
-        if(data['videos']){
-            postStruct += '\
-            <div class="col-11 col-11-sm postBoxHeight post overFlowHidden borderBox">\
-                <video class="postContentBox" controls>\
-                    <source src="./assets/postVid/'+data['videos']+'" type="video/mp4">\
-                Your browser does not support the video tag.\
-                </video> \
-            </div>'
-        }else if(data['images']){
-            postStruct += '\
-            <div class="col-11 col-11-sm postBoxHeight post overFlowHidden borderBox">\
-                <img class="postContentBox" src="./assets/postImg/'+data['images']+'" alt="">\
-            </div>';
+
+        if(data['images'] || data['videos']){
+
+            postStruct += '<div class="col-11 col-11-sm post borderBox backgroundDark">';
+
+            if(data['videos']){
+
+                var vidPath = data['videos'].split(",");
+    
+                for(var i =0; i<vidPath.length; i++){
+                    postStruct += '\
+                    <video class="postContentBox widthMinWidth100 borderThin" controls>\
+                        <source src="./assets/postVid/'+vidPath[i]+'" type="video/mp4">\
+                        Your browser does not support the video tag.\
+                    </video>'   
+                }
+    
+                postStruct += '</div>';
+    
+            }if(data['images']){
+    
+                var imgPath = data['images'].split(",");
+    
+                for(var i =0; i<imgPath.length; i++){
+                    postStruct += '<img class="postContentBox widthMinWidth100 borderThin" src="./assets/postImg/'+imgPath[i]+'" alt="">';
+                }
+    
+                postStruct += '</div>';
+            }
+
         }
 
     postStruct +=  '\
@@ -212,13 +228,14 @@ function deleteFile(id){
     if(element){
         element.remove();
     }
-    console.log(removedImages);
 
 }
 
 function deleteAllFiles(e){
     e.value= "";
-    console.log(e.files)
+    for(var i = 0; i<uploadCount; i++){
+        deleteFile(i);
+    }
 }
 
 

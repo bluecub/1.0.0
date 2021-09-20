@@ -36,7 +36,7 @@ and it contradicts something at the bottom of the page the bottom one will be fo
     background-color:rgb(255, 255, 255);
 }
 .backgroundDark{
-    background-color: #4d4d4d;
+    background-color: #f3f3f3;
 }
 .backgroundNav{
     background-color:#83cee1;
@@ -57,6 +57,11 @@ and it contradicts something at the bottom of the page the bottom one will be fo
     overflow:hidden;
     box-sizing:border-box;
 }
+.borderThin{
+    border:solid 1px #D3D3D3;
+    overflow:hidden;
+    box-sizing:border-box;
+}
 .borderNone{
     border:none;
 }
@@ -65,8 +70,6 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 }
 .borderRight{
     border-right:solid 0.5px #D3D3D3;
-    overflow:hidden;
-    box-sizing:border-box;
 }
 .borderdashed{
     border:2px dashed #6990f2;
