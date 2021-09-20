@@ -97,7 +97,7 @@
     height:50px;
     width:50px;
     border-radius: 25px;
-    background-color: cadetblue;
+    
 }
 .bookmarkBtnBox{
     height:50px;
@@ -125,6 +125,17 @@
     height:50px;
     margin-right:-32%!important;
     width:100%;
+}
+.postBoxHeightCaption{
+    height:60px;
+}
+.postButtonsCaption{
+    height:50px;
+    width:100%;
+}
+.pqr{
+    width:200px;
+    justify-content: space-between;
 }
 .material-icons.likeBtn{
     color:#3fc1c9;
@@ -277,4 +288,51 @@
 .material-icons.md-25 {font-size:50px;}
 .material-icons.md-30 {font-size:30px;}
 .material-icons.md-17 {font-size:17px;}
+.material-icons.md-17 {font-size:13px;}
 /*  */
+
+/* comment box css */
+.commentContainer
+{
+    width:96%;
+    margin:0px auto;
+}
+.CommentArea{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.usernamelikeBox{
+    justify-content: space-between;
+    margin-bottom:10px;
+}
+.comment{
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+.DPcomment{
+    height:70px;
+    width:70px;
+    border-radius: 35px;;
+}
+.commentRow{
+    background-color: rgb(255, 255, 255);
+}
+.borderThinDark{
+    border:solid 2px #caf0f8;
+    overflow:hidden;
+    box-sizing:border-box;
+}
+.inputComment{
+    width:100%;
+    height:fit-content;
+    border-radius: 5px;
+    border:none;
+    padding:3px;
+    resize:none;
+    overflow-y:scroll;
+}
+.inputComment:focus{
+    outline:none;/* to remove border around input box when the inout box is chosen*/
+}
+/* ends here */

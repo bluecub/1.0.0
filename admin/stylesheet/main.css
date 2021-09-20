@@ -15,6 +15,9 @@ and it contradicts something at the bottom of the page the bottom one will be fo
     display:flex;
     align-items: center;
 }
+.flexColumn{
+    flex-direction: column;
+}
 .none{
     display:none;
 }
@@ -163,6 +166,9 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 .font15{
     font-size:15px;
 }
+.font20{
+    font-size:20px;
+}
 /* font color */
 .color{
     color:#6990f2;
@@ -211,6 +217,18 @@ and it contradicts something at the bottom of the page the bottom one will be fo
     font-weight:bold;
     color:white;
 }
+#submitSmall{
+    width: 28px;
+    height:28px;
+    border-radius:14px;
+    border:none;
+    /* if ever we want to give bacjgriund color of the submit button give colour here .. for now it is default as given by class background*/
+}
+#subbtnSmall{
+    font-size:20px;
+    font-weight:bold;
+    color:white;
+}
 @keyframes round{
 	from{transform:rotate(0deg);}
 	to{transform:rotate(90deg);}
@@ -222,8 +240,36 @@ and it contradicts something at the bottom of the page the bottom one will be fo
     animation:round 1s;
     animation-fill-mode: forwards;
 }
-
-
+#submitSmall:hover{
+    /*width:58px;
+    height:58px;
+    border-radius:29px;*/
+    animation:round 1s;
+    animation-fill-mode: forwards;
+}
+#loadMoresmall{ 
+    width: 28px;
+    height:28px;
+    border-radius:14px;
+    border:none;
+    /* if ever we want to give bacjgriund color of the submit button give colour here .. for now it is default as given by class background*/
+}
+#loadMorebtnsmall{
+    font-size:20px;
+    font-weight:bold;
+    color:white;
+}
+#loadMoresmall:hover{
+    /*width:58px;
+    height:58px;
+    border-radius:29px;*/
+    animation:round2 1s;
+    animation-fill-mode: forwards;
+}
+@keyframes round2{
+	from{transform:rotate(270deg);}
+	to{transform:rotate(0deg);}
+}
 /* to position the submit button give the submit button an id and poistion in the particular css 
 this is just the styling and animation of the submit button */
 /* -------- end of submit button -------- */
