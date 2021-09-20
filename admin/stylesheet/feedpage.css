@@ -107,7 +107,7 @@
     height:400px;
 }
 .post{
-    background:rgb(100, 100, 100);
+    background:#83cee1;
     border-radius:5px;
     border: solid 0.5px rgb(221, 221, 221);
     display: flex;

@@ -144,7 +144,9 @@
                 <div class=" postContainer">
                     <div class="row usernameRow">
                         <div class="col-6 col-6-sm DPBox flexAlign">
-                            <div class="DP overFlowHidden hoverPointer"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
+                            <div class="DP overFlowHidden hoverPointer">
+                                <img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt="">
+                            </div>
                             <div class="userNamePost hoverPointer">UserName</div>
                         </div>
                         <div class="col-5 col-5-sm"></div>
@@ -153,7 +155,10 @@
                         </div>
                     </div>
                     <div class="row postRow">
-                        <div class="col-11 col-11-sm postBoxHeight post borderBox"><img class="postContentBox widthMinWidth100" src="./assets/profilePictures/Messenger.png" alt=""><img class="postContentBox widthMinWidth100" src="./assets/profilePictures/Messenger.png" alt=""></div>
+                        <div class="col-11 col-11-sm postBoxHeight post borderBox">
+                            <img class="postContentBox widthMinWidth100" src="./assets/profilePictures/Messenger.png" alt="">
+                            <img class="postContentBox margin2 widthMinWidth100" src="./assets/profilePictures/Messenger.png" alt="">
+                        </div>
                         <div class="col-1 col-1-sm postBoxHeight postButtonsBox flex">
                             <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
                             <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
