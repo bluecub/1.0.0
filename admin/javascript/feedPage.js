@@ -102,7 +102,6 @@ function postStructure(data){
                     </video>'   
                 }
     
-                postStruct += '</div>';
     
             }if(data['images']){
     
@@ -112,9 +111,8 @@ function postStructure(data){
                     postStruct += '<img class="postContentBox widthMinWidth100 borderThin" src="./assets/postImg/'+imgPath[i]+'" alt="">';
                 }
     
-                postStruct += '</div>';
             }
-
+            postStruct += '</div>';
         }
 
     postStruct +=  '\
