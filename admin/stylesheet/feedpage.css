@@ -114,8 +114,7 @@
     overflow-x: auto;
     overflow-y: hidden;
     height: fit-content;
-    max-height: 700px;
-    min-height: 400px !important;
+    max-height: 800px;
 }
 .postButtonsBox{
     flex-direction: column;
@@ -245,7 +244,6 @@
     flex-direction: column;
 }
 .caption{
-    width:100%;
     height:fit-content;
     border-radius: 5px;
     background: #e9f0ff;

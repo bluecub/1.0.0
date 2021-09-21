@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-1 col-1-sm"></div>
                     <div class="col-10 col-10-sm">
-                        <textarea class="caption borderBox" id="CreatePostCaption" rows="4" cols="37" maxlength="250" placeholder="What is your post about &#128526;"></textarea>
+                        <textarea class="caption borderBox widthMinWidth100" id="CreatePostCaption" rows="4" cols="37" maxlength="250" placeholder="What is your post about &#128526;"></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -144,7 +144,7 @@
                 <div class=" postContainer">
                     <div class="row usernameRow">
                         <div class="col-6 col-6-sm DPBox flexAlign">
-                            <div class="DP overFlowHidden hoverPointer"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
+                            <div class="DP overFlowHidden hoverPointer shadowhover"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
                             <div class="userNamePost hoverPointer">UserName</div>
                         </div>
                         <div class="col-5 col-5-sm"></div>
@@ -153,53 +153,57 @@
                         </div>
                     </div>
                     <div class="row postRow">
-                        <div class="col-11 col-11-sm post borderBox">
+                        <div class="col-12 col-12-sm post borderBox">
                             <img class="postContentBox widthMinWidth100 borderThin" src="./assets/profilePictures/Messenger.png" alt="">
                             <img class="postContentBox widthMinWidth100 borderThin" src="./assets/profilePictures/Messenger.png" alt="">
-                        </div>
-                        <div class="col-1 col-1-sm postBoxHeight postButtonsBox flex">
-                            <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
-                            <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
-                            <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>
-                            <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>
                         </div>
                     </div>
                     
-                    <div class="row  captionRow">
-                        <div class="col-10 col-10-sm caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi nulla deserunt numquam asperiores excepturi facilis, molestiae recusandae enim exercitationem perferendis debitis tempore excepturi facilis, molestiae recusandae enim exercitationem perferendis debitis tempore <a href="">read more...</a></div>
+                    <div class="row captionRow">
+                        <div class="col-12 col-12-sm caption borderBox">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla eveniet sunt eligendi, porro facere officia atque non iusto rem, veritatis neque magni quia sit facilis deleniti excepturi animi rerum perspiciatis! Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore consequatur et impedit quis omnis vero, neque quidem esse cumque eligendi labore laudantium nostrum voluptatem numquam commodi. Sunt placeat numquam vel?<a href="">read more...</a></div>
+                    </div>
+                    <div class="row postRow">
+                        <div class="col-12 col-12-sm postBoxHeightCaption postButtonsBox flex ">
+                            <div class="pqr flexAlign ">
+                                <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
+                                <button onclick="toggleDisplayFromID(1_1, this)" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
+                                <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>
+                                <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>
+                            </div>
+                        </div>
                     </div>
                     <!-- comment row do display block when button clicked and display none for post row when button clicked -->
-                    <div class="row  commentRow " >
+                    <div class="row  commentRow none" id = "1" >
                         <div class="commentContainer">
                             
-                            <div class="row inputCommentBox borderThinDark backgroundw border10 flexAlign">
+                            <div class="row inputCommentBox borderThinDark backgroundw border10 flexAlign shadowhover">
                                <div class="col-11 col-11-sm "> <textarea class=" inputComment " rows="2" cols="33" maxlength="250" placeholder="Add Comment ..."></textarea></div>   
-                               <div class="col-1 col-1-sm"><button type="submit" class="backgroundNav shadowhover hoverPointer flex" id="submitSmall"  name="submit"><span class="material-icons" id="subbtnSmall">expand_less</span></button></div>
+                               <div class="col-1 col-1-sm"><button type="button" onclick="createComment(2,3)" class="backgroundNav shadowhover hoverPointer flex" id="submitSmall" ><span class="material-icons" id="subbtnSmall">expand_less</span></button></div>
                              </div>
                             <!-- every row is a comment -->
-                            <div class="row comment  borderThinDark backgroundw border10 flexAlign">
-                            <div class="col-2 col-2-sm flex overFlowHidden hoverPointer "><img class=" DPcomment" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
+                            <div class="row comment  borderThinDark backgroundw border10 flexAlign shadowhover">
+                                <div class="col-2 col-2-sm flex overFlowHidden hoverPointer "><img class=" DPcomment" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
                                 <div class="col-10 col-10-sm CommentArea">
                                     <div class="usernamelikeBox flexAlign ">
-                                        <div class="usernameComment color font20">Username</div>
-                                        <button class="likeComment hoverPointer borderNone backgroundNone" type="button"><span class="material-icons  likeBtn textShadowBlue">favorite_border</span></button>
+                                        <div class="usernameComment color font20 hoverPointer">Username</div>
+                                        <button class="likeComment hoverPointer borderNone backgroundNone hoverPointer" type="button"><span class="material-icons  likeBtn textShadowBlue">favorite_border</span></button>
                                     </div>
                                     <div class="userComment font15">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting 
-                                    industry. Lorem Ipsum has been the industry's standard dummy text ever since 
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting 
+                                        industry. Lorem Ipsum has been the industry's standard dummy text ever since 
                                     </div>
                                 </div>
                             </div>
-                            <div class="row comment  borderThinDark backgroundw border10 flexAlign">
-                            <div class="col-2 col-2-sm flex overFlowHidden hoverPointer "><img class=" DPcomment" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
+                            <div class="row comment  borderThinDark backgroundw border10 flexAlign shadowhover">
+                                <div class="col-2 col-2-sm flex overFlowHidden hoverPointer "><img class=" DPcomment" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
                                 <div class="col-10 col-10-sm CommentArea">
                                     <div class="usernamelikeBox flexAlign ">
                                         <div class="usernameComment color font20">Username</div>
                                         <button class="likeComment hoverPointer borderNone backgroundNone" type="button"><span class="material-icons  likeBtn textShadowBlue">favorite_border</span></button>
                                     </div>
                                     <div class="userComment font15">
-                                    Lorem Ipsum is simply dummy text of the printing and typesetting 
-                                    industry. Lorem Ipsum has been the industry's standard dummy text ever since 
+                                        Lorem Ipsum is simply dummy text of the printing and typesetting 
+                                        industry. Lorem Ipsum has been the industry's standard dummy text ever since 
                                     </div>
                                 </div>
                             </div>
@@ -212,36 +216,6 @@
                     </div>
                     <!-- ends here -->
                 </div>
-                <!-- caption post -->
-                <div class=" postContainer">
-                    <div class="row usernameRow">
-                        <div class="col-6 col-6-sm DPBox flexAlign">
-                            <div class="DP overFlowHidden hoverPointer"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
-                            <div class="userNamePost hoverPointer">UserName</div>
-                        </div>
-                        <div class="col-5 col-5-sm"></div>
-                        <div class="col-1 col-1-sm bookmarkBtnBox flex">
-                            <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons md-lights textShadowGray md-24">bookmark_border</span></button>
-                        </div>
-                    </div>
-                   
-                    <div class="row captionRow">
-                        <div class="col-10 col-10-sm caption">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi nulla deserunt numquam asperiores excepturi facilis, molestiae recusandae enim exercitationem perferendis debitis tempore excepturi facilis, molestiae recusandae enim exercitationem perferendis debitis tempore <a href="">read more...</a></div>
-                    </div>
-                    <div class="row postRow">
-                        
-                        <div class="col-12 col-12-sm postBoxHeightCaption postButtonsBox flex ">
-                            <div class="pqr flexAlign ">
-                                <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
-                                <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
-                                <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>
-                                <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ends here -->
             </div>
 
         </div>

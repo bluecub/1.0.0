@@ -70,7 +70,7 @@
 
         //Function to get data(all parametrized)
         //SELECT $field FROM $table where $condition $order_by_field $order_by_type $limit 
-        public function getData($table, $field = "*", $conditions = array(), $order_by_field = "", $order_by_type = "DESC", $limit = ""){
+        public function getData($table, $field = "*", $conditions = array(), $order_by_field = "", $order_by_type = "DESC", $limit = "", $offset=0){
 
             $query = "SELECT $field FROM $table";
 
@@ -97,6 +97,9 @@
             
             if($limit != ""){
                 $query .= " LIMIT " . $limit;
+            }
+            if($offset != 0){
+                $query .= " OFFSET " . $offset;
             }
             $result = $this->prep_and_run($query);
             return $result;
@@ -134,7 +137,7 @@
                 $query .= " LIMIT " . $limit;
             }
 
-            if($offset != ""){
+            if($offset != 0){
                 $query .= " OFFSET " . $offset;
             }
             $result = $this->prep_and_run($query);

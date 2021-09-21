@@ -19,7 +19,7 @@ class basicFunctions{
     protected static $passwordHashers = ['sha256', 'sha1', 'md5'];
 
     public static function escape($data){
-        return htmlentities($data);
+        return addslashes(htmlspecialchars($data));
     }
 
     public static function validateString($data){

@@ -248,9 +248,9 @@ and it contradicts something at the bottom of the page the bottom one will be fo
     animation-fill-mode: forwards;
 }
 #loadMoresmall{ 
-    width: 28px;
-    height:28px;
-    border-radius:14px;
+    width: 35px;
+    height:35px;
+    border-radius:17.5px;
     border:none;
     /* if ever we want to give bacjgriund color of the submit button give colour here .. for now it is default as given by class background*/
 }
