@@ -173,8 +173,12 @@
                                     <button onclick="toggleDisplayFromID(1_1, this)" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
                                     <div class="countComments font-10 colorGrey">1000</div>
                                 </div>
-                                <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>
-                                <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>
+                                <div class="flex flexColumn">
+                                    <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>
+                                </div>
+                                <div class="flex flexColumn">
+                                    <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>
+                                </div>
                             </div>
                         </div>
                     </div>
