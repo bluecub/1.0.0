@@ -187,8 +187,8 @@
                         <div class="commentContainer">
                             
                             <div class="row inputCommentBox borderThinDark backgroundw border10 flexAlign shadowhover">
-                               <div class="col-11 col-11-sm "> <textarea class=" inputComment " rows="2" cols="33" maxlength="250" placeholder="Add Comment ..."></textarea></div>   
-                               <div class="col-1 col-1-sm"><button type="button" onclick="createComment(2,3)" class="backgroundNav shadowhover hoverPointer flex" id="submitSmall" ><span class="material-icons" id="subbtnSmall">expand_less</span></button></div>
+                               <div class="col-11 col-10-sm "> <textarea class=" inputComment " rows="2" cols="33" maxlength="250" placeholder="Add Comment ..."></textarea></div>   
+                               <div class="col-1 col-2-sm"><button type="button" onclick="createComment(2,3)" class="backgroundNav shadowhover hoverPointer flex" id="submitSmall" ><span class="material-icons" id="subbtnSmall">expand_less</span></button></div>
                              </div>
                             <!-- every row is a comment -->
                             <div class="row comment  borderThinDark backgroundw border10 flexAlign shadowhover">
@@ -196,7 +196,10 @@
                                 <div class="col-10 col-10-sm CommentArea">
                                     <div class="usernamelikeBox flexAlign ">
                                         <div class="usernameComment color font20 hoverPointer">Username</div>
-                                        <button class="likeComment hoverPointer borderNone backgroundNone hoverPointer" type="button"><span class="material-icons  likeBtn textShadowBlue">favorite_border</span></button>
+                                        <div class="flex flexColumn">
+                                            <button class="likeComment hoverPointer borderNone backgroundNone hoverPointer" type="button"><span class="material-icons  likeBtn textShadowBlue">favorite_border</span></button>
+                                            <div class="font-10 colorGrey">1000</div>
+                                        </div>
                                     </div>
                                     <div class="userComment font15">
                                         Lorem Ipsum is simply dummy text of the printing and typesetting 
