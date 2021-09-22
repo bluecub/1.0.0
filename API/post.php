@@ -21,6 +21,24 @@
             $result = $query->getDataWithOr($postInfoTable, '*', $condition, $orderBy, "DESC", $limit, $offset);
     
             if($result){
+                $len = count($result);
+                for($i=0; $i<$len; $i++){
+
+                    $post_ID = $result[$i]['post_ID'];
+                    $author_ID = $result[$i]['user_ID'];
+
+                    $likedStatus = $query->getData($postActivityTable, "*", ['user_ID'=>$user_ID, 'post_ID'=>$post_ID, 'activityType'=>0]);
+                    
+                    if($likedStatus){
+                        $result[$i]['likedStatus'] = 1;
+                    }
+
+                    $userName = $query->getData($userInfoTable, "userName", ['user_ID'=>$author_ID]);
+                    if($userName){
+                        $result[$i]['userName'] = $userName[0]['userName'];
+                    }
+
+                }
                 print_r(json_encode($result));
             }
             else{

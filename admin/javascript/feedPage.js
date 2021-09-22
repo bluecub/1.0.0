@@ -13,6 +13,9 @@ function getCurrUser(){
         var xr = new XMLHttpRequest();
         xr.onload = () => {
             userName = JSON.parse(xr.response)['userName'];
+            //initially printing n posts
+            fetchAndFeed();
+            
         }
         xr.open('GET', 'API/userData.php?fn=userData&dataNeeded=userName&user_ID='+user_ID, true);
         xr.send();
@@ -21,6 +24,7 @@ function getCurrUser(){
     xhr.send();
 
 }
+
 
 //getting the user ID
 getCurrUser();
@@ -32,7 +36,7 @@ getCurrUser();
     defining the global variables(to keep the track of offest used to fetch posts);
 */ 
 offset = 0;
-limit = 1;
+limit = 5;
 
 var postOffsetCount = [];
 
@@ -48,22 +52,13 @@ function fetchAndFeed(){
     xhr.onload = () => {
         result = xhr.response;
         if(result != "0"){
-            result = JSON.parse(result)[0];
-            feedPageAllPosts = document.getElementById('feedPageAllPosts');
-            var ID = result['user_ID'];
-            console.log(result);
+            result = JSON.parse(result);
 
-            //getting the userName of the post author
-            var xhr2 = new XMLHttpRequest();
-            xhr2.onload = () => {
-                res = xhr2.response;
-                res = JSON.parse(res);
-                result['userName'] = res['userName'];
-                //finally printing the post
-                feedPageAllPosts.innerHTML += postStructure(result);
+            for(var i =0; i<result.length; i++){
+                feedPageAllPosts = document.getElementById('feedPageAllPosts');
+                feedPageAllPosts.innerHTML += postStructure(result[i]);
             }
-            xhr2.open('GET', 'API/userData.php?fn=userData&user_ID='+ID+'&dataNeeded=userName', true);
-            xhr2.send();
+
         }
         else{
             feedPageAllPosts.innerHTML += "no more posts left";
@@ -72,13 +67,28 @@ function fetchAndFeed(){
     }
     xhr.open('GET', 'API/post.php?fn=get&user_ID='+user_ID+'&offset='+offset+'&limit='+limit, true);
     xhr.send();
-    offset+=1;
+    offset+=limit;
     return 1;
 
 }
 
 //this function returns the skeleton of the post 
 function postStructure(data){
+
+    var likeButtonType = 'favorite_border';
+    var liked = 0;
+    if(data['likedStatus']){
+        liked = "1";
+        likeButtonType = 'favorite';
+    }
+
+    if(!data['totalLikes']){
+        data['totalLikes'] = 0;
+    }
+    if(!data['totalComments']){
+        data['totalComments'] = 0;
+    }
+
     var postStruct = "";
 
     postStruct += '\
@@ -127,40 +137,108 @@ function postStructure(data){
 
         }
 
+        if(data['text']){
+            postStruct +=  '\
+            <div class="row captionRow">\
+                <div class="col-12 col-12-sm caption borderBox">'+data['text']+'<a href="">read more...</a></div>\
+            </div>'
+        }
+
         postStruct +=  '\
-        <div class="row captionRow">\
-            <div class="col-12 col-12-sm caption borderBox">'+data['text']+'<a href="">read more...</a></div>\
-        </div>\
         <div class="row postRow">\
             <div class="col-12 col-12-sm postBoxHeightCaption postButtonsBox flex ">\
-                <div class="pqr flexAlign ">\
-                    <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>\
-                    <button onclick="toggleDisplayFromID(\'comment_'+data['post_ID']+'\', this)" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>\
-                    <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>\
-                    <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>\
+                <div class="pqr">\
+                    <div class="flex flexColumn">\
+                        <button id = "like_'+data['post_ID']+'_'+liked+'" onclick="likePC('+data['post_ID']+', this, 0, '+data['totalLikes']+')" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">'+likeButtonType+'</span></button>\
+                        <div class="countLikes font-10 colorGrey" id = totalLikes_'+data['post_ID']+'>'+data['totalLikes']+'</div>\
+                    </div>\
+                    \
+                    <div class="flex flexColumn">\
+                        <button onclick="toggleDisplayFromID(\'comment_'+data['post_ID']+'\', this)" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>\
+                        <div id="totalComments_'+data['post_ID']+'" class="countComments font-10 colorGrey">'+data['totalComments']+'</div>\
+                    </div>\
+                    \
+                    <div class="flex flexColumn">\
+                        <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>\
+                    </div>\
+                    \
+                    <div class="flex flexColumn">\
+                        <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>\
+                    </div>\
                 </div>\
             </div>\
-        </div>'
+        </div>';
 
         postStruct += '\
         <div class="row  commentRow none" id = "comment_'+data['post_ID']+'">\
             <div class="commentContainer">\
                 \
-                <div class="row inputCommentBox borderThinDark backgroundw border10 flexAlign shadowhover" >\
+                <div class="row inputCommentBox borderThinDark backgroundw border10 flexAlign shadowhover" id = "loadComment_'+data['post_ID']+'">\
                     <div class="col-11 col-11-sm "><textarea class="inputComment" id="createComment_'+data['post_ID']+'" rows="2" cols="33" maxlength="250" placeholder="Add Comment ..."></textarea></div>\
                     <div class="col-1 col-1-sm"><button type="button" class="backgroundNav shadowhover hoverPointer flex" id="submitSmall" onclick="createCom('+user_ID+', '+data['post_ID']+');"><span class="material-icons" id="subbtnSmall">expand_less</span></button></div>\
                 </div>\
-                <div class="row" id = loadComment_'+data['post_ID']+'>\
+                <div class="row">\
                     <div class="col-12 col-12-sm flex">\
-                        <button type="button" onclick="fetchCom('+data['post_ID']+');" class="backgroundNav shadowhover hoverPointer flex" id="loadMoresmall"  name="submit"><span class="material-icons" id="loadMorebtnsmall">keyboard_double_arrow_down</span></button>\
+                        <button type="button" onclick="fetchCom('+data['post_ID']+');" class="backgroundNav shadowhover hoverPointer flex" id="loadMoresmall" name="submit"><span class="material-icons" id="loadMorebtnsmall">keyboard_double_arrow_down</span></button>\
                     </div>\
                 </div>\
             </div>\
         </div>'
         
-    postStruct += '</div>';
+    postStruct += '\
+    </div>';
 
     return postStruct;
+
+}
+
+//function to like a post or comment
+function likePC(parent_ID, element, type, totalLikes){
+    
+    var liked = element.id.split("_")[2];
+    if(liked == "1"){
+
+        var xhr = new XMLHttpRequest();
+        xhr.onload = () =>{
+
+            if(xhr.response == "0"){
+                window.alert("something Went Wrong")
+            }
+            var totalLikesField = document.getElementById('totalLikes_'+parent_ID);
+            var totalLikes = parseInt(totalLikesField.innerHTML);
+            totalLikesField.innerHTML = (totalLikes - 1).toString();
+    
+            element.firstChild.innerHTML = "favorite_border";
+            element.id = "like_"+parent_ID+"_"+"0";
+
+        }
+        //!!!!!!!!!!!!!!!! remove total likes and total comments if not needed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+        xhr.open("GET", 'API/likeAndComment.php?fn=setLike&liked='+liked+'&parentType='+type+'&user_ID='+user_ID+'&parent_ID='+parent_ID);
+        xhr.send();
+
+    }
+    else{
+
+        var xhr = new XMLHttpRequest();
+        xhr.onload = () =>{
+
+            if(xhr.response == "0"){
+                window.alert("something Went Wrong")
+            }
+            var totalLikesField = document.getElementById('totalLikes_'+parent_ID);
+            var totalLikes = parseInt(totalLikesField.innerHTML);
+            totalLikesField.innerHTML = (totalLikes + 1).toString();
+    
+            element.firstChild.innerHTML = "favorite";
+            element.id = "like_"+parent_ID+"_"+"1";
+
+        }
+        //!!!!!!!!!!!!!!!! remove total likes and total comments if not needed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
+        xhr.open("GET", 'API/likeAndComment.php?fn=setLike&totalLikes='+totalLikes+'&liked='+liked+'&parentType='+type+'&user_ID='+user_ID+'&parent_ID='+parent_ID);
+        xhr.send();
+    }
+
+
 
 }
 
@@ -168,15 +246,13 @@ function postStructure(data){
 function fetchCom(post_ID){ 
 
     //processing parameters to fetch comments
-    if(postOffsetCount[post_ID] == 0 || postOffsetCount[post_ID]){
-        postOffsetCount[post_ID] += 4;
-    }
-    else{
+    if(!postOffsetCount[post_ID]){
         postOffsetCount[post_ID] = 0;
     }
-    var limit = 4;
-    var offset = postOffsetCount[post_ID];
-    
+
+    var comLimit = 4;
+    var comOffset = postOffsetCount[post_ID];
+
     //fetching comments by ajax
     var xhr =new XMLHttpRequest();
     xhr.onload = () => {
@@ -184,18 +260,16 @@ function fetchCom(post_ID){
         console.log(result)
         if(result.length){
             for(var i =0; i<result.length; i++){
+                postOffsetCount[post_ID]++;
                 var insertBeforeEle = document.getElementById('loadComment_'+post_ID);
-                var commentBox = commentStructure(i, post_ID, result[i]);                
+                var commentBox = commentStructure(postOffsetCount[post_ID], post_ID, result[i]);                
                 insertBeforeEle.insertAdjacentElement('beforebegin', commentBox);
             }
         }
-        else{
-            postOffsetCount[post_ID] -= 4;
-        }
-        console.log(postOffsetCount[post_ID])
+        console.log(postOffsetCount[post_ID], 'fc')
     }
     console.log(offset)
-    xhr.open("get", 'API/likeAndComment.php?fn=get&get=comment&post_ID='+post_ID+'&limit='+limit+'&offset='+offset);
+    xhr.open("get", 'API/likeAndComment.php?fn=get&get=comment&post_ID='+post_ID+'&limit='+comLimit+'&offset='+comOffset);
     xhr.send();
 
 }
@@ -216,23 +290,20 @@ function createCom(user_ID, post_ID){
     xhr.onload = () => {
         result = xhr.responseText;
         if(result == "1"){
-            var res = []
+            var res = [];
             res['commentText'] = commentText;
             res['userName'] = userName;
-            postOffsetCount[[post_ID]]++
-            var index = postOffsetCount[[post_ID]];
+            var index = postOffsetCount[post_ID]+1;
             var commentBox = commentStructure(index, post_ID, res);
-            console.log(commentBox)
-            var insertBeforeEle = "";
-            if(postOffsetCount[post_ID]){
-                insertBeforeEle = document.getElementById('comment_'+0+"_"+post_ID);
-                insertBeforeEle.insertAdjacentElement('beforebegin', commentBox);
-            }
-            else{
-                insertBeforeEle = document.getElementById('loadComment_'+post_ID);
-            }
+
+            var insertBeforeEle = document.getElementById('loadComment_'+post_ID);
+            insertBeforeEle.insertAdjacentElement('beforebegin', commentBox);
             
+            postOffsetCount[post_ID]++;
             document.getElementById('createComment_'+post_ID).value = null;
+            var totalCommentsField = document.getElementById('totalComments_'+post_ID)
+            var totalComments = parseInt(totalCommentsField.innerHTML);
+            totalCommentsField.innerHTML = (totalComments+1).toString();
         }
         else{
             window.alert("some thing went wrong!!!");
@@ -240,7 +311,7 @@ function createCom(user_ID, post_ID){
     }
 
     xhr.open("POST", 'API/likeAndComment.php?fn=set')
-    xhr.send(fd)    
+    xhr.send(fd);    
 }
 
 // functions to hide and show an element
@@ -249,13 +320,14 @@ function toggleDisplayFromID(id, e){
     var element = document.getElementById(id);
     var tempPostId = id.split("_")[1];
     if(element.classList.contains("none")){
-        fetchCom(tempPostId);
+
+        if(!postOffsetCount[tempPostId]){
+            fetchCom(tempPostId);
+        }
         element.classList.remove('none');
         e.firstChild.innerHTML = "chat_bubble";
     }
     else{   
-
-        console.log(postOffsetCount[tempPostId])
         element.classList.add("none");
         e.firstChild.innerHTML = "chat_bubble_outline";
     }
@@ -279,13 +351,19 @@ function commentStructure(index, post_ID, result){
     <div class="col-10 col-10-sm CommentArea">\
         <div class="usernamelikeBox flexAlign ">\
             <div class="usernameComment color font20 hoverPointer">'+result['userName']+'</div>\
-            <button class="likeComment hoverPointer borderNone backgroundNone hoverPointer" type="button"><span class="material-icons  likeBtn textShadowBlue">favorite_border</span></button>\
         </div>\
         <div class="userComment font15">'+result['commentText']+'</div>\
     </div>'
     return divElement;
 }
 
+////////////////////////// comment like structure. //////////////////////////
+//<div class="flex flexColumn">\
+//  <button class="likeComment hoverPointer borderNone backgroundNone hoverPointer" type="button">
+//      <span class="material-icons  likeBtn textShadowBlue">favorite_border</span>
+//  </button>\
+//  <div class="font-10 colorGrey">1000</div>\
+//</div>\
 
 /*
     this function checks if user has reached the end or not
@@ -458,8 +536,3 @@ function createPost(e){
 
 }
 
-//initially printing n posts
-for(var i =0; i<2; i++){
-    fetchAndFeed();
-    console.log("hello")
-}

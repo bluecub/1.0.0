@@ -164,7 +164,7 @@
                     </div>
                     <div class="row postRow">
                         <div class="col-12 col-12-sm postBoxHeightCaption postButtonsBox flex ">
-                            <div class="pqr  ">
+                            <div class="pqr">
                                 <div class="flex flexColumn">
                                     <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
                                     <div class="countLikes font-10 colorGrey">1000</div> 
@@ -183,7 +183,7 @@
                         </div>
                     </div>
                     <!-- comment row do display block when button clicked and display none for post row when button clicked -->
-                    <div class="row  commentRow none" id = "1" >
+                    <div class="row  commentRow" id = "1">
                         <div class="commentContainer">
                             
                             <div class="row inputCommentBox borderThinDark backgroundw border10 flexAlign shadowhover">

@@ -7,7 +7,6 @@ $userSecurityInfoTable = "userSecurityInfo";
 $followInfoTable = "followInfo";
 $postInfoTable = 'postInfo';
 $postActivityTable = "postActivity";
-$postTotalActivityTable = "postActivityTable";
 
 
 class basicFunctions{
