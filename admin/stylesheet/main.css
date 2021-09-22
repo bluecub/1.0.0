@@ -160,6 +160,9 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 .font-13{
     font-size:13px;
 }
+.font-10{
+    font-size:10px;
+}
 .font30{
     font-size:30px;
 }
@@ -172,6 +175,9 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 /* font color */
 .color{
     color:#6990f2;
+}
+.colorGrey{
+    color:#d3d3d3;
 }
 /* this the form elements styling like input box, checkbox,submit button*/
 /* -------- every text like username, pasword etc input type ------ */

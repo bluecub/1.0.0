@@ -137,7 +137,7 @@
         </div>
         
 
-        <div class="row" id="imgStockRow">
+        <div class="row" id="imgStockRow"> 
             <!-- change it to 8 columns (reason of change = i didn't like it) -->
             <div class="col-12 col-12-sm imgPost" id="feedPageAllPosts">
                 <!-- post box html -->
@@ -164,9 +164,15 @@
                     </div>
                     <div class="row postRow">
                         <div class="col-12 col-12-sm postBoxHeightCaption postButtonsBox flex ">
-                            <div class="pqr flexAlign ">
-                                <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
-                                <button onclick="toggleDisplayFromID(1_1, this)" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
+                            <div class="pqr  ">
+                                <div class="flex flexColumn">
+                                    <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
+                                    <div class="countLikes font-10 colorGrey">1000</div> 
+                                </div>
+                                <div class="flex flexColumn">
+                                    <button onclick="toggleDisplayFromID(1_1, this)" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
+                                    <div class="countComments font-10 colorGrey">1000</div>
+                                </div>
                                 <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>
                                 <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>
                             </div>

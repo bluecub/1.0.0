@@ -129,10 +129,12 @@
     height:60px;
 }
 .postButtonsCaption{
-    height:50px;
+    height:30px;
     width:100%;
 }
 .pqr{
+    display: flex;
+    flex-direction: row;
     width:200px;
     justify-content: space-between;
 }
