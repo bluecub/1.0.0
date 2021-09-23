@@ -473,6 +473,9 @@ function deleteAllFiles(e){
 ////////////////////////////////// post create modal js ////////////////////////////
 function openPostCreateModal(e){
     document.getElementById('postCreateWrapper').style.display = "flex";
+    for(var i = 0; i<uploadCount; i++){
+        deleteFile(i);
+    }
 }
 // to close the modal
 
@@ -528,11 +531,15 @@ function createPost(e){
     }
     var xhr = new XMLHttpRequest();
     xhr.onload = ()=>{
-           console.log(xhr.responseText)
+        if(xhr.responseText == "1"){
+            closeButton.click();
+        }
+        else{
+            document.getElementById('modalErrorMsg').innerHTML = "Something Went Wrong !!!"
+        }
     }
     xhr.open("POST", "API/post.php?fileName="+fileName+"&fn=set&user_ID="+user_ID, true);
     xhr.send(fd);
-    closeButton.click();
-
+    
 }
 

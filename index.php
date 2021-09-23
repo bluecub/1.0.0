@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-12 col-12-sm stylebar5"></div>
+                    <div class="col-12 col-12-sm stylebar5 center errormsg" id="modalErrorMsg"></div>
                 </div>
                 <div class="row">
                     <div class="col-1 col-1-sm"></div>
