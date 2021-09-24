@@ -116,7 +116,7 @@ function postStructure(data){
     
                 for(var i =0; i<vidPath.length; i++){
                     postStruct += '\
-                    <video class="postContentBox widthMinWidth100 borderThin" controls>\
+                    <video class="postContentBox widthMinWidth100" controls>\
                         <source src="./assets/postVid/'+vidPath[i]+'" type="video/mp4">\
                         Your browser does not support the video tag.\
                     </video>'   
@@ -128,7 +128,7 @@ function postStructure(data){
                 var imgPath = data['images'].split(",");
     
                 for(var i =0; i<imgPath.length; i++){
-                    postStruct += '<img class="postContentBox widthMinWidth100 borderThin" src="./assets/postImg/'+imgPath[i]+'" alt="">';
+                    postStruct += '<img class="postContentBox widthMinWidth100" src="./assets/postImg/'+imgPath[i]+'" alt="">';
                 }
     
             }
