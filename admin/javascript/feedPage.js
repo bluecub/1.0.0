@@ -108,7 +108,7 @@ function postStructure(data){
 
         postStruct += '\
         <div class="row postRow">';
-            postStruct += '<div class="col-12 col-12-sm post borderBox backgroundDark">';
+            postStruct += '<div class="col-12 post borderBox backgroundDark">';
 
             if(data['videos']){
 
