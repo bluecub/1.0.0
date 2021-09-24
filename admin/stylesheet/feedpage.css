@@ -316,6 +316,13 @@
     width:70px;
     border-radius: 35px;;
 }
+@media only screen and (max-width:640px){
+    .DPcomment{
+        height:100%;
+        width:100%;
+        border-radius: 50%;
+    }
+}
 .commentRow{
     background-color: rgb(255, 255, 255);
 }

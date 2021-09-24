@@ -6,7 +6,8 @@
     $query = new query($databaseName);
     if($_GET['fn'] == 'get'){
 
-        $post_ID = $_GET['post_ID'];
+        $user_ID = $_GET['user_ID'];
+        $post_ID = $_GET['parent_ID'];
         $condition = array('post_ID'=>$post_ID);
         $result = "";
         if(isset($_GET['get'])){
@@ -17,7 +18,15 @@
                 $result = $query->getData($postActivityTable, "*", $condition, 'updatedAt', 'DESC', $limit, $offset);
                 $count = count($result);
                 for($i=0; $i<$count; $i++){
-                    $result[$i]['userName']= $query->getData($userInfoTable, 'userName', ['user_ID'=>$result[$i]['user_ID']])[0][0];
+                    $result[$i]['userName'] = $query->getData($userInfoTable, 'userName', ['user_ID'=>$result[$i]['user_ID']])[0][0];
+
+                    $likedStatus = $query->getData($activityOnActivityTable, "*", ['activity_ID'=>$result[$i]['activity_ID'], 'user_ID'=>$user_ID, 'activityType'=>0]);
+                    
+                    if($likedStatus){
+                        $result[$i]['likedStatus'] = 1;
+                    }else{
+                        $result[$i]['likedStatus'] = 0;
+                    }
                 }
 
             }
@@ -29,7 +38,7 @@
     else if($_GET['fn'] == 'set'){
         $commentInfo = array();
         $commentInfo['user_ID'] = $_POST['user_ID'];
-        $commentInfo['post_ID'] = $_POST['post_ID'];
+        $commentInfo['post_ID'] = $_POST['parent_ID'];
         $commentInfo['activityType'] = $_POST['activityType'];
 
         if($commentInfo['activityType'] == 1){
@@ -53,28 +62,33 @@
         $activityType = 0;
         $parentType = $_GET['parentType'];
 
-        $postActivtyValue = [
+        $activityInfo = [
             'user_ID'=>$user_ID,
-            'post_ID'=>$parent_ID,
             'activityType'=>$activityType,
         ];
 
         if(!$_GET['liked']){
             if($parentType == "0"){
-                $result = $query->addData($postActivityTable, $postActivtyValue);
+                $activityInfo['post_ID'] = $parent_ID;
+                $result = $query->addData($postActivityTable, $activityInfo);
                 $result = $query->prep_and_run("UPDATE postInfo SET totalLikes=totalLikes+1 WHERE post_ID='$parent_ID'");
             }
             else{
-                $result = $query->prep_and_run("UPDATE postInfo SET totalLikes=totalLikes+1 WHERE post_ID='$parent_ID'");
+                $activityInfo['activity_ID'] = $parent_ID;
+                $result = $query->addData($activityOnActivityTable, $activityInfo);
+                $result = $query->prep_and_run("UPDATE postActivity SET totalLikes=totalLikes+1 WHERE activity_ID='$parent_ID'");
             }
         }
         else{
             if($parentType == "0"){
-                $result = $query->deleteData($postActivityTable, $postActivtyValue);
+                $activityInfo['post_ID'] = $parent_ID;
+                $result = $query->deleteData($postActivityTable, $activityInfo);
                 $result = $query->prep_and_run("UPDATE postInfo SET totalLikes=totalLikes-1 WHERE post_ID='$parent_ID'");
             }
             else{
-                $result = $query->prep_and_run("UPDATE postInfo SET totalLikes=totalLikes-1 WHERE post_ID='$parent_ID'");
+                $activityInfo['activity_ID'] = $parent_ID;
+                $result = $query->deleteData($activityOnActivityTable, $activityInfo);
+                $result = $query->prep_and_run("UPDATE postActivity SET totalLikes=totalLikes-1 WHERE activity_ID='$parent_ID'");
             }
         }
 

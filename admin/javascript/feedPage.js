@@ -149,7 +149,7 @@ function postStructure(data){
             <div class="col-12 col-12-sm postBoxHeightCaption postButtonsBox flex ">\
                 <div class="pqr">\
                     <div class="flex flexColumn">\
-                        <button id = "like_'+data['post_ID']+'_'+liked+'" onclick="likePC('+data['post_ID']+', this, 0, '+data['totalLikes']+')" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">'+likeButtonType+'</span></button>\
+                        <button id = "like_'+data['post_ID']+'_'+liked+'" onclick="likePC('+data['post_ID']+', this, 0)" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">'+likeButtonType+'</span></button>\
                         <div class="countLikes font-10 colorGrey" id = totalLikes_'+data['post_ID']+'>'+data['totalLikes']+'</div>\
                     </div>\
                     \
@@ -193,7 +193,7 @@ function postStructure(data){
 }
 
 //function to like a post or comment
-function likePC(parent_ID, element, type, totalLikes){
+function likePC(parent_ID, element, type){
     
     var liked = element.id.split("_")[2];
     if(liked == "1"){
@@ -205,11 +205,22 @@ function likePC(parent_ID, element, type, totalLikes){
                 window.alert("something Went Wrong")
             }
             var totalLikesField = document.getElementById('totalLikes_'+parent_ID);
-            var totalLikes = parseInt(totalLikesField.innerHTML);
-            totalLikesField.innerHTML = (totalLikes - 1).toString();
-    
-            element.firstChild.innerHTML = "favorite_border";
-            element.id = "like_"+parent_ID+"_"+"0";
+            if(type==0){
+                var totalLikesField = document.getElementById('totalLikes_'+parent_ID);
+                var totalLikes = parseInt(totalLikesField.innerHTML);
+                totalLikesField.innerHTML = (totalLikes - 1).toString();
+        
+                element.firstChild.innerHTML = "favorite_border";
+                element.id = "like_"+parent_ID+"_"+"0";
+            }
+            else{
+                var totalLikesField = document.getElementById('totalLikesCom_'+parent_ID);
+                var totalLikes = parseInt(totalLikesField.innerHTML);
+                totalLikesField.innerHTML = (totalLikes - 1).toString();
+        
+                element.firstChild.innerHTML = "favorite_border";
+                element.id = "comLike_"+parent_ID+"_"+"0";
+            }
 
         }
         //!!!!!!!!!!!!!!!! remove total likes and total comments if not needed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
@@ -225,21 +236,68 @@ function likePC(parent_ID, element, type, totalLikes){
             if(xhr.response == "0"){
                 window.alert("something Went Wrong")
             }
-            var totalLikesField = document.getElementById('totalLikes_'+parent_ID);
-            var totalLikes = parseInt(totalLikesField.innerHTML);
-            totalLikesField.innerHTML = (totalLikes + 1).toString();
-    
-            element.firstChild.innerHTML = "favorite";
-            element.id = "like_"+parent_ID+"_"+"1";
+            if(type==0){
+                var totalLikesField = document.getElementById('totalLikes_'+parent_ID);
+                var totalLikes = parseInt(totalLikesField.innerHTML);
+                totalLikesField.innerHTML = (totalLikes + 1).toString();
+        
+                element.firstChild.innerHTML = "favorite";
+                element.id = "like_"+parent_ID+"_"+"1";
+            }
+            else{
+                var totalLikesField = document.getElementById('totalLikesCom_'+parent_ID);
+                var totalLikes = parseInt(totalLikesField.innerHTML);
+                totalLikesField.innerHTML = (totalLikes + 1).toString();
+        
+                element.firstChild.innerHTML = "favorite";
+                element.id = "comLike_"+parent_ID+"_"+"1";
+            }
 
         }
         //!!!!!!!!!!!!!!!! remove total likes and total comments if not needed !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!//
-        xhr.open("GET", 'API/likeAndComment.php?fn=setLike&totalLikes='+totalLikes+'&liked='+liked+'&parentType='+type+'&user_ID='+user_ID+'&parent_ID='+parent_ID);
+        xhr.open("GET", 'API/likeAndComment.php?fn=setLike&liked='+liked+'&parentType='+type+'&user_ID='+user_ID+'&parent_ID='+parent_ID);
         xhr.send();
     }
+    console.log(element.childNodes);
 
+}
 
+//function for comment structure
+function commentStructure(index, post_ID, result){
 
+    var likeButtonType = 'favorite_border';
+    var liked = 0;
+    if(result['likedStatus']){
+        liked = "1";
+        likeButtonType = 'favorite';
+    }
+    if(!result['totalLikes'])result['totalLikes'] = 0;
+
+    var divElement = document.createElement('div');   
+
+    divElement.classList.add("row");
+    divElement.classList.add("comment");
+    divElement.classList.add("borderThinDark");
+    divElement.classList.add("backgroundw");
+    divElement.classList.add("border10");
+    divElement.classList.add("flexAlign");
+    divElement.classList.add("shadowhover");
+
+    divElement.id = "comment_"+index+"_"+post_ID;
+
+    divElement.innerHTML += '\
+    <div class="col-2 col-2-sm flex overFlowHidden hoverPointer"><img class=" DPcomment" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>\
+    <div class="col-10 col-10-sm CommentArea">\
+        <div class="usernamelikeBox flexAlign ">\
+            <div class="usernameComment color font20 hoverPointer">'+result['userName']+'</div>\
+            <div class="flex flexColumn">\
+                <button id="comLike_'+result['activity_ID']+'_'+liked+'" onclick="likePC('+result['activity_ID']+', this, 1)" class="likeComment hoverPointer borderNone backgroundNone hoverPointer">\<span class="material-icons likeBtn textShadowBlue">'+likeButtonType+'</span></button>\
+                <div class="font-10 colorGrey" id = totalLikesCom_'+result['activity_ID']+'>'+result['totalLikes']+'</div>\
+            </div>\
+        </div>\
+        <div class="userComment font15">'+result['commentText']+'</div>\
+    </div>'
+    return divElement;
 }
 
 //function to fetch comments
@@ -269,7 +327,7 @@ function fetchCom(post_ID){
         console.log(postOffsetCount[post_ID], 'fc')
     }
     console.log(offset)
-    xhr.open("get", 'API/likeAndComment.php?fn=get&get=comment&post_ID='+post_ID+'&limit='+comLimit+'&offset='+comOffset);
+    xhr.open("get", 'API/likeAndComment.php?fn=get&get=comment&user_ID='+user_ID+'&parent_ID='+post_ID+'&limit='+comLimit+'&offset='+comOffset);
     xhr.send();
 
 }
@@ -282,7 +340,7 @@ function createCom(user_ID, post_ID){
 
     var fd = new FormData();
     fd.append('user_ID', user_ID);
-    fd.append('post_ID', post_ID);
+    fd.append('parent_ID', post_ID);
     fd.append('commentText', commentText);
     fd.append('activityType', 1);
 
@@ -332,38 +390,6 @@ function toggleDisplayFromID(id, e){
         e.firstChild.innerHTML = "chat_bubble_outline";
     }
 }
-
-//function for comment structure
-function commentStructure(index, post_ID, result){
-    var divElement = document.createElement('div');   
-    divElement.classList.add("row");
-    divElement.classList.add("comment");
-    divElement.classList.add("borderThinDark");
-    divElement.classList.add("backgroundw");
-    divElement.classList.add("border10");
-    divElement.classList.add("flexAlign");
-    divElement.classList.add("shadowhover");
-
-    divElement.id = "comment_"+index+"_"+post_ID;
-
-    divElement.innerHTML += '\
-    <div class="col-2 col-2-sm flex overFlowHidden hoverPointer"><img class=" DPcomment" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>\
-    <div class="col-10 col-10-sm CommentArea">\
-        <div class="usernamelikeBox flexAlign ">\
-            <div class="usernameComment color font20 hoverPointer">'+result['userName']+'</div>\
-        </div>\
-        <div class="userComment font15">'+result['commentText']+'</div>\
-    </div>'
-    return divElement;
-}
-
-////////////////////////// comment like structure. //////////////////////////
-//<div class="flex flexColumn">\
-//  <button class="likeComment hoverPointer borderNone backgroundNone hoverPointer" type="button">
-//      <span class="material-icons  likeBtn textShadowBlue">favorite_border</span>
-//  </button>\
-//  <div class="font-10 colorGrey">1000</div>\
-//</div>\
 
 /*
     this function checks if user has reached the end or not
