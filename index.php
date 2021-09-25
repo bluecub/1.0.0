@@ -58,10 +58,10 @@
                     <div class="col-1 col-1-sm"></div>
                     <div class="col-6 col-6-sm color  font15">Caption</div>
                     <div class="col-4 col-4-sm  formatBtn">
-                        <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">format_bold</span></button>
-                        <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">format_italic</span></button>
-                        <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">format_underlined</span></button>
-                        <button class=" borderNone backgroundNone flex" type="button"><span class="material-icons md-blue md-17">emoji_emotions</span></button>
+                        <button onclick="makeBold('CreatePostCaption', this)" class=" borderNone backgroundNone flex hoverPointer" type="button"><span class="material-icons md-blue md-19">format_bold</span></button>
+                        <button class=" borderNone backgroundNone flex hoverPointer" type="button"><span class="material-icons md-blue md-19">format_italic</span></button>
+                        <button class=" borderNone backgroundNone flex hoverPointer" type="button"><span class="material-icons md-blue md-19">format_underlined</span></button>
+                        <button class=" borderNone backgroundNone flex hoverPointer hidden-sm" type="button"><span class="material-icons md-blue md-19">emoji_emotions</span></button>
                     </div>
                 </div>
                 <div class="row">

@@ -569,3 +569,19 @@ function createPost(e){
     
 }
 
+function makeBold(parentElement, element){
+
+    if(element.classList.contains('textShadowPurplePermanent')){
+        element.classList.remove('textShadowPurplePermanent')
+    }
+    else{
+        element.classList.add('textShadowPurplePermanent')
+    }
+    var range = window.getSelection().getRangeAt(0);
+    var selectionContents = range.extractContents();
+    var div = document.createElement("div");
+    div.style.color = "yellow";
+    div.appendChild(selectionContents);
+    range.insertNode(div);
+
+}
