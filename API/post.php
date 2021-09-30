@@ -16,7 +16,7 @@
             $offset = $_GET['offset'];
             $limit = $_GET['limit'];
     
-            $condition = array('user_ID'=>[12, 26, 12, 22, 9]);
+            $condition = array('user_ID'=>[12, 27, 12, 22, 9]);
             $orderBy = 'updatedAt';
             $result = $query->getDataWithOr($postInfoTable, '*', $condition, $orderBy, "DESC", $limit, $offset);
     
@@ -67,7 +67,7 @@
 
                 // If there was any error $fileExtension is error
                 if(isset($fileExtension['error'])){
-                    echo $fileExtension['error'];
+                    print_r(json_encode($fileExtension));
                     die();
                 }
                 else{
@@ -82,7 +82,7 @@
                             }
                             else{
                                 $errorArray["error"] = "Somwthing Went Wrong...";
-                                echo $errorArray['error'];
+                                print_r(json_encode($errorArray));
                                 die();
                             }
                         }
@@ -93,7 +93,7 @@
                             }
                             else{
                                 $errorArray["error"] = "Somwthing Went Wrong...";
-                                echo $errorArray['error'];
+                                print_r(json_encode($errorArray));
                                 die();
                             }
                         }
@@ -119,15 +119,11 @@
             
             if($caption == "" and $fileName == ""){
                 $errorArray["error"] = "Enter something...";
-                echo $errorArray['error'];
+                print_r(json_encode($errorArray));
                 die();
             }
             $result = $query->addData($postInfoTable, $postData);
-            if($result){
-                echo "Some Thing Went wrong From Server Side!!";
-                die();
-            }
-            echo true;
+            print_r(json_encode($result));
 
         }
     }

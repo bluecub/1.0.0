@@ -67,7 +67,7 @@
                 <div class="row">
                     <div class="col-1 col-1-sm"></div>
                     <div class="col-10 col-10-sm">
-                        <textarea class="caption borderBox widthMinWidth100" id="CreatePostCaption" rows="4" cols="37" maxlength="250" placeholder="What is your post about &#128526;"></textarea>
+                        <textarea class="caption borderBox widthMinWidth100" id="CreatePostCaption" rows="4" cols="37" maxlength="1500" placeholder="What is your post about &#128526;"></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -100,18 +100,7 @@
 
         <!--tagged row-->
         <div class="row borderBox flex" id="tagRow">
-            <div class="col-3 col-3-sm" id="tagHeadingCol">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12 col-12-sm Center" id="tagHeading">Tagged Posts</div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12 col-12-sm font-13 Center" id="tagInfo">See all posts that you have tagged</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-9 col-9-sm" id="TagCol">
+            <div class="col-12 col-12-sm" id="TagCol">
                 <div class="box overFlowHidden"><img class="postContentBox" src="./assets/profilePictures/download.jpeg" alt=""></div>
                 <div class="box overFlowHidden"><img class="postContentBox" src="./assets/profilePictures/images (1).jpeg" alt=""></div>
                 <div class="box overFlowHidden"><img class="postContentBox" src="./assets/profilePictures/images (2).jpeg" alt=""></div>
@@ -141,8 +130,87 @@
             <!-- change it to 8 columns (reason of change = i didn't like it) -->
             <div class="col-12 col-12-sm imgPost" id="feedPageAllPosts">
                 <!-- post box html -->
-            </div>
+                <!-- each post -->
+                <div class="postContainer" >
+                    <div class="row usernameRow">
+                        <div class="col-6 col-6-sm DPBox flexAlign">
+                            <div class="DP overFlowHidden hoverPointer shadowhover"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
+                            <div class="userNamePost hoverPointer">Vipul Gupta</div>
+                        </div>
+                        <div class="col-5 col-5-sm"></div>
+                        <div class="col-1 col-1-sm bookmarkBtnBox flex">
+                            <button type="button" name="bookmarkBtn" class="hoverPointer postButtons borderNone backgroundNone"><span class="material-icons md-lights textShadowGray md-24">bookmark_border</span></button>
+                        </div>
+                    </div>
+                    <div class="row postRow">
+                        <div class="col-12 col-12-sm post borderBox backgroundDark">
+                            <img class="postContentBox widthMinWidth100" src="./assets/profilePictures/photo-1503023345310-bd7c1de61c7d.jpeg">
+                        </div>
+                    </div>
+                    <div class="row captionRow">
+                        <div class="col-12 col-12-sm postCaption borderBox Center">       
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi ipsam, veritatis impedit esse tenetur rem veniam est excepturi quas porro officiis doloremque numquam perspiciatis magnam. Similique dolor minima quis nam.
+                        </div>
+                    </div>
+                    <div class="row postRow">
+                        <div class="col-12 col-12-sm postBoxHeightCaption postButtonsBox flex ">
+                            <div class="pqr">
+                                <div class="flex flexColumn">
+                                    <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons likeBtn textShadowBlue">favorite_border</span></button>
+                                    <div class="countLikes font-10 colorGrey" >100</div>
+                                </div>
+                                
+                                <div class="flex flexColumn">
+                                    <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>
+                                    <div id="totalComments_'+data['post_ID']+'" class="countComments font-10 colorGrey">100</div>
+                                </div>
+                                
+                                <div class="flex flexColumn">
+                                    <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons shareBtn textShadowRed">send</span></button>
+                                </div>
+                                
+                                <div class="flex flexColumn">
+                                    <button type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons tagBtn textShadowPurple">tag</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <div class="row  commentRow" id = "comment_'+data['post_ID']+'">
+                        <div class="commentContainer">  
+
+                        <!-- each comment -->
+                            
+                            <div class="row comment borderThinDark backgroundw  border10 flexAlign shadowhover">
+                                
+                            <div class="col-2 col-2-sm flex overFlowHidden hoverPointer"><img class=" DPcomment" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
+                                <div class="col-10 col-10-sm CommentArea">
+                                    <div class="usernamelikeBox flexAlign ">
+                                        <div class="usernameComment color font20 hoverPointer">Parth Pathak</div>
+                                        <div class="flex flexColumn">
+                                            <button  class="likeComment hoverPointer borderNone backgroundNone hoverPointer"><span class="material-icons likeBtn textShadowBlue">favorite</span></button>
+                                            <div class="font-10 colorGrey">100</div>
+                                        </div>
+                                    </div>
+                                <div class="userComment font15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident reprehenderit, consectetur aliquam molestiae, quas magni commodi voluptas sint beatae facilis repellendus. Eveniet inventore earum vel repellendus architecto quia quibusdam eius.</div>
+                            </div>
+
+                            </div>
+
+                            <div class="row inputCommentBox borderThinDark backgroundw border10 flexAlign shadowhover" id = "loadComment_'+data['post_ID']+'">
+                                <div class="col-11 col-10-sm "><textarea class="inputComment" id="createComment_'+data['post_ID']+'" rows="2" cols="33" maxlength="250" placeholder="Add Comment ..."></textarea></div>
+                                <div class="col-1 col-2-sm"><button type="button" class="backgroundNav shadowhover hoverPointer flex" id="submitSmall" ><span class="material-icons" id="subbtnSmall">expand_less</span></button></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 col-12-sm flex">
+                                    <button type="button" class="backgroundNav shadowhover hoverPointer flex" id="loadMoresmall" name="submit"><span class="material-icons" id="loadMorebtnsmall">keyboard_double_arrow_down</span></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
         </div>
         <!-- ends here-->
     </div>

@@ -113,6 +113,9 @@ and it contradicts something at the bottom of the page the bottom one will be fo
 .textRight{
     text-align: right;
 }
+.textUnderline{
+    text-decoration: underline;
+}
 /* ends here */
 /* shadows */
 .everyPageShadow{

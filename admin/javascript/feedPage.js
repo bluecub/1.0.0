@@ -138,9 +138,25 @@ function postStructure(data){
         }
 
         if(data['text']){
+
+            data['caption'] = []
+
+            if(data['text'].length>300){
+                data['caption'][0] = data['text'].slice(0,301);
+                data['caption'][1] = '<span class = "none Center" id=hideCom_'+data['post_ID']+'>'+data['text'].slice(201,)+'</span>';
+            }
+            else{
+                data['caption'][0] = data['text'];
+                data['caption'][1] = "";
+            }
             postStruct +=  '\
             <div class="row captionRow">\
-                <div class="col-12 col-12-sm caption borderBox">'+data['text']+'<a href="">read more...</a></div>\
+                <div class="col-12 col-12-sm postCaption borderBox Center">'+data['caption'][0] + data['caption'][1];
+            if(data['caption'][1] != ""){
+                postStruct += '<button class="hoverPointer borderNone backgroundNone" onclick=\'toggleDisplayFromID("hideCom_'+data['post_ID']+'", this)\'><b style="text-decoration:underline"> show more... </b></button>';
+            }
+            postStruct += '\
+                </div>\
             </div>'
         }
 
@@ -154,7 +170,7 @@ function postStructure(data){
                     </div>\
                     \
                     <div class="flex flexColumn">\
-                        <button onclick="toggleDisplayFromID(\'comment_'+data['post_ID']+'\', this)" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>\
+                        <button onclick="toggleDisplayFromIDPost(\'comment_'+data['post_ID']+'\', this)" type="button" name="bookmarkBtn" class="hoverPointer postButtonsCaption borderNone backgroundNone"><span class="material-icons commentBtn textShadowYellow">chat_bubble_outline</span></button>\
                         <div id="totalComments_'+data['post_ID']+'" class="countComments font-10 colorGrey">'+data['totalComments']+'</div>\
                     </div>\
                     \
@@ -174,8 +190,8 @@ function postStructure(data){
             <div class="commentContainer">\
                 \
                 <div class="row inputCommentBox borderThinDark backgroundw border10 flexAlign shadowhover" id = "loadComment_'+data['post_ID']+'">\
-                    <div class="col-11 col-11-sm "><textarea class="inputComment" id="createComment_'+data['post_ID']+'" rows="2" cols="33" maxlength="250" placeholder="Add Comment ..."></textarea></div>\
-                    <div class="col-1 col-1-sm"><button type="button" class="backgroundNav shadowhover hoverPointer flex" id="submitSmall" onclick="createCom('+user_ID+', '+data['post_ID']+');"><span class="material-icons" id="subbtnSmall">expand_less</span></button></div>\
+                    <div class="col-11 col-10-sm "><textarea class="inputComment" id="createComment_'+data['post_ID']+'" rows="2" cols="33" maxlength="250" placeholder="Add Comment ..."></textarea></div>\
+                    <div class="col-1 col-2-sm"><button type="button" class="backgroundNav shadowhover hoverPointer flex" id="submitSmall" onclick="createCom('+user_ID+', '+data['post_ID']+');"><span class="material-icons" id="subbtnSmall">expand_less</span></button></div>\
                 </div>\
                 <div class="row">\
                     <div class="col-12 col-12-sm flex">\
@@ -374,7 +390,7 @@ function createCom(user_ID, post_ID){
 
 // functions to hide and show an element
 
-function toggleDisplayFromID(id, e){
+function toggleDisplayFromIDPost(id, e){
     var element = document.getElementById(id);
     var tempPostId = id.split("_")[1];
     if(element.classList.contains("none")){
@@ -388,6 +404,19 @@ function toggleDisplayFromID(id, e){
     else{   
         element.classList.add("none");
         e.firstChild.innerHTML = "chat_bubble_outline";
+    }
+}
+
+function toggleDisplayFromID(id, e){
+
+    var element = document.getElementById(id);
+    if(element.classList.contains("none")){
+        e.innerHTML = '<b style="text-decoration:underline"> show less...</b>';
+        element.classList.remove('none');
+    }
+    else{   
+        e.innerHTML = '<b style="text-decoration:underline"> show more...</b>';
+        element.classList.add("none");
     }
 }
 
@@ -557,11 +586,15 @@ function createPost(e){
     }
     var xhr = new XMLHttpRequest();
     xhr.onload = ()=>{
-        if(xhr.responseText == "1"){
+
+        console.log(xhr.response)
+        res = JSON.parse(xhr.response)
+
+        if(res[0] && res[0][0]){
             closeButton.click();
         }
         else{
-            document.getElementById('modalErrorMsg').innerHTML = "Something Went Wrong !!!"
+            document.getElementById('modalErrorMsg').innerHTML = res['error'];
         }
     }
     xhr.open("POST", "API/post.php?fileName="+fileName+"&fn=set&user_ID="+user_ID, true);

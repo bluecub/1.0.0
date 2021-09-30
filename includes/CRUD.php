@@ -186,6 +186,7 @@
             $query = "INSERT INTO $table ($fields) VALUES ($value)";
 
             $result = $this->prep_and_run($query);
+            $result = $this->prep_and_run(" SELECT  LAST_INSERT_ID()");
             return $result;
 
         }
