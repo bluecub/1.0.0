@@ -131,7 +131,7 @@
             <div class="col-12 col-12-sm imgPost" id="feedPageAllPosts">
                 <!-- post box html -->
                 <!-- each post -->
-                <div class="postContainer" >
+                <!-- <div class="postContainer" >
                     <div class="row usernameRow">
                         <div class="col-6 col-6-sm DPBox flexAlign">
                             <div class="DP overFlowHidden hoverPointer shadowhover"><img class="postContentBox" src="./assets/profilePictures/testimonials-3.jpg" alt=""></div>
@@ -179,7 +179,7 @@
                     <div class="row  commentRow" id = "comment_'+data['post_ID']+'">
                         <div class="commentContainer">  
 
-                        <!-- each comment -->
+                         each comment
                             
                             <div class="row comment borderThinDark backgroundw  border10 flexAlign shadowhover">
                                 
@@ -209,7 +209,7 @@
                         </div>
                     </div>
         
-                </div>
+                </div> -->
             </div>
         </div>
         <!-- ends here-->

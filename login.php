@@ -75,7 +75,13 @@
     
     <!-- This is the main login area-->
     <div class="row" id="loginRow">
-        <div class="col-6 hidden-sm border backgroundb" id="picture"></div><!-- check for how to make 0 coloumns when sm or add own classes-->
+        <div class="col-6 hidden-sm border backgroundb" id="picture">
+            <div><a href="./signup1.php" style="text-decoration: none; padding: 10px; color:red" > SignUp Now!! </a></div>
+            <div>
+                <span> Or Use </span><span> Username=vip3022</span><span> pass = vipulgupta (For testing ; )</span>
+            </div>
+            
+        </div><!-- check for how to make 0 coloumns when sm or add own classes-->
         <div class="col-6 col-12-sm border backgroundw" id="form">
             <!-- top 3 bars -->
             <div class="bar" id="loginBar"></div>
